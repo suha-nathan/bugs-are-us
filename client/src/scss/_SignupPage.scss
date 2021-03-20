@@ -1,0 +1,35 @@
+.signup-page-container {
+
+
+  //background-image: url('http://www.placehold.it/1920x1080');
+  background-image: url('../assets/img/forest-stitched-bg.png');
+  background-size: cover;
+
+    h1 {
+      color: white;
+    }
+    &__content {
+      border-radius: 3rem ;
+      //border: 1px solid #DEE2E6 ;
+      overflow: hidden;
+      background-color: white;
+    }
+
+    &__gif-section {
+      background-color: grey;
+      position: relative;
+    }
+
+    &__login-section {
+      background-color: white ;
+
+      &__signup-text {
+        position: absolute;
+        bottom: 0.5rem;
+      }
+
+    }
+
+
+}
+
