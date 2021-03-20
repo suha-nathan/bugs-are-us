@@ -1,6 +1,5 @@
 const router = require('express').Router()
 const Bug = require('../model/bug.model')
-const userMockData = require('../lib/userMockData')
 
 router.post("/create", async(req, res) => {
 
@@ -36,14 +35,32 @@ router.post("/create", async(req, res) => {
     }
 })
 
-router.get("/allbugs", async(req, res) => {
+router.get("/all", async(req, res) => {
     try{
-        let mockUserData = {userMockData}.map(() => {
-            console.log(mockUserData)
-        })
+        const data = await Bug.find()
+        res.status(200).json({data})
     }catch(e){
         res.status(400).json({ message: "Failed to view all bugs"})
     }
 })
+
+router.get("/:id", async(req, res) => {
+    try{
+        console.log(req.params)
+        const singleData = await Bug.findById('6055aec57ab0a30b4e179727')
+        res.status(200).json({singleData})
+    }catch(e){
+        res.status(400).json({ message: "Failed to view single bug details"})
+    }
+})
+
+router.post("/delete", async(req, res) => {
+    try{
+        
+    }catch(e){
+        res.status(400).json({ message: "Something went wrong"})
+    }
+})
+
 
 module.exports = router

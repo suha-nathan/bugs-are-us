@@ -8,8 +8,9 @@ const userSchema = new Schema({
     lastName: { type: String, required: true},
     email: { type: String, required: true},
     password: { type: String, required: true },
-    projects: [{ type: Schema.Types.ObjectId}],
-    bugs: [{ type: Schema.Types.ObjectId}]
+    projects: [{ type: Schema.Types.ObjectId, ref: 'Project'}],
+    bugs: [{ type: Schema.Types.ObjectId, ref: 'Bug'}],
+    role: { type: String, enum: ["user", "teamLead"]}
 })
 
 userSchema.pre('save', function (next){
