@@ -12,7 +12,7 @@ const BugList = (props) => {
     },[])
 
     const getProjectData = () => {
-        console.log(projectMockData[0])
+        // console.log(projectMockData[0])
         setProjectData(projectMockData[0])
     }
 

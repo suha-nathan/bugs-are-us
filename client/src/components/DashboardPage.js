@@ -3,17 +3,19 @@ import Header from "./Header";
 import {Col, Container, Row} from "react-bootstrap";
 import SearchBar from "./SearchBar";
 import BugList from "./BugList";
-import {Route} from "react-router-dom";
+import {Redirect, Route} from "react-router-dom";
 import TempHeader from "./TempHeader";
 import Sidebar from "./Sidebar";
 
-const DashboardPage = (props) => {
+const DashboardPage = ({isAuth,logOut}) => {
+    // if(isAuth===true){
+    //     return <Redirect to={"/"} />
+    // }
 
     return (
         <>
-
             <Header />
-            <TempHeader />
+            <TempHeader logOut={logOut} />
             <SearchBar />
             <Row>
                 <Col md={2}>

@@ -8,8 +8,8 @@ const bugSchema = new Schema({
         imgUrl: String,
         comments: [
             {
-                user: String,
-                comment: String
+                user: { type: Schema.Types.ObjectId, ref: 'User'},
+                comment: { type: Schema.Types.ObjectId, red: 'Comment'}
             }
         ],
         upVotes: [],
