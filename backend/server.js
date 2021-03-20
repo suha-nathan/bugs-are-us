@@ -10,7 +10,7 @@ app.use(cors())
 
 
 app.use('/user', require('./routes/user.route'))
-app.use('/user', require('./routes/bug.route'))
+app.use('/bug', require('./routes/bug.route'))
 
 
 app.listen(process.env.PORT, () => {
