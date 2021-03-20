@@ -5,17 +5,22 @@ import ProfilePic from "./ProfilePic";
 const Header = (props) => {
 
     return (
-        <Row>
-            <Col md={1}><h5>BUGS R US</h5></Col>
-            <Col md={8}>
+        <Row className="bg-primary py-2 px-3">
+            <Col md={2} className="d-flex align-items-center pl-4">
+                <h5 className="m-0">BUGS R US</h5>
+            </Col>
+            <Col md={8} className="d-flex align-items-center">
                 <Nav>
-                    <NavLink to="/dashboard">Dashboard</NavLink>
+                    <NavLink className="text-light mx-3" to="/">Home</NavLink>
+                    <NavLink className="text-light mx-3"  to="/bugfeed">Bug Feed</NavLink>
+                    <NavLink className="text-light mx-3" to="/projects">Projects</NavLink>
+                    <NavLink className="text-light mx-3" to="/reports">Reports</NavLink>
                 </Nav>
             </Col>
-            <Col md={3} className="d-flex">
+            <Col md={2} className="d-flex justify-content-end align-items-center pr-4">
 
-                <p>Name</p>
-                <ProfilePic size={3}/>
+                <p className="my-0 mx-3">User Name</p>
+                <ProfilePic size={2.5} isShowName={false}/>
             </Col>
         </Row>
     )

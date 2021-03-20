@@ -22,9 +22,9 @@ const SignupPage = (props) => {
                 <div className="position-relative signup-page-container__content w-100 h-75">
                     <Row className="h-75 ">
 
-                        <Col>
+                        <Col className="signup-input-col">
                             <Row className="d-flex justify-content-between align-items-center px-5 h-100">
-                                <Image src="https://www.placehold.it/150x150" className="rounded-circle"></Image>
+                                <Image src="https://www.placehold.it/130x130" className="rounded-circle"></Image>
                                 <Button className="bg-success">Upload</Button>
                             </Row>
                         </Col>
@@ -33,9 +33,10 @@ const SignupPage = (props) => {
                         <SignupInputCol placeholder="Email" name="firstName" size={4}/>
                         <SignupInputCol placeholder="Password" name="password" size={4}/>
                         <SignupInputCol placeholder="Confirm Password" name="confirmPassword" size={4}/>
-                        <SignupInputCol placeholder="Description" name="description" size={8}/>
+                        <SignupInputCol placeholder="Description" name="description" isTextarea={true} size={8}/>
 
-                        <Col md={4} className="d-flex align-items-center justify-content-center w-100">
+
+                        <Col md={4} className="signup-input-col d-flex align-items-center justify-content-center w-100">
                             <Dropdown>
                                 <Dropdown.Toggle variant="success" id="dropdown-basic">
                                     Roles
