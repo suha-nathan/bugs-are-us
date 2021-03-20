@@ -2,18 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="78adfbf2-b8b7-4e7c-8eb1-f1f9d5d45162" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/lib/authChecker.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/lib/authChecker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/routes/auth.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/auth.route.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/routes/bug.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/bug.route.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/routes/user.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/user.route.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/server.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/BugCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/BugCard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/BugList.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/BugList.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/DashboardPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/DashboardPage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/LoginPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/LoginPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/SignupInputCol.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/SignupInputCol.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/SignupPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/SignupPage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/TempHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/TempHeader.js" afterDir="false" />
     </list>
@@ -45,7 +39,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1616228346320</updated>
-      <workItem from="1616228348510" duration="22326000" />
+      <workItem from="1616228348510" duration="26432000" />
     </task>
     <servers />
   </component>

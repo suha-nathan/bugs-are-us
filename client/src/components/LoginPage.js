@@ -7,7 +7,7 @@ const LoginPage = ({isAuth, login}) => {
     const [email,setEmail] = useState("")
     const [password,setPassword] = useState("")
 
-    if(isAuth===true){
+    if(isAuth){
         // console.log("Redirecting")
         return <Redirect to={"/"}/>
     }
