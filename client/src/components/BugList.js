@@ -17,18 +17,11 @@ const BugList = (props) => {
     }
 
     return (
-        <Row>
-            <Col md={8}>
-                { projectData?.bugs?.map( bug => (
-                    <BugCard bug={bug} projectData={projectData}/>
-                )) }
-            </Col>
-
-            <Col md={4}>
-                A sidebar or something
-            </Col>
-
-        </Row>
+        <Col md={8}>
+            { projectData?.bugs?.map( bug => (
+                <BugCard bug={bug} projectData={projectData}/>
+            )) }
+        </Col>
     )
 }
 
