@@ -1,33 +1,29 @@
 const router = require('express').Router()
 const Bug = require('../model/bug.model')
+const userMockData = require('../lib/userMockData')
+// const authChecker = require('../lib/authChecker')
 
-router.post("/create", async(req, res) => {
+router.post("/create",async(req, res) => {
 
     try{
         let {
             type,
             title,
-            description,
-            imgUrl,
-            comments: [{user, comment}],
-            upVotes,
             priority,
-            status
+            status,
+            description,
         } = req.body
+        console.log(req.body)
 
         const saveBug = {
             type,
             title,
-            description,
-            imgUrl,
-            comments: [{user, comment}],
-            upVotes,
             priority,
-            status
+            status,
+            description,
         }
 
         const bug = new Bug(saveBug)
-
         await bug.save()
         res.status(200).json({ message: "Bug added into database"})
     }catch(e){
@@ -39,6 +35,7 @@ router.get("/all", async(req, res) => {
     try{
         const data = await Bug.find()
         res.status(200).json({data})
+
     }catch(e){
         res.status(400).json({ message: "Failed to view all bugs"})
     }
@@ -56,7 +53,7 @@ router.get("/:id", async(req, res) => {
 
 router.post("/delete", async(req, res) => {
     try{
-        
+
     }catch(e){
         res.status(400).json({ message: "Something went wrong"})
     }

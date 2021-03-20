@@ -7,7 +7,7 @@ import ProfilePic from "./ProfilePic";
 import projectMockData from '../lib/projectMockData'
 
 const BugCard = ({ bug, projectData }) => {
-    console.log(bug)
+    // console.log(bug)
 
     return (
         <Col className="text-left my-3">
