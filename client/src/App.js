@@ -25,7 +25,7 @@ function App() {
                 <Route>
                     <DashboardPage path="/" exact />
                 </Route>
-            </Switch>cd
+            </Switch>
 
         </BrowserRouter>
 
