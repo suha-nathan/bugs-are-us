@@ -6,10 +6,11 @@ const SearchBar = (props) => {
     return (
         <Container>
             <InputGroup>
-                <Form.Control />
-                <InputGroup.Append>
-                    <Button>Search</Button>
-                </InputGroup.Append>
+
+                <InputGroup.Prepend>
+                    <Button variant="light" className="border border-match-input"><i className="bi bi-search"></i></Button>
+                </InputGroup.Prepend>
+                <Form.Control name="searchTerm" placeholder="Search bugs by keyword" />
 
             </InputGroup>
 

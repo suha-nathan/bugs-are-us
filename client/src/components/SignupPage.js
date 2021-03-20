@@ -36,7 +36,7 @@ const SignupPage = (props) => {
                         <SignupInputCol placeholder="Description" name="description" isTextarea={true} size={8}/>
 
 
-                        <Col md={4} className="d-flex align-items-center justify-content-center w-100">
+                        <Col md={4} className="signup-input-col d-flex align-items-center justify-content-center w-100">
                             <Dropdown>
                                 <Dropdown.Toggle variant="success" id="dropdown-basic">
                                     Roles

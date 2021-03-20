@@ -5,18 +5,19 @@ import SearchBar from "./SearchBar";
 import BugList from "./BugList";
 import {Route} from "react-router-dom";
 import TempHeader from "./TempHeader";
+import Sidebar from "./Sidebar";
 
 const DashboardPage = (props) => {
 
     return (
         <>
 
-
+            <Header />
             <TempHeader />
             <SearchBar />
             <Row>
                 <Col md={2}>
-                    A sidebar or something
+                    <Sidebar />
                 </Col>
                 <BugList />
             </Row>
