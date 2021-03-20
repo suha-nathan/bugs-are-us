@@ -1,0 +1,30 @@
+.sidebar {
+
+  &__title {
+    color: #818181;
+    font-size: 0.8rem;
+  }
+
+  &__text {
+    font-size: 1rem;
+  }
+
+  &__notification-container {
+      background-color: $notification-yellow;
+      width: 2rem;
+      height: 2rem;
+      border-radius: 1rem;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+
+      font-family: 'Open Sans', sans-serif ;
+      font-weight: 600;
+      //color: white;
+
+
+
+  }
+}
