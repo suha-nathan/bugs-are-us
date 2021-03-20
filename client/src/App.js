@@ -1,9 +1,8 @@
 import './App.css';
-import BugCard from "./components/BugCard";
-import Header from './components/Header'
-import {Row, Col, Container} from 'react-bootstrap'
 import {BrowserRouter, Route, Switch} from "react-router-dom";
-import BugList from './components/BugList'
+import DashboardPage from "./components/DashboardPage";
+import LoginPage from "./components/LoginPage";
+import SignupPage from "./components/SignupPage"
 
 function App() {
   return (
@@ -12,13 +11,21 @@ function App() {
 
         <BrowserRouter>
             <Switch>
-                <Route>
-                    <Header />
-                    <Container className="w-75">
-                        <BugList />
-                    </Container>
+
+
+
+                <Route path="/login">
+                    <LoginPage />
                 </Route>
-            </Switch>
+
+                <Route path="/signup">
+                    <SignupPage />
+                </Route>
+
+                <Route>
+                    <DashboardPage path="/" exact />
+                </Route>
+            </Switch>cd
 
         </BrowserRouter>
 
