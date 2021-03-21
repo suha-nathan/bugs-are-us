@@ -35,7 +35,6 @@ router.get("/all", async(req, res) => {
     try{
         const data = await Bug.find()
         res.status(200).json({data})
-
     }catch(e){
         res.status(400).json({ message: "Failed to view all bugs"})
     }

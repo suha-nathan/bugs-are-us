@@ -9,7 +9,7 @@ const bugSchema = new Schema({
         comments: [
             {
                 user: { type: Schema.Types.ObjectId, ref: 'User'},
-                comment: { type: Schema.Types.ObjectId, red: 'Comment'}
+                commentText: { type: String}
             }
         ],
         upVotes: [],
