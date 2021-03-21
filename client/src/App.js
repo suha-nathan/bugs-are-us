@@ -1,15 +1,17 @@
 import './App.css';
 import React, {useState,useEffect} from "react"
 import {BrowserRouter, Redirect, Route, Switch} from "react-router-dom";
+import axios from "axios";
+import {Alert} from "react-bootstrap"
 import DashboardPage from "./components/DashboardPage";
 import LoginPage from "./components/LoginPage";
 import SignupPage from "./components/SignupPage"
-import axios from "axios";
 import CreateBugPage from "./components/CreateBugPage";
 
 function App() {
     const [isAuth,setAuth] = useState(false)
     const [user,setUser] = useState({})
+    const [errorMessage,setErrorMessage] = useState("")
 
     useEffect(()=>{
         loadUser()
@@ -19,10 +21,10 @@ function App() {
         try{
             let res = await axios.post("http://localhost:8080/auth/signin",{email,password})
             setAuth(true)
-            // console.log(res.data)
             localStorage.setItem("token",res.data.token)
         }catch(e){
-            console.log(e)
+            console.log(e.response.data.message)
+            setErrorMessage(e.response.data.message)
         }
     }
 
@@ -33,24 +35,22 @@ function App() {
             // console.log("signup success")
             localStorage.setItem("token",res.data.token)
         }catch(e){
-            console.log(e)
+            setErrorMessage(e.response.data.message)
         }
 
     }
 
     async function loadUser(){
         try{
-            // need a user get route to load user
             let res = await axios.get("http://localhost:8080/user",{
                 headers:{
                     "x-auth-token" : `Bearer ${localStorage.token}`
-
                 }
             })
-            console.log(res.data.user)
             setUser(res.data.user)
             setAuth(true)
         }catch(e){
+            // setErrorMessage(e.response.data.message)
             setAuth(false)
             localStorage.removeItem("token")
         }
@@ -62,10 +62,13 @@ function App() {
         localStorage.removeItem("token")
     }
 
-    console.log(isAuth)
+    // console.log(errorMessage)
+    // console.log(isAuth)
+    // console.log(user)
   return (
     <div className="App">
         <BrowserRouter>
+            {errorMessage&& <Alert variant={"danger"}>{errorMessage}</Alert>}
             <Switch>
                 <Route path="/login">
                     <LoginPage isAuth={isAuth} login={login}/>
@@ -93,9 +96,6 @@ function App() {
             </Switch>
 
         </BrowserRouter>
-
-
-
 
     </div>
   );

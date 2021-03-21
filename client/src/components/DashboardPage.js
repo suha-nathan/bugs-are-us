@@ -11,6 +11,7 @@ import DataTable from "./DataTable";
 
 const DashboardPage = ({ isAuth, logOut }) => {
     // if(isAuth===true){
+
     //     return <Redirect to={"/"} />
     // }
 
