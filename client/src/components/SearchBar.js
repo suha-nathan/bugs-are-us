@@ -4,7 +4,7 @@ import {Form, Button, InputGroup, Container} from "react-bootstrap";
 const SearchBar = (props) => {
 
     return (
-        <Container>
+        <Container className="mb-3">
             <InputGroup>
 
                 <InputGroup.Prepend>
