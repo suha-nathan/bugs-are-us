@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react'
-import {Button, Table, Badge, Container} from "react-bootstrap";
-import projectMockData from "../lib/projectMockData";
-import { capitalizeWords } from "../lib/library";
+import { Table } from "react-bootstrap";
+import projectMockData from "../../lib/projectMockData";
 import DataRow from "./DataRow";
 
 const DataTable = (props) => {

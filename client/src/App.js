@@ -3,10 +3,12 @@ import React, {useState,useEffect} from "react"
 import {BrowserRouter, Redirect, Route, Switch} from "react-router-dom";
 import axios from "axios";
 import {Alert} from "react-bootstrap"
-import DashboardPage from "./components/DashboardPage";
-import LoginPage from "./components/LoginPage";
-import SignupPage from "./components/SignupPage"
-import CreateBugPage from "./components/CreateBugPage";
+import DashboardPage from "./components/dashboard/DashboardPage";
+import LoginPage from "./components/login/LoginPage";
+import SignupPage from "./components/signup/SignupPage"
+import CreateBugPage from "./components/create-bug/CreateBugPage";
+import BugDetailsPage from "./components/bug-details/BugDetailsPage";
+import EditAccountPage from "./components/edit-account/EditAccountPage";
 
 function App() {
     const [isAuth,setAuth] = useState(false)
@@ -70,6 +72,7 @@ function App() {
         <BrowserRouter>
             {errorMessage&& <Alert variant={"danger"}>{errorMessage}</Alert>}
             <Switch>
+
                 <Route path="/login">
                     <LoginPage isAuth={isAuth} login={login}/>
                 </Route>
@@ -83,6 +86,13 @@ function App() {
                     <CreateBugPage />
                 </Route>
 
+                <Route path="/bug/:id">
+                    <BugDetailsPage />
+                </Route>
+
+                <Route path="/user/edit">
+                    <EditAccountPage />
+                </Route>
                 <Route>
                     {isAuth?
                         <DashboardPage isAuth={isAuth} logOut={logOut} path="/" exact />

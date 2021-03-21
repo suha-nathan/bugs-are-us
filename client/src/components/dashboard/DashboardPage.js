@@ -1,12 +1,12 @@
 import React from 'react'
-import Header from "./Header";
-import {Button, Col, Container, Row} from "react-bootstrap";
-import SearchBar from "./SearchBar";
+import Header from "../shared/Header";
+import { Button, Col, Container, Row } from "react-bootstrap";
+import SearchBar from "../shared/SearchBar";
 import BugList from "./BugList";
-import {Redirect, Route, useHistory } from "react-router-dom";
-import TempHeader from "./TempHeader";
-import Sidebar from "./Sidebar";
-import DataTable from "./DataTable";
+import { useHistory } from "react-router-dom";
+import TempHeader from "../shared/TempHeader";
+import Sidebar from "../sidebar/Sidebar";
+import DataTable from "../shared/DataTable";
 
 
 const DashboardPage = ({ isAuth, logOut }) => {

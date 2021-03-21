@@ -1,17 +1,25 @@
 const projectMockData = [{
+
     title: 'Yahoo',
     description: 'just a yahoo app..',
     categories: ['news', 'search engine'],
     bugs: [
         {
+            id: 123,
             type: 'ui',
             title: 'Button color does not render right',
             description: 'It should be red but it renders blue instead',
             imgUrl: '', //optional
-            comments: [{
-                user: '',
-                comment: ''
-            }],
+            comments: [
+                {
+                    user: 'Isaac Yong',
+                    commentText: 'lalala bruh'
+                },
+                {
+                    user: 'Logan Lek',
+                    commentText: 'bruh bruh bruh bruh'
+                }
+            ],
             upVotes: ['userId1', 'userId2'],
             priority: 'high', //Medium, Low
             status: 'pending', //Resolve
@@ -26,10 +34,16 @@ const projectMockData = [{
                         title: '',
                         description: '',
                         imgUrl: '', //optional
-                        comments: [{
-                            user: '',
-                            comment: ''
-                        }],
+                        comments: [
+                            {
+                            user: 'Isaac Yong',
+                            commentText: 'lalala bruh'
+                            },
+                            {
+                                user: 'Logan Lek',
+                                commentText: 'bruh bruh bruh bruh'
+                            }
+                        ],
                         upVotes: ['userId1', 'userId2'],
                         priority: 'high', //Medium, Low
                         status: 'pending' //Resolve
@@ -39,14 +53,21 @@ const projectMockData = [{
             createdAt: '12:53PM 21/03/2021'
         },
         {
+            id: 888,
             type: 'serious',
             title: 'User cannot login after logout',
             description: 'Happens when logout when they are watching videos',
             imgUrl: '', //optional
-            comments: [{
-                user: '',
-                comment: ''
-            }],
+            comments: [
+                {
+                    user: 'Isaac Yong',
+                    commentText: 'lalala bruh'
+                },
+                {
+                    user: 'Logan Lek',
+                    commentText: 'bruh bruh bruh bruh'
+                }
+            ],
             upVotes: ['userId1', 'userId2'],
             priority: 'high', //Medium, Low
             status: 'pending', //Resolve
@@ -63,7 +84,7 @@ const projectMockData = [{
                         imgUrl: '', //optional
                         comments: [{
                             user: '',
-                            comment: ''
+                            commentText: ''
                         }],
                         upVotes: ['userId1', 'userId2'],
                         priority: 'high', //Medium, Low
@@ -123,7 +144,7 @@ const projectMockData = [{
                     imgUrl: '', //optional
                     comments: [{
                         user: '',
-                        comment: ''
+                        commentText: ''
                     }],
                     upVotes: ['userId1', 'userId2'],
                     priority: 'high', //Medium, Low

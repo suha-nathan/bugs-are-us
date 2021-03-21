@@ -2,9 +2,9 @@ import React from 'react'
 import {Form, Row, Col, Dropdown, Image, Button, Container} from "react-bootstrap";
 import DropdownMenu from "react-bootstrap/DropdownMenu";
 import DropdownItem from "react-bootstrap/DropdownItem";
-import Header from "./Header";
-import TempHeader from "./TempHeader";
-import Sidebar from "./Sidebar";
+import Header from "../shared/Header";
+import TempHeader from "../shared/TempHeader";
+import Sidebar from "../sidebar/Sidebar";
 import {Link} from "react-router-dom";
 
 const CreateBugPage = () => {
@@ -31,7 +31,7 @@ const CreateBugPage = () => {
                             </Col>
 
                             <Col md={4} className="d-flex align-items-center">
-                                <Form.Control name="title" placeholder="title" />
+                                <Form.Control name="title" placeholder="Title" />
                             </Col>
 
                             <Col md={4} className="d-flex align-items-center justify-content-center">
@@ -52,7 +52,12 @@ const CreateBugPage = () => {
 
                         <Row className="mb-3">
                             <Col md={8}>
-                                <Form.Control as="textarea" rows={5} />
+                                <Form.Control
+                                    as="textarea"
+                                    rows={5}
+                                    name="description"
+                                    placeholder="Write a short description of your bug here"
+                                />
                             </Col>
 
                             <Col className="d-flex flex-column justify-content-around">

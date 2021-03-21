@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import TempHeader from "./TempHeader";
+import TempHeader from "../shared/TempHeader";
 import {Button, Col, Container, Dropdown, Image, Row} from "react-bootstrap";
 import {Link, Redirect} from "react-router-dom";
 import SignupInputCol from "./SignupInputCol";

@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import {Row, Col, Container, Form, Button} from 'react-bootstrap'
 import {Link, Redirect} from "react-router-dom";
-import TempHeader from "./TempHeader";
+import TempHeader from "../shared/TempHeader";
 
 const LoginPage = ({isAuth, login}) => {
     const [email,setEmail] = useState("")

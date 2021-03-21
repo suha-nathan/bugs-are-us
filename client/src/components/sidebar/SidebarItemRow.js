@@ -1,8 +1,9 @@
 import React from 'react'
 import {Col, Row} from "react-bootstrap";
 import NotificationPopup from "./NotificationPopup";
+import { Link } from 'react-router-dom'
 
-const SidebarItemRow = ({iconName, title, notificationCount}) => {
+const SidebarItemRow = ({iconName, title, notificationCount, url}) => {
 
     return (
         <Row>
@@ -11,7 +12,11 @@ const SidebarItemRow = ({iconName, title, notificationCount}) => {
                 {<i className={`bi bi-${iconName}`} ></i>}
             </Col>
             <Col md={8} className="sidebar__text text-left d-flex align-items-center">
-                {title}
+                {url ?
+                    <Link to={url}>{title}</Link>
+                    :
+                    title
+                }
             </Col>
 
             {
