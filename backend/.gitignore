@@ -3,4 +3,6 @@ node_modules
 package-lock.json
 .idea
 ./lib/playground.js
-.idea/workspace.xml
+
+
+../.idea/
