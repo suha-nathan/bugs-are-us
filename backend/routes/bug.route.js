@@ -67,12 +67,10 @@ router.put("/update/:id", async(req, res) => {
         await Bug.findByIdAndUpdate(req.params.id, req.body)
         res.status(200).json({ message: "Bug updated successfully"})
     }
-
     catch(e){
         console.log(e)
         res.status(400).json({ message: "Couldn't update details"})
     }
 })
-
 
 module.exports = router
