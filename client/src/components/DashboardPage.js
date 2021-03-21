@@ -8,7 +8,7 @@ import TempHeader from "./TempHeader";
 import Sidebar from "./Sidebar";
 
 const DashboardPage = ({isAuth,logOut}) => {
-    // if(isAuth===true){
+    // if(isAuth){
     //     return <Redirect to={"/"} />
     // }
 

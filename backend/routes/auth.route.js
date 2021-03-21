@@ -6,6 +6,12 @@ const jwt = require('jsonwebtoken')
 router.post("/signup", async (req, res) => {
     try{
         let {firstName, lastName, email, password,description} = req.body
+
+        const repeatUser = await User.findOne({email})
+        if(repeatUser){
+            throw "user found with same email!!"
+        }
+
         const saveObj = {
             firstName,
             lastName,
@@ -33,7 +39,7 @@ router.post("/signup", async (req, res) => {
         res.send(user) //try logging req.body
 
     }catch (e) {
-        res.status(400).json({ message : "Registration Failed, try again"})
+        res.status(400).json({ message : e || "Registration Failed, try again"})
         console.log(e)
     }
 })
@@ -43,29 +49,32 @@ router.post("/signin", async(req, res) => {
         let {email, password} = req.body
         // console.log(req.body)
         const user = await User.findOne({email})
-        if(user){
-            let isMatch = await bcrypt.compare(password, user.password)
-            if(!isMatch){
-                res.status(400).json({ message : "Invalid Username or Password, try again"})
-            }
-            // if matched
-            let payload = {
-                user:{
-                    id:user._id
-                }
-            }
-            jwt.sign(payload,process.env.SECRET,{
-                expiresIn: 10000000000000000
-            },(err,token)=>{
-                res.status(200).json({
-                    message:"successfully signed in!",
-                    token
-                })
-            })
 
+        if(!user){
+            throw "Invalid Username or Password, try again"
         }
+
+        let isMatch = await bcrypt.compare(password, user.password)
+        if(!isMatch){
+            throw "Invalid Username or Password, try again"
+        }
+        // if matched
+        let payload = {
+            user:{
+                id:user._id
+            }
+        }
+        jwt.sign(payload,process.env.SECRET,{
+            expiresIn: 10000000000000000
+        },(err,token)=>{
+            res.status(200).json({
+                message:"successfully signed in!",
+                token
+            })
+        })
+
     }catch(e){
-        res.status(400).json({ message: "Invalid Username or Password, try again"})
+        res.status(400).json({ message: e ||"Invalid Username or Password, try again"})
     }
 })
 

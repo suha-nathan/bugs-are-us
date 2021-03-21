@@ -14,7 +14,7 @@ const SignupPage = ({isAuth,signUp}) => {
     //     errorMessage: 'Plea'
     // }'lastName', 'email', 'password', 'confirmPassword']
 
-    if(isAuth===true){
+    if(isAuth){
         // console.log("Redirecting")
         return <Redirect to={"/"}/>
     }
