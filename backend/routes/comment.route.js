@@ -19,15 +19,15 @@ router.put('/update/:id', async(req, res) => {
     }
 })
 
-router.put('/update/:id', async(req, res) => {
-    try{
-        await Bug.findByIdAndUpdate(req.params.id, req.body)
-        res.status(200).json({ message: "Comment edited successfully"})
-    }catch(e){
-        console.log(e)
-        res.status(400).json({ message: "Failed to edit comment"})
-    }
-})
+// router.put('/update/:id', async(req, res) => {
+//     try{
+//         await Bug.findByIdAndUpdate(req.params.id, req.body)
+//         res.status(200).json({ message: "Comment edited successfully"})
+//     }catch(e){
+//         console.log(e)
+//         res.status(400).json({ message: "Failed to edit comment"})
+//     }
+// })
 
 router.delete("/delete/:id", async(req, res) => {
     try{
