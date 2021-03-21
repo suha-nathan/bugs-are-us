@@ -25,17 +25,23 @@ const LoginPage = ({isAuth, login}) => {
                     <Col md={5} className="login-page-container__login-section d-flex justify-content-center flex-column align-items-center">
 
                         <h2>Log In</h2>
-                        <Form.Control name="email"
-                                      placeholder="Email"
-                                      onChange={(e)=> setEmail(e.target.value)}
-                                      className="my-2" />
+                        <Form.Control
+                            name="email"
+                            placeholder="Email"
+                            className="my-2"
+                            onChange={(e)=> setEmail(e.target.value)}
+                        />
 
-                        <Form.Control name="password"
-                                      placeholder="Password"
-                                      onChange={(e)=>setPassword(e.target.value)}
-                                      className="my-2" />
+                        <Form.Control
+                            name="password"
+                            placeholder="Password"
+                            type="password"
+                            className="my-2"
+                            onChange={(e)=>setPassword(e.target.value)}
+                        />
+
                         <Button
-                            variant="success"
+                            variant="primary"
                             className="my-2"
                             onClick={()=>login(email,password)}>Log In</Button>
 
