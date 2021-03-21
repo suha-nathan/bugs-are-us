@@ -22,10 +22,8 @@ const SignupInputCol = ({name, placeholder, size, type, isTextarea,values, handl
                     as={isTextarea && "textarea"}
                     rows={3}
                     value={values[name]}
-                    // onChange={(e)=>setUserInfo(prevState=>({...prevState, ...{[e.target.name]: e.target.value}}))}
                     onChange={handleChange}
                 />
-
                     {touched[name] && errors[name] ?(
                         <p className="signup-input-col__error-message text-left my-1"> {errors[name]} </p>
 

@@ -50,16 +50,18 @@ router.post("/login", async(req, res) => {
         let {email, password} = req.body
         // console.log(req.body)
         const user = await User.findOne({email})
-
+        console.log(user)
         if(!user){
             throw "Invalid Username or Password, try again"
         }
 
         let isMatch = await bcrypt.compare(password, user.password)
+        console.log(isMatch)
         if(!isMatch){
             throw "Invalid Username or Password, try again"
         }
         // if matched
+
         let payload = {
             user:{
                 id:user._id

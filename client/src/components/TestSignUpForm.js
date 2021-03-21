@@ -15,7 +15,7 @@ const TestSignUpForm = ({isAuth,signUp}) => {
         email: Yup.string().email("Invalid Email").required("Please enter your email"),
         password: Yup.string().required("password is required"),
         confirmPassword: Yup.string().when("password",{
-            is: val=> (!!(val && val.length)),
+            is: val=> (!!(val && val.length)), //double exclamation casts boolean
             then: Yup.string().oneOf(
                 [Yup.ref("password")],
                 "password doesn't match"
@@ -115,24 +115,29 @@ const TestSignUpForm = ({isAuth,signUp}) => {
                         <option value="1">Team Lead</option>
                         <option value="2">Engineer</option>
                     </Form.Control>
-                    {errors.role &&
-                    touched.role &&
+                    {errors.role && touched.role ?
                     <div>
                         {errors.role}
-                    </div>}
+                    </div>
+                    :
+                        null
+                    }
 
                 </Col>
             </Row>
             <Form.Group>
                 <Form.Check
+                    required
                     name="terms"
                     label="Agree to terms and conditions"
                     onChange={handleChange}
+                    feedback={errors.terms}
+                    feedbackTooltip
                 />
-                {touched.terms && errors.terms ?(
-                    <p className="signup-input-col__error-message text-left my-1"> {errors.terms} </p>
-                    ) : null
-                }
+                {/*{touched.terms && errors.terms ?(*/}
+                {/*    <p className="signup-input-col__error-message text-left my-1"> {errors.terms} </p>*/}
+                {/*    ) : null*/}
+                {/*}*/}
             </Form.Group>
             <div className="signup-page-container__signup-row w-100">
                 <Row>

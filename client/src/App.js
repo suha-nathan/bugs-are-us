@@ -18,14 +18,16 @@ function App() {
         loadUser()
     },[])
 
-    async function login(email,password){
+    async function login(values){
         try{
-            let res = await axios.post("http://localhost:8080/auth/signin",{email,password})
+            let res = await axios.post("http://localhost:8080/auth/login",values)
             setAuth(true)
             localStorage.setItem("token",res.data.token)
         }catch(e){
-            console.log(e.response.data.message)
             setErrorMessage(e.response.data.message)
+            setTimeout(() => {
+                setErrorMessage("")
+            }, 2000)
         }
     }
 
@@ -36,8 +38,11 @@ function App() {
             // console.log("signup success")
             localStorage.setItem("token",res.data.token)
         }catch(e){
-            // console.log(e.response.data.message)
-            setErrorMessage(e.response.data.message._message)
+            console.log(e.response.data.message)
+            setErrorMessage(e.response.data.message)
+            setTimeout(() => {
+                setErrorMessage("")
+            }, 2000)
         }
 
     }
@@ -73,6 +78,7 @@ function App() {
             {errorMessage&& <Alert variant="danger">{errorMessage}</Alert>}
             <Switch>
                 <Route path="/login">
+
                     <LoginPage isAuth={isAuth} login={login}/>
                 </Route>
 
