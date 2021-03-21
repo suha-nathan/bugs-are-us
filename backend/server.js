@@ -14,7 +14,6 @@ app.use('/user', authChecker, require('./routes/user.route'))
 app.use('/bug',authChecker, require('./routes/bug.route'))
 
 
-
 app.listen(process.env.PORT, () => {
     console.log(`running on ${process.env.PORT}`)
 })
