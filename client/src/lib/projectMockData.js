@@ -14,7 +14,29 @@ const projectMockData = [{
             }],
             upVotes: ['userId1', 'userId2'],
             priority: 'high', //Medium, Low
-            status: 'pending' //Resolve
+            status: 'pending', //Resolve
+            user: {
+                firstName: 'Isaac',
+                lastName: 'Yong',
+                email: 'isaac@gmail.com',
+                password: '11111',
+                bugs: [
+                    {
+                        type: 'ui',
+                        title: '',
+                        description: '',
+                        imgUrl: '', //optional
+                        comments: [{
+                            user: '',
+                            comment: ''
+                        }],
+                        upVotes: ['userId1', 'userId2'],
+                        priority: 'high', //Medium, Low
+                        status: 'pending' //Resolve
+                    },
+                ]
+            },
+            createdAt: '12:53PM 21/03/2021'
         },
         {
             type: 'serious',
@@ -27,7 +49,29 @@ const projectMockData = [{
             }],
             upVotes: ['userId1', 'userId2'],
             priority: 'high', //Medium, Low
-            status: 'pending' //Resolve
+            status: 'pending', //Resolve
+            user: {
+                firstName: 'Isaac',
+                lastName: 'Yong',
+                email: 'isaac@gmail.com',
+                password: '11111',
+                bugs: [
+                    {
+                        type: 'ui',
+                        title: '',
+                        description: '',
+                        imgUrl: '', //optional
+                        comments: [{
+                            user: '',
+                            comment: ''
+                        }],
+                        upVotes: ['userId1', 'userId2'],
+                        priority: 'high', //Medium, Low
+                        status: 'pending' //Resolve
+                    },
+                ]
+            },
+            createdAt: '1:03PM 22/03/2021'
         },
     ], //bugSchema
     members:  [
