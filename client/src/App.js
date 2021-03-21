@@ -6,6 +6,7 @@ import {Alert} from "react-bootstrap"
 import DashboardPage from "./components/DashboardPage";
 import LoginPage from "./components/LoginPage";
 import SignupPage from "./components/SignupPage"
+import CreateBugPage from "./components/CreateBugPage";
 
 function App() {
     const [isAuth,setAuth] = useState(false)
@@ -77,6 +78,11 @@ function App() {
                     <SignupPage isAuth={isAuth} signUp={signUp} />
                 </Route>
 
+                <Route path="/bug/create" exact>
+
+                    <CreateBugPage />
+                </Route>
+
                 <Route>
                     {isAuth?
                         <DashboardPage isAuth={isAuth} logOut={logOut} path="/" exact />
@@ -85,12 +91,11 @@ function App() {
                     }
 
                 </Route>
+
+
             </Switch>
 
         </BrowserRouter>
-
-
-
 
     </div>
   );
