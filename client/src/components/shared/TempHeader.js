@@ -1,6 +1,6 @@
 import React from 'react'
-import {Col, Nav, Row} from "react-bootstrap";
-import { NavLink, Link } from 'react-router-dom'
+import { Nav } from "react-bootstrap";
+import { NavLink } from 'react-router-dom'
 import ProfilePic from "./ProfilePic";
 
 const TempHeader = ({logOut}) => {

@@ -1,5 +1,4 @@
 import React from 'react'
-import {Row , Col} from "react-bootstrap";
 import SidebarItemRow from "./SidebarItemRow";
 import SidebarTitleRow from "./SidebarTitleRow";
 
@@ -18,7 +17,7 @@ const Sidebar = (props) => {
             <SidebarItemRow iconName="grid-3x3-gap-fill" title="Bug Reported By Me" notificationCount={0} />
             <SidebarItemRow iconName="grid-3x3-gap-fill" title="Overdue Bugs" notificationCount={3} />
             <SidebarItemRow iconName="grid-3x3-gap-fill" title="Completed Bugs" notificationCount={3} />
-            <SidebarItemRow iconName="grid-3x3-gap-fill" title="Settings" notificationCount={0} />
+            <SidebarItemRow iconName="grid-3x3-gap-fill" title="Settings"  url="/user/edit" notificationCount={0} />
 
             <br />
             <SidebarTitleRow title="POPULAR SECTION"/>

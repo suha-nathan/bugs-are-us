@@ -1,5 +1,5 @@
 import React from 'react'
-import '../scss/_ProfilePic.scss'
+import '../../scss/_ProfilePic.scss'
 import {Col, Row} from "react-bootstrap";
 
 const ProfilePic = ({size, isShowName}) => {

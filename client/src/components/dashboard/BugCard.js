@@ -1,13 +1,11 @@
-import React, {useEffect, useImperativeHandle, useRef, useState} from 'react'
-import {Card, Row, Col, Button, Dropdown, DropdownButton, SplitButton, InputGroup} from 'react-bootstrap'
+import React from 'react'
+import {Card, Col, Button, Dropdown, DropdownButton, InputGroup} from 'react-bootstrap'
 
-import CommentInputRow from "./CommentInputRow";
-import {Link} from "react-router-dom";
-import ProfilePic from "./ProfilePic";
-import projectMockData from '../lib/projectMockData'
+import CommentInputRow from "../bug-details/CommentInputRow";
+import ProfilePic from "../shared/ProfilePic";
+import projectMockData from '../../lib/projectMockData'
 
 const BugCard = ({ bug, projectData }) => {
-    // console.log(bug)
 
     return (
         <Col className="text-left my-3">
