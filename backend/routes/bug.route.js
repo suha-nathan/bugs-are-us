@@ -1,6 +1,6 @@
 const router = require('express').Router()
 const Bug = require('../model/bug.model')
-const userMockData = require('../lib/userMockData')
+// const userMockData = require('../lib/userMockData')
 // const authChecker = require('../lib/authChecker')
 
 router.post("/create",async(req, res) => {
@@ -51,12 +51,26 @@ router.get("/:id", async(req, res) => {
     }
 })
 
-router.delete("/delete", async(req, res) => {
-    //deleteAndUpdate & render updated?
+router.delete("/delete/:id", async(req, res) => {
     try{
-
+        await Bug.findByIdAndDelete(req.params.id)
+        res.status(200).json({ message: "Bug Deleted"})
     }catch(e){
-        res.status(400).json({ message: "Something went wrong"})
+        res.status(400).json({ message: "Deleting Failed"})
+    }
+})
+
+//for comments later, use $push(array)
+router.put("/update/:id", async(req, res) => {
+    try{
+        console.log(req.body)
+        await Bug.findByIdAndUpdate(req.params.id, req.body)
+        res.status(200).json({ message: "Bug updated successfully"})
+    }
+
+    catch(e){
+        console.log(e)
+        res.status(400).json({ message: "Couldn't update details"})
     }
 })
 
