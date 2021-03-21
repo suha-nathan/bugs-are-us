@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import {Col, Row} from "react-bootstrap";
 import BugCard from "./BugCard";
-import projectMockData from "../lib/projectMockData";
+import projectMockData from "../../lib/projectMockData";
 
 const BugList = (props) => {
 

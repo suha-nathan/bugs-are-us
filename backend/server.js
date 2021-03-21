@@ -12,7 +12,8 @@ app.use(cors())
 app.use('/auth', require('./routes/auth.route'))
 app.use('/user', authChecker, require('./routes/user.route'))
 app.use('/bug',authChecker, require('./routes/bug.route'))
-
+app.use('/project' ,authChecker, require('./routes/project.route'))
+app.use('/comment', authChecker, require('./routes/comment.route'))
 
 
 app.listen(process.env.PORT, () => {
