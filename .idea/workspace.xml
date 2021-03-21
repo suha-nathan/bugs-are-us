@@ -2,17 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7cc74c1f-6198-4404-b98c-43493dd5e75b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/backend/routes/project.route.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/TestSignUpForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/lib/authChecker.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/lib/authChecker.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/routes/auth.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/auth.route.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/routes/bug.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/bug.route.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/routes/user.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/user.route.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/client/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/login/LoginPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/login/LoginPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/signup/SignupInputCol.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/signup/SignupInputCol.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/signup/SignupPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/signup/SignupPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/create-bug/CreateBugPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/create-bug/CreateBugPage.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
