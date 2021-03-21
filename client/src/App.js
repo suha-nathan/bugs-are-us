@@ -7,6 +7,7 @@ import DashboardPage from "./components/DashboardPage";
 import LoginPage from "./components/LoginPage";
 import SignupPage from "./components/SignupPage"
 import CreateBugPage from "./components/CreateBugPage";
+import TestSignUpForm from "./components/TestSignUpForm";
 
 function App() {
     const [isAuth,setAuth] = useState(false)
@@ -35,7 +36,8 @@ function App() {
             // console.log("signup success")
             localStorage.setItem("token",res.data.token)
         }catch(e){
-            setErrorMessage(e.response.data.message)
+            // console.log(e.response.data.message)
+            setErrorMessage(e.response.data.message._message)
         }
 
     }
@@ -68,14 +70,18 @@ function App() {
   return (
     <div className="App">
         <BrowserRouter>
-            {errorMessage&& <Alert variant={"danger"}>{errorMessage}</Alert>}
+            {errorMessage&& <Alert variant="danger">{errorMessage}</Alert>}
             <Switch>
                 <Route path="/login">
                     <LoginPage isAuth={isAuth} login={login}/>
                 </Route>
 
                 <Route path="/signup">
-                    <SignupPage isAuth={isAuth} signUp={signUp} />
+                    {/*Previous sign up page - by isaac*/}
+                    {/*<SignupPage isAuth={isAuth} signUp={signUp} />*/}
+
+                    {/* refactoring with formik and yup - suha */}
+                    <TestSignUpForm isAuth={isAuth} signUp={signUp} />
                 </Route>
 
                 <Route path="/bug/create" exact>
