@@ -78,7 +78,7 @@ function App() {
                     {isAuth?
                         <DashboardPage isAuth={isAuth} logOut={logOut} path="/" exact />
                         :
-                        <Redirect to={"/login"}/>
+                        <Redirect to="/login"/>
                     }
 
                 </Route>
