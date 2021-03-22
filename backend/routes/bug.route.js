@@ -12,8 +12,8 @@ router.post("/create",async(req, res) => {
             priority,
             status,
             description,
+            user
         } = req.body
-        console.log(req.body)
 
         const saveBug = {
             type,
@@ -21,6 +21,7 @@ router.post("/create",async(req, res) => {
             priority,
             status,
             description,
+            user
         }
 
         const bug = new Bug(saveBug)
