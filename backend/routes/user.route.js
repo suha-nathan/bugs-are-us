@@ -21,7 +21,23 @@ router.delete("/delete/:id", async(req, res) => {
 
 router.put("/update/:id", async(req, res) => {
     try{
-        await User.findByIdAndUpdate(req.params.id, req.body)
+        //Add user.save(req.body)?
+        console.log(req.user.id)
+        await User.findById(req.user.id)
+
+        User.update({
+            password: req.user.password
+            },
+            {
+                $set:
+                    {
+                    "hashedPassword": req.body.password
+                }
+        })
+        await password.save()
+
+
+
         res.status(200).json({ message: "User details updated successfully"})
     }catch(e){
         res.status(400).json({ message: "Failed to update user details"})

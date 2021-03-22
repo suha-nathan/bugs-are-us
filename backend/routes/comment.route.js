@@ -21,12 +21,12 @@ router.put('/create/:id', async(req, res) => {
 
 router.put('/edit/:id', async(req, res) => {
     try{
+        console.log(req.body.commentText)
         await Bug.findByIdAndUpdate(req.params.id, {
             $set:
                 {
                     comments:
                         {
-                            user: req.body.user,
                             commentText: req.body.commentText
                         }
                 }
@@ -38,7 +38,7 @@ router.put('/edit/:id', async(req, res) => {
     }
 })
 
-router.delete("/delete/:id", async(req, res) => {
+router.put("/delete/:id", async(req, res) => {
     try{
         console.log(req.body.commentId)
         await Bug.findByIdAndUpdate(req.params.id, {
@@ -54,7 +54,6 @@ router.delete("/delete/:id", async(req, res) => {
         res.status(400).json({ message: "Deleting comment Failed"})
     }
 })
-
 
 module.exports = router
 
