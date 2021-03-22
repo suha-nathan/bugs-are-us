@@ -123,7 +123,7 @@ function App() {
                 </Route>
 
                 <Route path="/user/edit">
-                    <EditAccountPage />
+                    <EditAccountPage user={user} />
                 </Route>
                 <Route>
                     {isAuth?

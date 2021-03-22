@@ -35,7 +35,7 @@ const SignupPage = ({isAuth,signUp}) => {
             password: "",
             confirmPassword: "",
             description: "",
-            role:"",
+            role:"2",
             terms:false
         },
         validationSchema: signupSchema,
