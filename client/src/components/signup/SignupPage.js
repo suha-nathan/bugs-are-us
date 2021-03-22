@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import TempHeader from "../shared/TempHeader";
 import {Button, Col, Container, Image, Row, Form} from "react-bootstrap";
 import {Link, Redirect} from "react-router-dom";
@@ -6,7 +6,8 @@ import SignupInputCol from "./SignupInputCol";
 import * as Yup from "yup"
 import {useFormik} from "formik"
 
-const SignupPage = ({isAuth,signUp}) => {
+const SignupPage = ({isSignedUp,signUp,setSuccessMessage}) => {
+
 
     const signupSchema = Yup.object().shape({
         file: Yup.mixed(),
@@ -54,12 +55,15 @@ const SignupPage = ({isAuth,signUp}) => {
                 description,
                 role: enumRole
             }
+
             signUp(tempUserInfo)
+
         }
     })
 
-    if(isAuth){
-        return <Redirect to={"/"}/>
+    if(isSignedUp){
+        setSuccessMessage("Successfully Signed Up! Please Login")
+        return <Redirect to={"/login"}/>
     }
 
     return (
