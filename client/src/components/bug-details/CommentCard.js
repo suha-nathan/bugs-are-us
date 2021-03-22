@@ -1,9 +1,21 @@
 import React from 'react'
 import ProfilePic from "../shared/ProfilePic";
 import {Row, Col, Card, Button} from "react-bootstrap"
+import axios from 'axios'
 
-const CommentCard = ({ comment }) => {
+const CommentCard = ({ bugDetails, comment }) => {
+    async function handleDeleteComment() {
+        try {
+            await axios.delete(`http://localhost:8080/comment/delete/${bugDetails._id}`, {
+                headers: {
+                    'x-auth-token': `Bearer ${localStorage.getItem('token')}`
+                }
+            })
+        } catch (e) {
+            console.log(e)
+        }
 
+    }
 
     return (
         <Card className="my-3">
@@ -14,13 +26,13 @@ const CommentCard = ({ comment }) => {
                     </Col>
 
                     <Col className="text-left">
-                        <h5>{comment?.user}</h5>
-                        <p>{comment?.commentText}</p>
+                        <h5>{comment.user}</h5>
+                        <p>{comment.commentText}</p>
                     </Col>
                 </Row>
                 <div className="d-flex justify-content-end">
                     <Button variant="link">Edit</Button>
-                    <Button variant="link" className="text-danger">Delete</Button>
+                    <Button variant="link" className="text-danger" onClick={handleDeleteComment}>Delete</Button>
                 </div>
             </Card.Body>
 

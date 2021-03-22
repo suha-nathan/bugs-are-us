@@ -10,7 +10,7 @@ import projectMockData from "../../lib/projectMockData"
 import BugInfo from "./BugInfo"
 import CommentList from "./CommentList";
 
-const BugDetailsPage = (props) => {
+const BugDetailsPage = ({ projectData, user, loadProjectData }) => {
 
     let { id } = useParams()
 
@@ -19,38 +19,39 @@ const BugDetailsPage = (props) => {
     useEffect(() => {
         loadBugDetails()
         console.log(bugDetails)
-    })
+        console.log(user)
+    },[projectData])
 
-    const loadBugDetails = () => {
-        const data = projectMockData[0].bugs.find( bug  => bug.id == id)
+    function loadBugDetails() {
+        const data = projectData.data.find( bug  => bug._id == id)
         setBugDetails(data)
+
     }
+
+
 
     return (
         <div>
-            <Header />
-
-            <ProfilePic />
-
+            <Header user={user}/>
 
             <Row>
-
-
                 <Col md={2}>
                     <Sidebar />
                 </Col>
+
 
                 <Col>
                     <Container>
                         <h2>Bug Details Page</h2>
                         <p>ID: {id}</p>
+                        <ProfilePic size={5}/>
                         <h4 className="text-left">{bugDetails?.title}</h4>
                         <Link to="/" exact>Back</Link>
                         <BugInfo bugDetails={bugDetails}/>
 
-                        <CommentList comments={bugDetails?.comments}/>
+                        <CommentList bugDetails={bugDetails} user={user} />
 
-                        <CommentInputRow />
+                        <CommentInputRow bugDetails={bugDetails} user={user} loadProjectData={loadProjectData}/>
                     </Container>
 
                 </Col>
