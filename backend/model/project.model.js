@@ -7,8 +7,14 @@ const projectSchema = new Schema ({
     categories: [],
     bugs: [{ type: Schema.Types.ObjectId, ref: 'Bug'}],
     members: [{ type: Schema.Types.ObjectId, ref: 'User'}],
-    projectLead: [{ type: Schema.Types.ObjectId, ref: 'User'}]
-})
+    projectLead: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'User'
+        },
+    ]},
+    { timestamps: true}
+    )
 
 
 module.exports = mongoose.model("Project", projectSchema)
