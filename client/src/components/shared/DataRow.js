@@ -11,7 +11,7 @@ const DataRow = ({bug, index}) => {
             <td>{index + 1}</td>
             <td><Link to={`/bug/${bug._id}`}>{bug.title}</Link></td>
             {/*<td>{bug.user}</td>*/}
-            {/*<td>{bug.user?.firstName} {bug.user?.lastName}</td>*/}
+            <td>{bug.user?.firstName} {bug.user?.lastName}</td>
             <td>{moment(bug.createdAt).format('YYYY-MM-DD hh:mm:ss a ')}</td>
             <td>
                 <Badge variant="pill badge-warning">

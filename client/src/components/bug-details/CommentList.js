@@ -1,17 +1,24 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import CommentCard from "./CommentCard";
+import {Container} from "react-bootstrap";
 
-const CommentList = ({ bugDetails, loadProjectData }) => {
+const CommentList = ({ bugDetails, loadProjectData, user }) => {
 
-    console.log(bugDetails)
+    const [isEditModeOnArray, setIsEditModeOnArray] = useState([])
+
     return (
         <div>
             {
-                bugDetails?.comments?.map(comment => (
+                bugDetails?.comments?.map((comment, index) => (
                     <CommentCard
                         bugDetails={bugDetails}
                         comment={comment}
                         loadProjectData={loadProjectData}
+                        user={user}
+                        key={index}
+                        index={index}
+                        isEditModeOnArray={isEditModeOnArray}
+                        setIsEditModeOnArray={setIsEditModeOnArray}
                     />
                 ))
             }

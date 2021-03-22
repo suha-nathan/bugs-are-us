@@ -33,3 +33,11 @@ code {
 .form-control {
   font-family: 'Open Sans', sans-serif;
 }
+
+.font-open-sans {
+  font-family: 'Open Sans', sans-serif;
+
+  &__bolder {
+    font-weight: 800;
+  }
+}

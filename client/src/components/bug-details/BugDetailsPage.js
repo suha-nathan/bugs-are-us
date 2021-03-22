@@ -9,7 +9,7 @@ import BugInfo from "./BugInfo"
 import CommentList from "./CommentList";
 import axios from "axios";
 
-const BugDetailsPage = ({ projectData, user, loadProjectData }) => {
+const BugDetailsPage = ({ projectData, user, loadProjectData, logOut }) => {
 
     const history = useHistory()
     let { id } = useParams()
@@ -48,7 +48,7 @@ const BugDetailsPage = ({ projectData, user, loadProjectData }) => {
 
     return (
         <div>
-            <Header user={user}/>
+            <Header user={user} logOut={logOut}/>
 
             <Row>
                 <Col md={2}>
