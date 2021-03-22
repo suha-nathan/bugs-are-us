@@ -6,8 +6,8 @@ import moment from 'moment'
 
 const DataRow = ({bug, index}) => {
 
-    console.log(bug?.createdAt?.slice(0,10))
-    console.log(bug)
+    // console.log(bug?.createdAt?.slice(0,10))
+    // console.log(bug)
     return (
         <tr>
             <td>{index + 1}</td>

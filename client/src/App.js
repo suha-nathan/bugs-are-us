@@ -24,6 +24,7 @@ function App() {
         loadProjectData()
     },[])
 
+
     async function loadProjectData() {
         // console.log(projectMockData[0])
         // setProjectData(projectMockData[0])
@@ -32,17 +33,15 @@ function App() {
                 'x-auth-token': `Bearer ${localStorage.getItem('token')}`
             }
         })
-        console.log(res)
+        // console.log(res)
         setProjectData(res.data)
     }
-
-
 
     async function login(values) {
         try{
             let res = await axios.post("http://localhost:8080/auth/login", values)
-            console.log(res)
             setAuth(true)
+            setUser(res.data.user)
             localStorage.setItem("token",res.data.token)
         }catch(e){
             setErrorMessage(e.response.data.message)
@@ -65,7 +64,6 @@ function App() {
                 setErrorMessage("")
             }, 2000)
         }
-
     }
 
     async function loadUser() {
@@ -75,7 +73,7 @@ function App() {
                     "x-auth-token" : `Bearer ${localStorage.token}`
                 }
             })
-
+            console.log("loading user",res.data.user)
             setUser(res.data.user)
             setAuth(true)
         }catch(e){

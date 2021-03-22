@@ -49,13 +49,13 @@ router.post("/login", async(req, res) => {
     try{
         let {email, password} = req.body
         // console.log(req.body)
-        const user = await User.findOne({email})
+        const foundUser = await User.findOne({email})
 
-        if(!user){
+        if(!foundUser){
             throw "Invalid Username or Password, try again"
         }
 
-        let isMatch = await bcrypt.compare(password, user.password)
+        let isMatch = await bcrypt.compare(password, foundUser.password)
         console.log(isMatch)
         if(!isMatch){
             throw "Invalid Username or Password, try again"
@@ -64,7 +64,7 @@ router.post("/login", async(req, res) => {
 
         let payload = {
             user:{
-                id:user._id
+                id:foundUser._id
             }
         }
         jwt.sign(payload,process.env.SECRET,{
@@ -72,6 +72,7 @@ router.post("/login", async(req, res) => {
         },(err,token)=>{
             res.status(200).json({
                 message:"successfully signed in!",
+                user:foundUser,
                 token
             })
         })
