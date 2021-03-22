@@ -21,8 +21,8 @@ router.delete("/delete/:id", async(req, res) => {
 
 router.put("/update/:id", async(req, res) => {
     try{
-        console.log(req.user)
-        const user = await User.findById(req.params.id).exec()
+        console.log(req.user.id)
+        const user = await User.findById(req.user.id).exec()
         console.log(user)
         user.password = req.body.password
         await user.save()
