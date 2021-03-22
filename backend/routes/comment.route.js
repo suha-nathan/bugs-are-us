@@ -21,16 +21,13 @@ router.put('/create/:id', async(req, res) => {
 
 router.put('/edit/:id', async(req, res) => {
     try{
-        console.log(req.body.commentText)
-        await Bug.findByIdAndUpdate(req.params.id, {
-            $set:
-                {
-                    comments:
-                        {
-                            commentText: req.body.commentText
-                        }
-                }
-        })
+        const bug = await Bug.findById(req.params.id).exec()
+        const foundIndex = bug.comments.findIndex( comment => comment._id == req.body.commentId)
+
+        bug.comments[foundIndex].commentText = req.body.commentText
+
+        await bug.save()
+
         res.status(200).json({ message: "Comment edited successfully"})
     }catch(e){
         console.log(e)
@@ -56,6 +53,3 @@ router.put("/delete/:id", async(req, res) => {
 })
 
 module.exports = router
-
-
-//{ $push: { <field1>: <value1>, ... } }
