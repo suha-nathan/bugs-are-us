@@ -5,6 +5,7 @@
 @import './scss/_LoginPage.scss';
 @import './scss/_SignupPage.scss';
 @import './scss/_Sidebar';
+@import 'components/shared/NotificationPopup';
 
 //Bootstrap color overriding
 $primary: $forest-green;

@@ -2,7 +2,7 @@ import './App.css';
 import React, {useState,useEffect} from "react"
 import {BrowserRouter, Redirect, Route, Switch} from "react-router-dom";
 import axios from "axios";
-import {Alert} from "react-bootstrap"
+import { Alert } from "react-bootstrap"
 
 import DashboardPage from "./components/dashboard/DashboardPage";
 import LoginPage from "./components/login/LoginPage";
@@ -109,7 +109,7 @@ function App() {
 
                 <Route path="/bug/create" exact>
 
-                    <CreateBugPage />
+                    <CreateBugPage user={user} loadProjectData={loadProjectData}/>
                 </Route>
 
                 <Route path="/bug/:id">
