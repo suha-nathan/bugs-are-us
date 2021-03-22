@@ -3,9 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="3306ddab-2beb-4430-b7f6-567000f584ca" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/bug-details/BugDetailsPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/bug-details/BugDetailsPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/bug-details/CommentCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/bug-details/CommentCard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/bug-details/CommentInputRow.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/bug-details/CommentInputRow.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/model/bug.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/model/bug.model.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/auth.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/auth.route.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/user.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/user.route.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/edit-account/EditAccountInputCol.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/edit-account/EditAccountInputCol.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/edit-account/EditAccountPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/edit-account/EditAccountPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/shared/DataRow.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/shared/DataRow.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/shared/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/shared/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/signup/SignupPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/signup/SignupPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/yarn.lock" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,6 +21,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/backend/model/bug.model.js" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="TaskManager">
     <servers />

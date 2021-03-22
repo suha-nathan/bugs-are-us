@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 import ProfilePic from "./ProfilePic";
 const Header = ({ user }) => {
 
-    console.log(user)
+    // console.log(user)
     return (
         <Row className="bg-primary py-2 px-3">
             <Col md={2} className="d-flex align-items-center pl-4">

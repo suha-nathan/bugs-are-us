@@ -27,3 +27,4 @@ const bugSchema = new Schema({
 
 
 module.exports = mongoose.model("Bug", bugSchema)
+
