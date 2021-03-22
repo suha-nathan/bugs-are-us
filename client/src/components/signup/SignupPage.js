@@ -15,7 +15,7 @@ const SignupPage = ({isAuth,signUp}) => {
         email: Yup.string().email("Invalid Email").required("Please enter your email"),
         password: Yup.string().required("password is required"),
         confirmPassword: Yup.string().when("password",{
-            is: val=> (!!(val && val.length)), //double exclamation casts boolean
+            is: val=> (val && val.length>0), //double exclamation casts boolean
             then: Yup.string().oneOf(
                 [Yup.ref("password")],
                 "password doesn't match"
@@ -35,7 +35,7 @@ const SignupPage = ({isAuth,signUp}) => {
             password: "",
             confirmPassword: "",
             description: "",
-            role:"",
+            role:"2",
             terms:false
         },
         validationSchema: signupSchema,

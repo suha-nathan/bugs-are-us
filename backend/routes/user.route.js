@@ -19,7 +19,7 @@ router.delete("/delete/:id", async(req, res) => {
     }
 })
 
-router.put("/update/:id", async(req, res) => {
+router.put("/update", async(req, res) => {
     try{
         console.log(req.user.id)
         const user = await User.findById(req.user.id).exec()

@@ -1,7 +1,7 @@
 import React from 'react'
 import {Col, Form, Row} from "react-bootstrap";
 
-const EditAccountInputCol = ({name, placeholder, size, type, isTextarea,setUserInfo}) => {
+const EditAccountInputCol = ({name, placeholder, size, type, isTextarea, handleChange, values, errors, touched}) => {
 
     return (
         <>
@@ -12,14 +12,15 @@ const EditAccountInputCol = ({name, placeholder, size, type, isTextarea,setUserI
                     type={type}
                     as={isTextarea && "textarea"}
                     rows={3}
-                    onChange={(e) =>
-                        setUserInfo(prevState =>
-                            ({...prevState, ...{[e.target.name]: e.target.value}})
-                        )
-                    }
+                    value={values[name]}
+                    onChange={handleChange}
 
                 />
-                <p className="signup-input-col__error-message text-left my-1">Error Message</p>
+                {touched[name] && errors[name] ?(
+                    <p className="signup-input-col__error-message text-left my-1"> {errors[name]} </p>
+
+                ) : null
+                }
             </Col>
 
         </>
