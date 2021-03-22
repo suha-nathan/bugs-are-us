@@ -4,6 +4,7 @@ const jsonWebToken = require('jsonwebtoken')
 
 async function authChecker(req, res, next){
     let tokenString = req.header("x-auth-token")
+    console.log(req.header('x-auth-token'))
     let token = tokenString.split(" ")[1]
     if(tokenString){
         if(!token){

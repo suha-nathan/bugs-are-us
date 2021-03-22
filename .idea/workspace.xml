@@ -1,37 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7cc74c1f-6198-4404-b98c-43493dd5e75b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/backend/routes/project.route.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/TestSignUpForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/routes/auth.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/auth.route.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/routes/bug.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/bug.route.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/routes/user.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/user.route.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/client/.gitignore" afterDir="false" />
+    <list default="true" id="3306ddab-2beb-4430-b7f6-567000f584ca" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/lib/playground.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/lib/playground.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/lib/playground.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/model/bug.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/model/bug.model.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/login/LoginPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/login/LoginPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/signup/SignupInputCol.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/signup/SignupInputCol.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/signup/SignupPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/signup/SignupPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/bug-details/BugDetailsPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/bug-details/BugDetailsPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/bug-details/CommentCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/bug-details/CommentCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/bug-details/CommentInputRow.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/bug-details/CommentInputRow.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/bug-details/CommentList.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/bug-details/CommentList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/dashboard/DashboardPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/dashboard/DashboardPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/shared/DataRow.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/shared/DataRow.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/shared/DataTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/shared/DataTable.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/shared/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/shared/Header.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="JavaScript File" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="PackageJsonUpdateNotifier">
-    <dismissed value="$PROJECT_DIR$/backend/package.json" />
-  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="TaskManager">
     <servers />
   </component>

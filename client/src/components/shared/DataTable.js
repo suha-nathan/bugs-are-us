@@ -2,20 +2,12 @@ import React, {useEffect, useState} from 'react'
 import { Table } from "react-bootstrap";
 import projectMockData from "../../lib/projectMockData";
 import DataRow from "./DataRow";
+import axios from "axios";
 
-const DataTable = (props) => {
+const DataTable = ({ projectData }) => {
 
-    const [ projectData, setProjectData ] = useState({})
 
-    useEffect(() => {
-        getProjectData()
-        console.log(projectData)
-    },[])
 
-    const getProjectData = () => {
-        // console.log(projectMockData[0])
-        setProjectData(projectMockData[0])
-    }
 
     return (
 
@@ -33,7 +25,7 @@ const DataTable = (props) => {
                     </tr>
                 </thead>
                 <tbody>
-                    { projectData?.bugs?.map( (bug, index) => (
+                    { projectData?.data?.map( (bug, index) => (
                         <DataRow bug={bug} index={index} key={index} />
                     ))}
                 </tbody>
