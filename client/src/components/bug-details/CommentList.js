@@ -1,13 +1,13 @@
 import React from 'react'
 import CommentCard from "./CommentCard";
 
-const CommentList = ({ comments }) => {
+const CommentList = ({ bugDetails }) => {
 
-    console.log(comments)
+    console.log(bugDetails)
     return (
         <div>
             {
-                comments?.map(comment => (
+                bugDetails?.comments?.map(comment => (
                     <CommentCard comment={comment} />
                 ))
             }

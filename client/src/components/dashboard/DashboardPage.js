@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Header from "../shared/Header";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import SearchBar from "../shared/SearchBar";
@@ -7,9 +7,10 @@ import { useHistory } from "react-router-dom";
 import TempHeader from "../shared/TempHeader";
 import Sidebar from "../sidebar/Sidebar";
 import DataTable from "../shared/DataTable";
+import axios from "axios";
 
 
-const DashboardPage = ({ isAuth, logOut }) => {
+const DashboardPage = ({ isAuth, logOut, user , projectData }) => {
     // if(isAuth===true){
 
     //     return <Redirect to={"/"} />
@@ -22,9 +23,10 @@ const DashboardPage = ({ isAuth, logOut }) => {
         history.push('/bug/create')
     }
 
+
     return (
         <>
-            <Header />
+            <Header user={user} />
             <TempHeader logOut={logOut} />
 
             <Row>
@@ -39,7 +41,7 @@ const DashboardPage = ({ isAuth, logOut }) => {
                             <Button onClick={handleCreateBug}>+ Create New</Button>
                         </div>
 
-                        <DataTable />
+                        <DataTable projectData={projectData} />
                     </Container>
                 </Col>
 

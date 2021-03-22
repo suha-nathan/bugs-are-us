@@ -13,17 +13,34 @@ import EditAccountPage from "./components/edit-account/EditAccountPage";
 
 
 function App() {
-    const [isAuth,setAuth] = useState(false)
-    const [user,setUser] = useState({})
-    const [errorMessage,setErrorMessage] = useState("")
+    const [isAuth, setAuth] = useState(false)
+    const [user, setUser] = useState({})
+    const [errorMessage, setErrorMessage] = useState("")
+
+    const [ projectData, setProjectData ] = useState({})
 
     useEffect(()=>{
         loadUser()
+        loadProjectData()
     },[])
 
-    async function login(values){
+    async function loadProjectData() {
+        // console.log(projectMockData[0])
+        // setProjectData(projectMockData[0])
+        let res = await axios.get('http://localhost:8080/bug/all', {
+            headers: {
+                'x-auth-token': `Bearer ${localStorage.getItem('token')}`
+            }
+        })
+        console.log(res)
+        setProjectData(res.data)
+    }
+
+
+
+    async function login(values) {
         try{
-            let res = await axios.post("http://localhost:8080/auth/login",values)
+            let res = await axios.post("http://localhost:8080/auth/login", values)
             console.log(res)
             setAuth(true)
             localStorage.setItem("token",res.data.token)
@@ -35,9 +52,9 @@ function App() {
         }
     }
 
-    async function signUp(userInfo){
+    async function signUp(userInfo) {
         try{
-            let res = await axios.post("http://localhost:8080/auth/signup",userInfo)
+            let res = await axios.post("http://localhost:8080/auth/signup", userInfo)
             setAuth(true)
             // console.log("signup success")
             localStorage.setItem("token",res.data.token)
@@ -51,13 +68,14 @@ function App() {
 
     }
 
-    async function loadUser(){
+    async function loadUser() {
         try{
             let res = await axios.get("http://localhost:8080/user",{
                 headers:{
                     "x-auth-token" : `Bearer ${localStorage.token}`
                 }
             })
+
             setUser(res.data.user)
             setAuth(true)
         }catch(e){
@@ -68,7 +86,7 @@ function App() {
 
     }
 
-    function logOut(){
+    function logOut() {
         setAuth(false)
         localStorage.removeItem("token")
     }
@@ -97,7 +115,11 @@ function App() {
                 </Route>
 
                 <Route path="/bug/:id">
-                    <BugDetailsPage />
+                    <BugDetailsPage
+                        projectData={projectData}
+                        user={user}
+                        loadProjectData={loadProjectData}
+                    />
                 </Route>
 
                 <Route path="/user/edit">
@@ -105,7 +127,7 @@ function App() {
                 </Route>
                 <Route>
                     {isAuth?
-                        <DashboardPage isAuth={isAuth} logOut={logOut} path="/" exact />
+                        <DashboardPage isAuth={isAuth} logOut={logOut} user={user} projectData={projectData} path="/" exact />
                         :
                         <Redirect to="/login"/>
                     }
