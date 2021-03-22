@@ -13,9 +13,11 @@ import EditAccountPage from "./components/edit-account/EditAccountPage";
 
 
 function App() {
+    const [isSignedUp, setSignedUp] = useState(false)
     const [isAuth, setAuth] = useState(false)
     const [user, setUser] = useState({})
     const [errorMessage, setErrorMessage] = useState("")
+    const [successMessage, setSuccessMessage] = useState("")
 
     const [ projectData, setProjectData ] = useState({})
 
@@ -54,9 +56,12 @@ function App() {
     async function signUp(userInfo) {
         try{
             let res = await axios.post("http://localhost:8080/auth/signup", userInfo)
-            setAuth(true)
+            console.log("signup success")
+            setSignedUp(true)
+
+            // setAuth(true)
             // console.log("signup success")
-            localStorage.setItem("token",res.data.token)
+            // localStorage.setItem("token",res.data.token)
         }catch(e){
             console.log(e.response.data.message)
             setErrorMessage(e.response.data.message)
@@ -89,6 +94,8 @@ function App() {
         localStorage.removeItem("token")
     }
 
+
+
     // console.log(errorMessage)
     // console.log(isAuth)
     // console.log(user)
@@ -96,6 +103,7 @@ function App() {
     <div className="App">
         <BrowserRouter>
             {errorMessage&& <Alert variant="danger">{errorMessage}</Alert>}
+            {successMessage&& <Alert variant="success">{successMessage}</Alert>}
             <Switch>
 
                 <Route path="/login">
@@ -104,7 +112,7 @@ function App() {
                 </Route>
 
                 <Route path="/signup">
-                    <SignupPage isAuth={isAuth} signUp={signUp} />
+                    <SignupPage isSignedUp={isSignedUp} signUp={signUp} setSuccessMessage={setSuccessMessage} />
                 </Route>
 
                 <Route path="/bug/create" exact>
