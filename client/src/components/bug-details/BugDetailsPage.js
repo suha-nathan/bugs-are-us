@@ -49,9 +49,17 @@ const BugDetailsPage = ({ projectData, user, loadProjectData }) => {
                         <Link to="/" exact>Back</Link>
                         <BugInfo bugDetails={bugDetails}/>
 
-                        <CommentList bugDetails={bugDetails} user={user} />
+                        <CommentList
+                            bugDetails={bugDetails}
+                            user={user}
+                            loadProjectData={loadProjectData}
+                        />
 
-                        <CommentInputRow bugDetails={bugDetails} user={user} loadProjectData={loadProjectData}/>
+                        <CommentInputRow
+                            bugDetails={bugDetails}
+                            user={user}
+                            loadProjectData={loadProjectData}
+                        />
                     </Container>
 
                 </Col>

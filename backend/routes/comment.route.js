@@ -38,7 +38,7 @@ router.put('/edit/:id', async(req, res) => {
     }
 })
 
-router.delete("/delete/:id", async(req, res) => {
+router.put("/delete/:id", async(req, res) => {
     try{
         console.log(req.body.commentId)
         await Bug.findByIdAndUpdate(req.params.id, {
