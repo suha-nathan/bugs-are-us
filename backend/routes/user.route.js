@@ -21,22 +21,11 @@ router.delete("/delete/:id", async(req, res) => {
 
 router.put("/update/:id", async(req, res) => {
     try{
-        //Add user.save(req.body)?
-        console.log(req.user.id)
-        await User.findById(req.user.id)
-
-        User.update({
-            password: req.user.password
-            },
-            {
-                $set:
-                    {
-                    "hashedPassword": req.body.password
-                }
-        })
-        await password.save()
-
-
+        console.log(req.user)
+        const user = await User.findById(req.params.id).exec()
+        console.log(user)
+        user.password = req.body.password
+        await user.save()
 
         res.status(200).json({ message: "User details updated successfully"})
     }catch(e){
