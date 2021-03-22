@@ -16,6 +16,7 @@ const BugDetailsPage = ({ projectData, user, loadProjectData }) => {
 
     const [bugDetails, setBugDetails] = useState({})
 
+
     useEffect(() => {
         loadBugDetails()
         console.log(bugDetails)
