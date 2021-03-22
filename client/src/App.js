@@ -24,6 +24,7 @@ function App() {
     async function login(values){
         try{
             let res = await axios.post("http://localhost:8080/auth/login",values)
+            console.log(res)
             setAuth(true)
             localStorage.setItem("token",res.data.token)
         }catch(e){
