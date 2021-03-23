@@ -2,12 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3306ddab-2beb-4430-b7f6-567000f584ca" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/client/src/components/dashboard/TestDashboardPage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/bug-details/BugDetailsPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/bug-details/BugDetailsPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/bug-details/BugInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/bug-details/BugInfo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/bug-details/CommentCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/bug-details/CommentCard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/bug-details/CommentInputRow.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/bug-details/CommentInputRow.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/bug-details/CommentList.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/bug-details/CommentList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/create-bug/CreateBugPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/create-bug/CreateBugPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/dashboard/DashboardPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/dashboard/DashboardPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/edit-account/EditAccountPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/edit-account/EditAccountPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/projects-page/ProjectCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/projects-page/ProjectCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/projects-page/ProjectsPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/projects-page/ProjectsPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/shared/DataRow.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/shared/DataRow.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/shared/DataTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/shared/DataTable.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/shared/TempHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/shared/TempHeader.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,7 +26,13 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/backend/model/bug.model.js" root0="FORCE_HIGHLIGHTING" />
   </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/client/src/components/dashboard" />
+  </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\isaac\Desktop\sei27sg\week-8\bugs-are-us\client\src\components\dashboard" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\isaac\Desktop\sei27sg\week-8\bugs-are-us\client\src\components\shared" />
     </key>

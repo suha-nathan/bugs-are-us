@@ -6,6 +6,10 @@ import axios from "axios";
 
 const DataTable = ({ projectData }) => {
 
+    function handleUpVote(){
+        console.log(projectData)
+
+    }
 
 
 
@@ -26,7 +30,7 @@ const DataTable = ({ projectData }) => {
                 </thead>
                 <tbody>
                 { projectData?.data?.map( (bug, index) => (
-                    <DataRow bug={bug} index={index} key={index} />
+                    <DataRow bug={bug} index={index} key={index} handleUpVote={handleUpVote}/>
                 ))}
                 </tbody>
             </Table>

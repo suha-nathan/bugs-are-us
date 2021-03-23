@@ -12,6 +12,8 @@ import BugDetailsPage from "./components/bug-details/BugDetailsPage";
 import EditAccountPage from "./components/edit-account/EditAccountPage";
 import ProjectsPage from "./components/projects-page/ProjectsPage";
 import Header from "./components/shared/Header";
+import Layout from "./components/layout/Layout";
+import TestDashboardPage from "./components/dashboard/TestDashboardPage";
 
 function App() {
     const [isSignedUp, setSignedUp] = useState(false)
@@ -107,6 +109,7 @@ function App() {
             <Switch>
 
                 <Route path="/login">
+
                     <LoginPage isAuth={isAuth} login={login}/>
                 </Route>
 
@@ -115,36 +118,46 @@ function App() {
                 </Route>
 
                 <Route path="/projects">
-                    <ProjectsPage user={user} logOut={logOut}/>
+                    <Layout isAuth={isAuth} logOut={logOut}>
+                        <ProjectsPage user={user} />
+                    </Layout>
                 </Route>
 
                 <Route path="/bug/create" exact>
-                    <CreateBugPage user={user} loadProjectData={loadProjectData} logOut={logOut}/>
+                    <Layout isAuth={isAuth} logOut={logOut}>
+                        <CreateBugPage user={user} loadProjectData={loadProjectData} />
+                    </Layout>
                 </Route>
 
                 <Route path="/bug/:id">
-                    <BugDetailsPage
-                        projectData={projectData}
-                        user={user}
-                        loadProjectData={loadProjectData}
-                    />
+
+                    <Layout isAuth={isAuth} logOut={logOut}>
+                        <BugDetailsPage
+                            projectData={projectData}
+                            user={user}
+                            loadProjectData={loadProjectData}
+                        />
+                    </Layout>
                 </Route>
 
                 <Route path="/user/edit">
-                    <EditAccountPage user={user} />
+                    <Layout isAuth={isAuth} logOut={logOut}>
+                        <EditAccountPage user={user} />
+                    </Layout>
+
                 </Route>
 
                 <Route>
                     {isAuth?
-                        <DashboardPage isAuth={isAuth} logOut={logOut} user={user} projectData={projectData} path="/" exact />
+                        <Layout isAuth={isAuth} logOut={logOut}>
+                            <DashboardPage user={user} projectData={projectData} path="/" exact />
+                        </Layout>
+
                         :
                         <Redirect to="/login"/>
                     }
-
                 </Route>
-
             </Switch>
-
         </BrowserRouter>
 
     </div>

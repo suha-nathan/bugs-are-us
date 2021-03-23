@@ -80,81 +80,66 @@ const EditAccountPage = ({user}) => {
     }
 
     return (
-        <div>
-            <Header user={user} />
+        <Container className="d-flex flex-column justify-content-center align-items-center vh-100 ">
+            <h1 className="my-0 ">Edit Account</h1>
 
-            <Row>
-                <Col md={2}>
-                    <Sidebar />
-                </Col>
+            <form onSubmit={handleSubmit}>
 
-                <Col>
+            <div className="signup-page-container__content w-100 h-150 d-flex flex-column justify-content-between">
+                <Row className="h-75 ">
 
-                    <Container className="d-flex flex-column justify-content-center align-items-center vh-100 ">
-                        <h1 className="my-0 ">Edit Account</h1>
+                    <Col className="signup-input-col">
+                        <Row className="d-flex justify-content-between align-items-center px-5 h-100">
+                            <Image src="https://www.placehold.it/90x90" className="rounded-circle"></Image>
+                            <Form.Group>
+                                <Form.File
+                                    className="position-relative"
+                                    name="file"
+                                    label="File"
+                                    onChange={handleChange}
+                                    feedback={errors.file}
+                                    feedbackTooltip
+                                />
+                            </Form.Group>
+                        </Row>
+                    </Col>
 
-                        <form onSubmit={handleSubmit}>
+                    <EditAccountInputCol placeholder={user.firstName}  name="firstName" handleChange={handleChange} values={values} errors={errors} touched={touched} size={4}/>
+                    <EditAccountInputCol placeholder={user.lastName}  name="lastName"  handleChange={handleChange} values={values} errors={errors} touched={touched} size={4} />
+                    <EditAccountInputCol placeholder={user.email} name="email"  handleChange={handleChange} values={values} errors={errors} touched={touched} user={user} size={4}/>
+                    <EditAccountInputCol placeholder="Password" name="password" type="password"  handleChange={handleChange} values={values} errors={errors} touched={touched} size={4}/>
+                    <EditAccountInputCol placeholder="Confirm Password" name="confirmPassword" type="password"  handleChange={handleChange} values={values} errors={errors} touched={touched} size={4}/>
+                    <EditAccountInputCol placeholder={user.description} name="description"  handleChange={handleChange} values={values} errors={errors} touched={touched} isTextarea={true} size={8}/>
 
-                        <div className="signup-page-container__content w-100 h-150 d-flex flex-column justify-content-between">
-                            <Row className="h-75 ">
+                    {/*<Col md={4} className="signup-input-col d-flex align-items-center justify-content-center w-100">*/}
+                    {/*    <Dropdown>*/}
+                    {/*        <Dropdown.Toggle variant="primary" id="dropdown-basic">*/}
+                    {/*            Roles*/}
+                    {/*        </Dropdown.Toggle>*/}
+                    {/*        <Dropdown.Menu show >*/}
 
-                                <Col className="signup-input-col">
-                                    <Row className="d-flex justify-content-between align-items-center px-5 h-100">
-                                        <Image src="https://www.placehold.it/90x90" className="rounded-circle"></Image>
-                                        <Form.Group>
-                                            <Form.File
-                                                className="position-relative"
-                                                name="file"
-                                                label="File"
-                                                onChange={handleChange}
-                                                feedback={errors.file}
-                                                feedbackTooltip
-                                            />
-                                        </Form.Group>
-                                    </Row>
-                                </Col>
+                    {/*            <Dropdown.Item>Users/Engineers</Dropdown.Item>*/}
+                    {/*            <Dropdown.Item>Team Leader</Dropdown.Item>*/}
+                    {/*        </Dropdown.Menu>*/}
+                    {/*    </Dropdown>*/}
 
-                                <EditAccountInputCol placeholder={user.firstName}  name="firstName" handleChange={handleChange} values={values} errors={errors} touched={touched} size={4}/>
-                                <EditAccountInputCol placeholder={user.lastName}  name="lastName"  handleChange={handleChange} values={values} errors={errors} touched={touched} size={4} />
-                                <EditAccountInputCol placeholder={user.email} name="email"  handleChange={handleChange} values={values} errors={errors} touched={touched} user={user} size={4}/>
-                                <EditAccountInputCol placeholder="Password" name="password" type="password"  handleChange={handleChange} values={values} errors={errors} touched={touched} size={4}/>
-                                <EditAccountInputCol placeholder="Confirm Password" name="confirmPassword" type="password"  handleChange={handleChange} values={values} errors={errors} touched={touched} size={4}/>
-                                <EditAccountInputCol placeholder={user.description} name="description"  handleChange={handleChange} values={values} errors={errors} touched={touched} isTextarea={true} size={8}/>
-
-                                {/*<Col md={4} className="signup-input-col d-flex align-items-center justify-content-center w-100">*/}
-                                {/*    <Dropdown>*/}
-                                {/*        <Dropdown.Toggle variant="primary" id="dropdown-basic">*/}
-                                {/*            Roles*/}
-                                {/*        </Dropdown.Toggle>*/}
-                                {/*        <Dropdown.Menu show >*/}
-
-                                {/*            <Dropdown.Item>Users/Engineers</Dropdown.Item>*/}
-                                {/*            <Dropdown.Item>Team Leader</Dropdown.Item>*/}
-                                {/*        </Dropdown.Menu>*/}
-                                {/*    </Dropdown>*/}
-
-                                {/*</Col>*/}
-                            </Row>
-                            <div className="signup-page-container__signup-row w-100">
-                                <Row>
-                                    <Col md={{ span: 4, offset: 4 }}>
-                                        <Button variant="primary" type="submit">Save Changes</Button>
-                                    </Col>
+                    {/*</Col>*/}
+                </Row>
+                <div className="signup-page-container__signup-row w-100">
+                    <Row>
+                        <Col md={{ span: 4, offset: 4 }}>
+                            <Button variant="primary" type="submit">Save Changes</Button>
+                        </Col>
 
 
-                                </Row>
+                    </Row>
 
-                            </div>
-                        </div>
-                        </form>
+                </div>
+            </div>
+            </form>
 
-                    </Container>
-                </Col>
-            </Row>
+        </Container>
 
-
-
-        </div>
     )
 }
 
