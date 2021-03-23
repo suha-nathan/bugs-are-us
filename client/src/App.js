@@ -14,6 +14,8 @@ import ProjectsPage from "./components/projects-page/ProjectsPage";
 import Header from "./components/shared/Header";
 import Layout from "./components/layout/Layout";
 import TestDashboardPage from "./components/dashboard/TestDashboardPage";
+import CreateProjectPage from "./components/create-project/CreateProjectPage";
+import ViewProjectPage from "./components/view-projects-page/ViewProjectPage"
 
 function App() {
     const [isSignedUp, setSignedUp] = useState(false)
@@ -117,9 +119,21 @@ function App() {
                     <SignupPage isSignedUp={isSignedUp} signUp={signUp} setSuccessMessage={setSuccessMessage} />
                 </Route>
 
-                <Route path="/projects">
+                <Route path="/projects" exact>
                     <Layout isAuth={isAuth} logOut={logOut}>
                         <ProjectsPage user={user} />
+                    </Layout>
+                </Route>
+
+                <Route path="/project/create">
+                    <Layout isAuth={isAuth} logOut={logOut}>
+                        <CreateProjectPage user={user}/>
+                    </Layout>
+                </Route>
+
+                <Route path="/project/:id/view">
+                    <Layout isAuth={isAuth} logOut={logOut}>
+                        <ViewProjectPage user={user}/>
                     </Layout>
                 </Route>
 

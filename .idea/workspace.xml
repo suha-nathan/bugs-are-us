@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d31f14c7-bcb6-4429-919a-c3457f7428bc" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/backend/model/project.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/model/project.model.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/bug.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/bug.route.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/project.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/project.route.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/user.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/user.route.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/bug-details/CommentCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/bug-details/CommentCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/create-project/CreateProjectPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/create-project/CreateProjectPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/projects-page/ProjectCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/projects-page/ProjectCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/projects-page/ProjectList.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/projects-page/ProjectList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/projects-page/ProjectsPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/projects-page/ProjectsPage.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/backend/model/bug.model.js" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="TaskManager">
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+</project>

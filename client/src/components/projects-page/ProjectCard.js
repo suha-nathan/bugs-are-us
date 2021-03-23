@@ -1,28 +1,33 @@
 import React from 'react'
 import { Row, Col, Button, Card} from "react-bootstrap";
+import {useHistory} from "react-router-dom";
 
-const ProjectCard = (props) => {
+const ProjectCard = ({ project }) => {
+
+    const history = useHistory()
+
+    let { title, description, teamLead, members, categories, _id } = project
 
     return (
 
         <Card className="my-3 mr-3 text-left font-open-sans">
             <Card.Header className="text-left">
-                Project Category
+                {categories}
             </Card.Header>
             <Card.Body>
-                <h3>Project Title</h3>
-                <p>Project Description: Some quick example to build up the bulk of the card's content</p>
+                <h3>{title}</h3>
+                <p>{description}</p>
 
                 <Row>
                     <Col className="d-flex flex-column justify-space-around">
                         <p className="font-open-sans__bolder mb-0">Team Lead</p>
-                        <p>Name</p>
+                        <p>{teamLead}</p>
                         <p className="font-open-sans__bolder mb-0">Members</p>
-                        <p>Isaac, Suha, Logan</p>
+                        <p>{members.map( member => `${member.firstName} ${member.lastName}`).join(', ')}</p>
                     </Col>
 
                     <Col className="d-flex flex-column justify-content-around align-items-center">
-                        <Button>View Projects</Button>
+                        <Button onClick={() => history.push(`/project/${_id}/view`)}>View Projects</Button>
                         <Button>View Bugs</Button>
                     </Col>
                 </Row>

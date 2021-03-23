@@ -38,7 +38,7 @@ router.get("/all", async(req, res) => {
             .populate('upVotes')
             .populate('user')
             .populate('projects')
-            .populate('bugs')
+            .populate({ path: 'comments', populate: { path: 'user'}})
 
         res.status(200).json({data})
 
@@ -50,7 +50,7 @@ router.get("/all", async(req, res) => {
 router.get("/:id", async(req, res) => {
     try{
         console.log(req.params)
-        const singleData = await Bug.findById(req.params.id)
+        const singleData = await Bug.findById(req.params.id).populate('comments.user').exec()
         res.status(200).json({singleData})
     }catch(e){
         res.status(400).json({ message: "Failed to view single bug details"})
