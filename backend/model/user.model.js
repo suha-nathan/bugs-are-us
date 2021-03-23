@@ -19,14 +19,17 @@ const userSchema = new Schema({
 
 userSchema.pre('save', function (next){
     const user = this
-    // console.log(this.isModified('password'))
-    // console.log(this)
     if(this.isModified('password')){
         bcrypt.hash(user.password, saltRounds).then((hashedPassword) => {
-            // console.log(hashedPassword)
             user.password = hashedPassword
             next()
         })
+    }if(this.isModified('firstName')){
+        user.firstName = user.firstName
+    }if(this.isModified('lastName')){
+        user.lastName = user.lastName
+    }if(this.isModified('email')) {
+        user.email = user.email
     }
 })
 

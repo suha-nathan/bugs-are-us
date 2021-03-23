@@ -44,7 +44,7 @@ router.get("/all", async(req, res) => {
 router.get("/:id", async(req, res) => {
     try{
         console.log(req.params)
-        const singleData = await Bug.findById('6055aec57ab0a30b4e179727')
+        const singleData = await Bug.findById(req.params.id)
         res.status(200).json({singleData})
     }catch(e){
         res.status(400).json({ message: "Failed to view single bug details"})
@@ -54,9 +54,9 @@ router.get("/:id", async(req, res) => {
 router.delete("/delete/:id", async(req, res) => {
     try{
         await Bug.findByIdAndDelete(req.params.id)
-        res.status(200).json({ message: "Bug Deleted"})
+        res.status(200).json({ message: "Bug deleted"})
     }catch(e){
-        res.status(400).json({ message: "Deleting Failed"})
+        res.status(400).json({ message: "Deleting bug failed, try again"})
     }
 })
 

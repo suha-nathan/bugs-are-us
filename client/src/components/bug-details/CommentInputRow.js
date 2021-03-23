@@ -8,7 +8,7 @@ const CommentInputRow = ({ bugDetails, user, loadProjectData }) => {
 
     async function handleAddComment() {
         console.log('in', commentText)
-        await axios.put(`http://localhost:8080/comment/update/${bugDetails._id}`, { user: user._id, commentText }, {
+        await axios.put(`http://localhost:8080/comment/create/${bugDetails._id}`, { user: user._id, commentText }, {
             headers: {
                 'x-auth-token': `Bearer ${localStorage.getItem('token')}`
             }
