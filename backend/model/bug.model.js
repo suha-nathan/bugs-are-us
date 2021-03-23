@@ -14,7 +14,7 @@ const bugSchema = new Schema({
         }
     ],
     user: {type: Schema.Types.ObjectId, ref: 'User'},
-    upVotes: [],
+    upVotes: [{type: Schema.Types.ObjectId, ref: 'User'}],
     priority: {type: String, required: true},
     status: {
         type: String,

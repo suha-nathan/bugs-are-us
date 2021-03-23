@@ -8,6 +8,7 @@ const userSchema = new Schema({
     lastName: { type: String, required: true},
     email: { type: String, required: true},
     password: { type: String, required: true },
+    description: { type: String },
     projects: [{ type: Schema.Types.ObjectId, ref: 'Project'}],
     bugs: [{ type: Schema.Types.ObjectId, ref: 'Bug'}],
     role: {
@@ -18,19 +19,17 @@ const userSchema = new Schema({
 )
 
 userSchema.pre('save', function (next){
+
     const user = this
-    if(this.isModified('password')){
-        bcrypt.hash(user.password, saltRounds).then((hashedPassword) => {
-            user.password = hashedPassword
-            next()
-        })
-    }if(this.isModified('firstName')){
-        user.firstName = user.firstName
-    }if(this.isModified('lastName')){
-        user.lastName = user.lastName
-    }if(this.isModified('email')) {
-        user.email = user.email
+
+    if(!this.isModified('password')){
+        return next()
     }
+
+    bcrypt.hash(user.password, saltRounds).then((hashedPassword) => {
+        user.password = hashedPassword
+        next()
+    })
 })
 
 module.exports = mongoose.model("User", userSchema)

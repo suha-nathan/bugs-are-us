@@ -10,6 +10,18 @@ router.get("/", async(req, res)=>{
     }
 })
 
+router.get("/all", async(req, res) => {
+    try{
+        let allUser = await User.find()
+            .populate('projects')
+            .populate('bugs')
+
+        res.status(200).json({allUser})
+    }catch(e){
+        res.status(400).json({ message: "Couldn't retrieve all users"})
+    }
+})
+
 router.delete("/delete/:id", async(req, res) => {
     try{
         await User.findByIdAndDelete(req.params.id)
@@ -23,17 +35,21 @@ router.put("/update", async(req, res) => {
     try{
         const user = await User.findById(req.user.id).exec()
 
-        console.log(user)
         if(req.body.firstName){
             user.firstName = req.body.firstName
-        }if(req.body.lastName){
-            user.lastName = req.body.lastName
-        }if(req.body.email){
-            user.email = req.body.email
-        }if(req.body.password){
-            user.email = req.body.password
         }
-
+        if(req.body.lastName){
+            user.lastName = req.body.lastName
+        }
+        if(req.body.email){
+            user.email = req.body.email
+        }
+        if(req.body.password){
+            user.password = req.body.password
+        }
+        if(req.body.description){
+            user.description = req.body.description
+        }
         await user.save()
 
         res.status(200).json({ message: "User details updated successfully"})
