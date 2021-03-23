@@ -3,17 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="3306ddab-2beb-4430-b7f6-567000f584ca" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/bug-details/BugDetailsPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/bug-details/BugDetailsPage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/bug-details/BugInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/bug-details/BugInfo.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/bug-details/CommentCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/bug-details/CommentCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/bug-details/CommentInputRow.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/bug-details/CommentInputRow.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/bug-details/CommentList.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/bug-details/CommentList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/dashboard/DashboardPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/dashboard/DashboardPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/shared/DataRow.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/shared/DataRow.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/shared/DataTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/shared/DataTable.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/shared/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/shared/Header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/sidebar/Sidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/sidebar/Sidebar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/index.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

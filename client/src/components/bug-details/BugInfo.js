@@ -79,7 +79,7 @@ const BugInfo = ({ bugDetails }) => {
 
                     <tr>
                         <td>Upvotes</td>
-                        <td>{upVotes.length}</td>
+                        <td>{upVotes?.length}</td>
                     </tr>
                     </tbody>
                 </Table>

@@ -15,7 +15,7 @@ const BugDetailsPage = ({ projectData, user, loadProjectData, logOut }) => {
     let { id } = useParams()
 
     const [bugDetails, setBugDetails] = useState({})
-
+    const [isEditModeOnArray, setIsEditModeOnArray] = useState([])
 
     useEffect(() => {
         loadBugDetails()
@@ -82,12 +82,16 @@ const BugDetailsPage = ({ projectData, user, loadProjectData, logOut }) => {
                             bugDetails={bugDetails}
                             user={user}
                             loadProjectData={loadProjectData}
+                            isEditModeOnArray={isEditModeOnArray}
+                            setIsEditModeOnArray={setIsEditModeOnArray}
                         />
 
                         <CommentInputRow
                             bugDetails={bugDetails}
                             user={user}
                             loadProjectData={loadProjectData}
+                            isEditModeOnArray={isEditModeOnArray}
+                            setIsEditModeOnArray={setIsEditModeOnArray}
                         />
                     </Container>
 
