@@ -60,7 +60,7 @@ function App() {
         try{
             let res = await axios.post("http://localhost:8080/auth/signup", userInfo)
             console.log("signup success")
-            setSignedUp(true)
+
 
             // setAuth(true)
             // console.log("signup success")
@@ -97,8 +97,6 @@ function App() {
         localStorage.removeItem("token")
     }
 
-
-
     // console.log(errorMessage)
     // console.log(isAuth)
     // console.log(user)
@@ -111,18 +109,22 @@ function App() {
             <Switch>
 
                 <Route path="/login">
-
                     <LoginPage isAuth={isAuth} login={login}/>
                 </Route>
 
                 <Route path="/signup">
-                    <SignupPage isSignedUp={isSignedUp} signUp={signUp} setSuccessMessage={setSuccessMessage} />
+                    <SignupPage isSignedUp={isSignedUp} setSignedUp={setSignedUp} signUp={signUp} setSuccessMessage={setSuccessMessage} />
                 </Route>
 
+
                 <Route path="/projects" exact>
-                    <Layout isAuth={isAuth} logOut={logOut}>
+                    {isAuth?
+                    <Layout user={user} isAuth={isAuth} logOut={logOut}>
                         <ProjectsPage user={user} />
                     </Layout>
+                        :
+                        <Redirect to="/login"/>
+                    }
                 </Route>
 
                 <Route path="/project/create">
@@ -138,32 +140,43 @@ function App() {
                 </Route>
 
                 <Route path="/bug/create" exact>
-                    <Layout isAuth={isAuth} logOut={logOut}>
+                    {isAuth?
+                    <Layout user={user} isAuth={isAuth} logOut={logOut}>
                         <CreateBugPage user={user} loadProjectData={loadProjectData} />
                     </Layout>
+                        :
+                        <Redirect to="/login"/>
+                    }
                 </Route>
 
                 <Route path="/bug/:id">
-
-                    <Layout isAuth={isAuth} logOut={logOut}>
+                    {isAuth?
+                    <Layout user={user} isAuth={isAuth} logOut={logOut}>
                         <BugDetailsPage
                             projectData={projectData}
                             user={user}
                             loadProjectData={loadProjectData}
                         />
                     </Layout>
+                    :
+                    <Redirect to="/login"/>
+                    }
                 </Route>
 
                 <Route path="/user/edit">
-                    <Layout isAuth={isAuth} logOut={logOut}>
+                    {isAuth?
+                    <Layout user={user} isAuth={isAuth} logOut={logOut}>
                         <EditAccountPage user={user} />
                     </Layout>
+                        :
+                        <Redirect to="/login"/>
+                    }
 
                 </Route>
 
                 <Route>
                     {isAuth?
-                        <Layout isAuth={isAuth} logOut={logOut}>
+                        <Layout user={user} isAuth={isAuth} logOut={logOut}>
                             <DashboardPage user={user} projectData={projectData} path="/" exact />
                         </Layout>
 

@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken')
 
 router.post("/signup", async (req, res) => {
     try{
-        let { firstName, lastName, email, password, description, role } = req.body
+        let { profilePicture, firstName, lastName, email, password, description, role } = req.body
 
         const repeatUser = await User.findOne({email})
         if(repeatUser){
@@ -13,6 +13,7 @@ router.post("/signup", async (req, res) => {
         }
 
         const saveObj = {
+            profilePicture,
             firstName,
             lastName,
             email,

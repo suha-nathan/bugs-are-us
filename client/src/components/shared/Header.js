@@ -9,7 +9,7 @@ const Header = ({ user, logOut }) => {
         // console.log("logging out")
         logOut()
     }
-    // console.log(user)
+    console.log(user)
     return (
         <Row className="bg-primary py-2 px-3">
             <Col md={2} className="d-flex align-items-center pl-4">
@@ -17,14 +17,14 @@ const Header = ({ user, logOut }) => {
             </Col>
             <Col md={8} className="d-flex align-items-center">
 
-                    <Button variant="link" className="text-light " onClick={handleLogout}>Logout</Button>
+                <Button variant="link" className="text-light " onClick={e => handleLogout(e) }>Logout</Button>
 
 
             </Col>
             <Col md={2} className="d-flex justify-content-end align-items-center pr-4">
 
                 <p className="my-0 mx-3">{user?.firstName} {user?.lastName}</p>
-                <ProfilePic size={2.5} isShowName={false}/>
+                <ProfilePic size={2.5} imageSource={user?.profilePicture?.imageData} isShowName={false}/>
             </Col>
         </Row>
     )
