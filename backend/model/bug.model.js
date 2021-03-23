@@ -2,7 +2,6 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const bugSchema = new Schema({
-
     type: {type: String, required: true},
     title: {type: String, required: true},
     description: String,
@@ -10,7 +9,9 @@ const bugSchema = new Schema({
     comments: [
         {
             user: {type: Schema.Types.ObjectId, ref: 'User'},
-            commentText: { type: String}
+            commentText: { type: String},
+            postedAt: {type: Date, default: Date.now},
+            editedAt: {type: Date, default: Date.now}
         }
     ],
     user: {type: Schema.Types.ObjectId, ref: 'User'},

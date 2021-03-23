@@ -3,7 +3,15 @@ const Bug = require('../model/bug.model')
 
 router.put('/create/:id', async(req, res) => {
     try{
-        console.log(req.body.commentText)
+
+        console.log(Boolean(req.body.commentText))
+        if(!req.body.commentText){
+            throw "Comment text cannot be empty"
+        }
+        if(!req.body.commentText.trim()){
+            throw "Cannot have blank text"
+        }
+
         await Bug.findByIdAndUpdate(req.params.id, {
                     $push: {
                         comments: {
@@ -15,7 +23,7 @@ router.put('/create/:id', async(req, res) => {
         res.status(200).json({ message: "Added new comment"})
     }catch(e){
         console.log(e)
-        res.status(400).json({ message: "Failed to update comments"})
+        res.status(400).json({ message: e || "Failed to update comments"})
     }
 })
 
