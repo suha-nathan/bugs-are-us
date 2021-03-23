@@ -60,11 +60,11 @@ const CommentCard = ({ bugDetails, comment, loadProjectData, user, index, isEdit
     }
 
     return (
-        <Card className="my-3 font-open-sans">
-            <Card.Body>
+        <div className="my-3 font-open-sans">
+
                 <Row>
                     <Col md={2} className="d-flex justify-content-center align-items-center">
-                        <ProfilePic size={6.5}/>
+                        <ProfilePic size={6.5} imageSource={comment.user.profilePicture.imageData}/>
                     </Col>
 
                     <Col className="text-left d-flex flex-column">
@@ -78,7 +78,7 @@ const CommentCard = ({ bugDetails, comment, loadProjectData, user, index, isEdit
                         }
 
                         {
-                            user._id === comment.user
+                            user._id === comment.user._id
                             &&
                             <div className="d-flex justify-content-end">
                                 {
@@ -105,10 +105,10 @@ const CommentCard = ({ bugDetails, comment, loadProjectData, user, index, isEdit
 
 
 
-            </Card.Body>
 
 
-        </Card>
+
+        </div>
     )
 }
 
