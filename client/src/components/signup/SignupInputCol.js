@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import {Col, Form, Row} from "react-bootstrap";
 
-const SignupInputCol = ({name, placeholder, size, type, isTextarea,values, handleChange,errors,touched}) => {
+const SignupInputCol = ({name, placeholder, size, type, isTextarea, values, validateConfirmPassword, handleChange,errors,touched}) => {
 
     // console.log(values[name])
     // if(errors[name]){
@@ -12,6 +12,7 @@ const SignupInputCol = ({name, placeholder, size, type, isTextarea,values, handl
     // }
     // console.log(errors[name])
     // console.log(touched[name])
+    console.log(type)
     return (
         <>
             <Col md={size} className="signup-input-col d-flex flex-column justify-content-center position-relative">

@@ -2,7 +2,7 @@ import './App.css';
 import React, {useState,useEffect} from "react"
 import {BrowserRouter, Redirect, Route, Switch} from "react-router-dom";
 import axios from "axios";
-import {Alert} from "react-bootstrap"
+import { Alert } from "react-bootstrap"
 
 import DashboardPage from "./components/dashboard/DashboardPage";
 import LoginPage from "./components/login/LoginPage";
@@ -10,7 +10,8 @@ import SignupPage from "./components/signup/SignupPage";
 import CreateBugPage from "./components/create-bug/CreateBugPage";
 import BugDetailsPage from "./components/bug-details/BugDetailsPage";
 import EditAccountPage from "./components/edit-account/EditAccountPage";
-
+import ProjectsPage from "./components/projects-page/ProjectsPage";
+import Header from "./components/shared/Header";
 
 function App() {
     const [isSignedUp, setSignedUp] = useState(false)
@@ -28,8 +29,6 @@ function App() {
 
 
     async function loadProjectData() {
-        // console.log(projectMockData[0])
-        // setProjectData(projectMockData[0])
         let res = await axios.get('http://localhost:8080/bug/all', {
             headers: {
                 'x-auth-token': `Bearer ${localStorage.getItem('token')}`
@@ -104,10 +103,10 @@ function App() {
         <BrowserRouter>
             {errorMessage&& <Alert variant="danger">{errorMessage}</Alert>}
             {successMessage&& <Alert variant="success">{successMessage}</Alert>}
+
             <Switch>
 
                 <Route path="/login">
-
                     <LoginPage isAuth={isAuth} login={login}/>
                 </Route>
 
@@ -115,9 +114,12 @@ function App() {
                     <SignupPage isSignedUp={isSignedUp} signUp={signUp} setSuccessMessage={setSuccessMessage} />
                 </Route>
 
-                <Route path="/bug/create" exact>
+                <Route path="/projects">
+                    <ProjectsPage user={user} logOut={logOut}/>
+                </Route>
 
-                    <CreateBugPage />
+                <Route path="/bug/create" exact>
+                    <CreateBugPage user={user} loadProjectData={loadProjectData} logOut={logOut}/>
                 </Route>
 
                 <Route path="/bug/:id">
@@ -131,6 +133,7 @@ function App() {
                 <Route path="/user/edit">
                     <EditAccountPage user={user} />
                 </Route>
+
                 <Route>
                     {isAuth?
                         <DashboardPage isAuth={isAuth} logOut={logOut} user={user} projectData={projectData} path="/" exact />
@@ -139,7 +142,6 @@ function App() {
                     }
 
                 </Route>
-
 
             </Switch>
 

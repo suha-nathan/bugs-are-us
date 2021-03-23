@@ -16,7 +16,7 @@ const CommentInputRow = ({ bugDetails, user, loadProjectData }) => {
 
         loadProjectData()
     }
-    console.log(commentText)
+
     console.log(bugDetails)
     return (
         <Row>

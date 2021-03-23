@@ -66,6 +66,15 @@ const SignupPage = ({isSignedUp,signUp,setSuccessMessage}) => {
         return <Redirect to={"/login"}/>
     }
 
+    function validateConfirmPassword(password, value) {
+        let error = ''
+        if((password && value) && (password !== value)) {
+                error = 'Password not matched'
+        }
+        return error
+
+    }
+
     return (
         <div className="signup-page-container">
             <TempHeader />
@@ -74,7 +83,7 @@ const SignupPage = ({isSignedUp,signUp,setSuccessMessage}) => {
                 <h1 className="my-0 ">Bugs R Us</h1>
 
 
-                <form onSubmit={handleSubmit}>
+                <Form onSubmit={handleSubmit}>
                     <div className="signup-page-container__content w-100 h-150 d-flex flex-column justify-content-between">
                         <Row className="h-75 ">
                             <Col className="signup-input-col">
@@ -99,7 +108,15 @@ const SignupPage = ({isSignedUp,signUp,setSuccessMessage}) => {
                             <SignupInputCol placeholder="Last Name" name="lastName" handleChange={handleChange} values={values} errors={errors} touched={touched} size={4} />
                             <SignupInputCol placeholder="Email" name="email" handleChange={handleChange} values={values} errors={errors} touched={touched} size={4}/>
                             <SignupInputCol placeholder="Password" name="password" type="password"  handleChange={handleChange} values={values} errors={errors} touched={touched} size={4}/>
-                            <SignupInputCol placeholder="Confirm Password" name="confirmPassword" type="password"  handleChange={handleChange} values={values} errors={errors} touched={touched} size={4}/>
+                            <SignupInputCol
+                                placeholder="Confirm Password"
+                                name="confirmPassword"
+                                type="password"
+                                handleChange={handleChange}
+                                values={values}
+                                errors={errors}
+                                touched={touched}
+                                size={4}/>
                             <SignupInputCol placeholder="Description" name="description"handleChange={handleChange} values={values} errors={errors} touched={touched} isTextarea={true} size={8}/>
 
                             <Col md={4} className="signup-input-col d-flex align-items-center justify-content-center w-100">
@@ -131,12 +148,14 @@ const SignupPage = ({isSignedUp,signUp,setSuccessMessage}) => {
                         </Row>
                         <Form.Group>
                             <Form.Check
+                                type="checkbox"
                                 required
                                 name="terms"
-                                label="Agree to terms and conditions"
+                                label="I agree to terms and conditions"
                                 onChange={handleChange}
                                 feedback={errors.terms}
                                 feedbackTooltip
+                                id="inlineFormCheck"
                             />
                             {/*{touched.terms && errors.terms ?(*/}
                             {/*    <p className="signup-input-col__error-message text-left my-1"> {errors.terms} </p>*/}
@@ -157,7 +176,7 @@ const SignupPage = ({isSignedUp,signUp,setSuccessMessage}) => {
 
                         </div>
                     </div>
-                </form>
+                </Form>
             </Container>
         </div>
 
