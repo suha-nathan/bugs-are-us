@@ -9,7 +9,6 @@ const CommentCard = ({ bugDetails, comment, loadProjectData, user, index, isEdit
 
     useEffect(() => {
         setIsEditModeOnArray(bugDetails?.comments?.map(() => false))
-
     }, [])
 
 
@@ -38,7 +37,7 @@ const CommentCard = ({ bugDetails, comment, loadProjectData, user, index, isEdit
                 })
 
             setEditedComment('')
-            // setIsEditModeArray(false)
+            setIsEditModeOnArray(prevState => prevState.map(() => false))
             loadProjectData()
         } catch (e) {
             console.log(e)
@@ -73,7 +72,7 @@ const CommentCard = ({ bugDetails, comment, loadProjectData, user, index, isEdit
                         {
                             isEditModeOnArray.length && isEditModeOnArray[index]
                             ?
-                            <Form.Control as="textarea" rows={3} value={editedComment} onChange={handleEditComment}/>
+                            <Form.Control as="textarea" rows={3} value={editedComment} onChange={handleEditComment} className="w-75"/>
                             :
                             <p>{comment.commentText}</p>
                         }

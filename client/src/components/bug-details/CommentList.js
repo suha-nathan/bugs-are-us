@@ -2,9 +2,9 @@ import React, {useEffect, useState} from 'react'
 import CommentCard from "./CommentCard";
 import {Container} from "react-bootstrap";
 
-const CommentList = ({ bugDetails, loadProjectData, user }) => {
+const CommentList = ({ bugDetails, loadProjectData, user, isEditModeOnArray, setIsEditModeOnArray }) => {
 
-    const [isEditModeOnArray, setIsEditModeOnArray] = useState([])
+
 
     return (
         <div>

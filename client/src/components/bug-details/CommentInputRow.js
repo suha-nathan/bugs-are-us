@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import {Form, Button, Row, Col} from 'react-bootstrap'
 import axios from "axios";
 
-const CommentInputRow = ({ bugDetails, user, loadProjectData }) => {
+const CommentInputRow = ({ bugDetails, user, loadProjectData, isEditModeOnArray, setIsEditModeOnArray }) => {
 
     const [commentText, setCommentText] = useState('')
 
@@ -13,7 +13,8 @@ const CommentInputRow = ({ bugDetails, user, loadProjectData }) => {
                 'x-auth-token': `Bearer ${localStorage.getItem('token')}`
             }
         })
-
+        setIsEditModeOnArray(bugDetails.comments.map(() => false))
+        console.log(isEditModeOnArray)
         loadProjectData()
     }
 
