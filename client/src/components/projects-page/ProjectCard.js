@@ -21,7 +21,8 @@ const ProjectCard = (props) => {
                         <p>Isaac, Suha, Logan</p>
                     </Col>
 
-                    <Col className="d-flex justify-content-center align-items-center">
+                    <Col className="d-flex flex-column justify-content-around align-items-center">
+                        <Button>View Projects</Button>
                         <Button>View Bugs</Button>
                     </Col>
                 </Row>

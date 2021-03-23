@@ -47,59 +47,43 @@ const BugDetailsPage = ({ projectData, user, loadProjectData, logOut }) => {
     }
 
     return (
-        <div>
-            <Header user={user} logOut={logOut}/>
-
+        <Container>
             <Row>
-                <Col md={2}>
-                    <Sidebar />
+
+                <Col md={{ span: 4, offset: 4 }}>
+                    <h2>Bug Details Page</h2>
+                    <p>ID: {id}</p>
                 </Col>
-
-
-                <Col>
-                    <Container>
-                        <Row>
-
-                            <Col md={{ span: 4, offset: 4 }}>
-                                <h2>Bug Details Page</h2>
-                                <p>ID: {id}</p>
-                            </Col>
-                            <Col className="d-flex flex-column px-5">
-                                <Button variant="success" className="my-3">Edit</Button>
-                                <Button variant="danger" onClick={handleDeleteBug}>Delete</Button>
-                            </Col>
-                        </Row>
-
-                        <Row className="px-4">
-                            <ProfilePic size={5}/>
-                        </Row>
-
-                        <h4 className="text-left">{bugDetails?.title}</h4>
-                        <Link to="/" exact>Back</Link>
-                        <BugInfo bugDetails={bugDetails}/>
-
-                        <CommentList
-                            bugDetails={bugDetails}
-                            user={user}
-                            loadProjectData={loadProjectData}
-                            isEditModeOnArray={isEditModeOnArray}
-                            setIsEditModeOnArray={setIsEditModeOnArray}
-                        />
-
-                        <CommentInputRow
-                            bugDetails={bugDetails}
-                            user={user}
-                            loadProjectData={loadProjectData}
-                            isEditModeOnArray={isEditModeOnArray}
-                            setIsEditModeOnArray={setIsEditModeOnArray}
-                        />
-                    </Container>
-
+                <Col className="d-flex flex-column px-5">
+                    <Button variant="success" className="my-3">Edit</Button>
+                    <Button variant="danger" onClick={handleDeleteBug}>Delete</Button>
                 </Col>
             </Row>
 
+            <Row className="px-4">
+                <ProfilePic size={5}/>
+            </Row>
 
-        </div>
+            <h4 className="text-left">{bugDetails?.title}</h4>
+            <Link to="/" exact>Back</Link>
+            <BugInfo bugDetails={bugDetails}/>
+
+            <CommentList
+                bugDetails={bugDetails}
+                user={user}
+                loadProjectData={loadProjectData}
+                isEditModeOnArray={isEditModeOnArray}
+                setIsEditModeOnArray={setIsEditModeOnArray}
+            />
+
+            <CommentInputRow
+                bugDetails={bugDetails}
+                user={user}
+                loadProjectData={loadProjectData}
+                isEditModeOnArray={isEditModeOnArray}
+                setIsEditModeOnArray={setIsEditModeOnArray}
+            />
+        </Container>
     )
 }
 

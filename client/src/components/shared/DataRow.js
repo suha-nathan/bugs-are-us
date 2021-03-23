@@ -1,10 +1,12 @@
 import React from 'react'
-import { Badge } from "react-bootstrap";
+import { Button, Badge } from "react-bootstrap";
 import { capitalizeWords } from "../../lib/library";
 import { Link } from "react-router-dom";
 import moment from 'moment'
 
-const DataRow = ({bug, index}) => {
+const DataRow = ({bug, index, handleUpVote}) => {
+
+
 
     return (
         <tr>
@@ -20,7 +22,12 @@ const DataRow = ({bug, index}) => {
             </td>
             <td>--</td>
             <td>{bug.priority}</td>
-            <td>{bug.upVotes.length}</td>
+            <td>
+                {bug.upVotes.length}
+                <Button variant="link" onClick={handleUpVote}>
+                    <i className="bi bi-arrow-up-short text-success"></i>
+                </Button>
+            </td>
         </tr>
     )
 }
