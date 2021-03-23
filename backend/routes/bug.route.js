@@ -34,7 +34,8 @@ router.post("/create",async(req, res) => {
 
 router.get("/all", async(req, res) => {
     try{
-        const data = await Bug.find()
+        const data = await Bug.find().populate('user')
+        console.log(data)
         res.status(200).json({data})
     }catch(e){
         res.status(400).json({ message: "Failed to view all bugs"})

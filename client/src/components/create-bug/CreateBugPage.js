@@ -1,28 +1,26 @@
 import React, { useState } from 'react'
-import { Form, Row, Col, Dropdown, Image, Button, Container} from "react-bootstrap";
-import DropdownMenu from "react-bootstrap/DropdownMenu";
-import DropdownItem from "react-bootstrap/DropdownItem";
+import { Form, Row, Col, Image, Button, Container} from "react-bootstrap";
 import Header from "../shared/Header";
-import TempHeader from "../shared/TempHeader";
 import Sidebar from "../sidebar/Sidebar";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { Formik, Field, withFormik } from 'formik'
 import * as Yup from 'yup'
 import axios from 'axios'
 
-const CreateBugPage = () => {
+const CreateBugPage = ({ user, loadProjectData }) => {
 
-    const [bug, setBug] = useState({})
-
+    const history = useHistory()
     const handleCreateBug = async (values) => {
         const token = localStorage.getItem('token')
-        console.log(values)
-        const res = await axios.post('http://localhost:8080/bug/create',values, {
+
+        const res = await axios.post('http://localhost:8080/bug/create', {...values, user: user._id}, {
             headers: {
                 "x-auth-token": `Bearer ${token}`
             }
         })
+        loadProjectData()
         console.log(res)
+        history.push('/')
     }
 
     const BugSchema = Yup.object().shape({
@@ -31,8 +29,6 @@ const CreateBugPage = () => {
 
     return (
         <div>
-
-
             <Header />
 
             <Row>
@@ -54,8 +50,6 @@ const CreateBugPage = () => {
                                     }
 
                             }
-
-
                             validationSchema={BugSchema}
                             onSubmit={  values =>  handleCreateBug(values)}
                         >
@@ -85,12 +79,8 @@ const CreateBugPage = () => {
                                                 <option value="server">Server</option>
                                                 <option value="functionalities">Functionalities Issue</option>
                                             </Field>
-
-
                                         </Col>
-
                                     </Row>
-
 
                                     <Row className="mb-3">
                                         <Col md={8}>
