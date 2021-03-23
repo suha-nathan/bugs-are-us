@@ -46,8 +46,10 @@ router.get("/:id", async(req, res) => {
 
 router.put("/update/:id", async(req, res) => {
     try{
-        
+        await Project.findByIdAndUpdate(req.params.id, req.body)
+        res.status(200).json({ message: "Project updated successfully"})
     }catch(e){
+        console.log(e)
         res.status(400).json({ message: "Failed to view single project, try again"})
     }
 })
