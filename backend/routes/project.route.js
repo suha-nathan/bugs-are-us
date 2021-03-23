@@ -27,8 +27,11 @@ router.post("/create", async(req, res) => {
 router.get("/all", async(req, res) => {
     try{
         const data = await Project.find()
+            .populate('members')
+            .populate('projectLead')
+            .populate('bugs')
+
         res.status(200).json({data})
-        console.log(data)
     }catch(e){
         console.log(e)
         res.status(400).json({ message: "Failed to add project, try again"})
