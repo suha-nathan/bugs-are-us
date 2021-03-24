@@ -3,16 +3,17 @@ const Project = require('../model/project.model')
 
 router.post("/create", async(req, res) => {
     try{
-        let { title, description, categories, bugs, members, projectLead } = req.body
+        let { title, description, categories, members, projectLead, createdBy } = req.body //remove bugs, should be empty by default
         console.log(req.body)
 
         const saveProject = {
             title,
             description,
             categories,
-            bugs,
+            // bugs,
             members,
-            projectLead
+            projectLead,
+            createdBy
         }
 
         const project = new Project(saveProject)
@@ -30,6 +31,7 @@ router.get("/all", async(req, res) => {
             .populate('members')
             .populate('projectLead')
             .populate('bugs')
+            .populate('createdBy')
 
         res.status(200).json({data})
     }catch(e){
