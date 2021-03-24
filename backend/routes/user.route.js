@@ -31,7 +31,7 @@ router.delete("/delete/:id", async(req, res) => {
     }
 })
 
-router.put("/update", async(req, res) => {
+router.put("/edit", async(req, res) => {
     try{
         const user = await User.findById(req.user.id).exec()
 

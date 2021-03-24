@@ -11,9 +11,7 @@ import CreateBugPage from "./components/create-bug/CreateBugPage";
 import BugDetailsPage from "./components/bug-details/BugDetailsPage";
 import EditAccountPage from "./components/edit-account/EditAccountPage";
 import ProjectsPage from "./components/projects-page/ProjectsPage";
-import Header from "./components/shared/Header";
 import Layout from "./components/layout/Layout";
-import TestDashboardPage from "./components/dashboard/TestDashboardPage";
 import CreateProjectPage from "./components/create-project/CreateProjectPage";
 import ViewProjectPage from "./components/view-projects-page/ViewProjectPage"
 
@@ -29,7 +27,7 @@ function App() {
     useEffect(()=>{
         loadUser()
         loadProjectData()
-    },[])
+    },[projectData.length])
 
 
     async function loadProjectData() {
@@ -103,8 +101,8 @@ function App() {
   return (
     <div className="App">
         <BrowserRouter>
-            {errorMessage&& <Alert variant="danger">{errorMessage}</Alert>}
-            {successMessage&& <Alert variant="success">{successMessage}</Alert>}
+            {errorMessage && <Alert variant="danger">{errorMessage}</Alert>}
+            {successMessage && <Alert variant="success">{successMessage}</Alert>}
 
             <Switch>
 
@@ -177,7 +175,7 @@ function App() {
                 <Route>
                     {isAuth?
                         <Layout user={user} isAuth={isAuth} logOut={logOut}>
-                            <DashboardPage user={user} projectData={projectData} path="/" exact />
+                            <DashboardPage user={user} projectData={projectData} path="/dashboard" exact />
                         </Layout>
 
                         :

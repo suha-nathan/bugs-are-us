@@ -51,12 +51,14 @@ const EditAccountPage = ({user}) => {
                 password,
                 description,
             }
+            console.log(tempUserInfo)
             handleEdit(tempUserInfo)
         }
     })
 
     async function handleEdit(updatedInfo){
         try{
+
             const token = localStorage.getItem("token")
             let res = await axios.put("http://localhost:8080/user/update", updatedInfo,{
                 headers: {
