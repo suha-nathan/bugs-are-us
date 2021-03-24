@@ -11,7 +11,7 @@ const bugSchema = new Schema({
             user: {type: Schema.Types.ObjectId, ref: 'User'},
             commentText: { type: String},
             postedAt: {type: Date, default: Date.now},
-            editedAt: {type: Date, default: Date.now}
+            editedAt: {type: Date }
         }
     ],
     user: {type: Schema.Types.ObjectId, ref: 'User'},
