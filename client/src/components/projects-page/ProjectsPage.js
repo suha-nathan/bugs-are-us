@@ -11,7 +11,6 @@ const ProjectsPage = () => {
     const [allProjects, setAllProjects] = useState([])
     useEffect(() => {
         loadAllProjects()
-        console.log(allProjects)
     }, [])
 
     async function loadAllProjects() {
