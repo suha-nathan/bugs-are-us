@@ -16,11 +16,6 @@ router.post("/signup", upload.single("file"),async (req, res) => {
 
         let {  firstName, lastName, email, password, description, role } = req.body
 
-        console.log("request file is",req.file)
-        // console.log(req.body)
-        const imagePath = req.file.path
-        const uniqueFilename = new Date().toISOString()
-
         const repeatUser = await User.findOne({email})
         if(repeatUser){
             throw "user found with same email"
@@ -36,23 +31,27 @@ router.post("/signup", upload.single("file"),async (req, res) => {
             role
         }
 
-        // check for req.file.mimetype to be image: 'image/jpeg' 'image/png',
-
-        const uploadResponse = await cloudinary.uploader.upload(imagePath, {
-            public_id: `bugs/${uniqueFilename}`,
-            tags: "bugs"
-        }, (err, result) => {
-            if (err){
-                return res.send(err)
-            }
-            // console.log("file uploaded to cloudinary")
-            //remove file from server
-            const fs = require('fs')
-            fs.unlinkSync(imagePath)
-            saveObj.profilePicture = result.url
-        })
-
-        console.log(uploadResponse)
+        console.log("request file is",req.file)
+        // console.log(req.body)
+        if(req.file){
+            // check for req.file.mimetype to be image: 'image/jpeg' 'image/png',
+            const imagePath = req.file.path
+            const uniqueFilename = new Date().toISOString()
+            const uploadResponse = await cloudinary.uploader.upload(imagePath, {
+                public_id: `bugs/${uniqueFilename}`,
+                tags: "bugs"
+            }, (err, result) => {
+                if (err){
+                    return res.send(err)
+                }
+                // console.log("file uploaded to cloudinary")
+                //remove file from server
+                const fs = require('fs')
+                fs.unlinkSync(imagePath)
+                saveObj.profilePicture = result.url
+            })
+            console.log(uploadResponse)
+        }
 
         const user = new User(saveObj)
         console.log(user)

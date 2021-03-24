@@ -10,6 +10,13 @@ import axios from "axios";
 
 const EditAccountPage = ({user}) => {
     const [isEdited, setEdited] = useState(false)
+    const [profilePicture, setProfilePicture] = useState(null)
+    const [thumbnailImage, setThumbnailImage] = useState(null)
+
+    function onChange(e){
+        setThumbnailImage(URL.createObjectURL(e.target.files[0]))
+        setProfilePicture(e.target.files[0])
+    }
 
     const editAccountSchema = Yup.object().shape({
         // file: Yup.mixed(),
@@ -51,6 +58,17 @@ const EditAccountPage = ({user}) => {
                 password,
                 description,
             }
+            // const formData = new FormData()
+            //
+            // formData.append("firstName", firstName)
+            // formData.append("lastName", lastName)
+            // formData.append("email", email)
+            // formData.append("password", password)
+            // formData.append("description", description)
+            // formData.append("file", profilePicture)
+            //
+            // handleEdit(formData)
+            console.log("submitting")
             handleEdit(tempUserInfo)
         }
     })
@@ -60,9 +78,12 @@ const EditAccountPage = ({user}) => {
             const token = localStorage.getItem("token")
             let res = await axios.put("http://localhost:8080/user/update", updatedInfo,{
                 headers: {
+                    // "content-type": "multipart/form-data",
                     "x-auth-token": `Bearer ${token}`
                 }
-            })
+            }
+            )
+            console.log("editing")
 
         }catch(e){
             console.log("error editing")
@@ -86,7 +107,7 @@ const EditAccountPage = ({user}) => {
                     <Col className="signup-input-col">
                         <Row className="d-flex justify-content-between align-items-center px-5 h-100">
                             <Image
-                                src={user?.profilePicture?.imageData}
+                                src={user?.profilePicture}
                                 className="profile-pic profile-pic-sm "
                                 style={{width: "7rem", height: "7rem", borderRadius: "3.5rem"}}/>
 
@@ -95,7 +116,7 @@ const EditAccountPage = ({user}) => {
                                     className="position-relative"
                                     name="file"
                                     label="File"
-                                    onChange={handleChange}
+                                    onChange={ e => onChange(e) }
                                     feedback={errors.file}
                                     feedbackTooltip
                                 />

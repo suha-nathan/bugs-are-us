@@ -1,6 +1,12 @@
 const router = require('express').Router()
 const User = require('../model/user.model')
 
+const cloudinary = require('../lib/cloudinary.config')
+const multer = require("multer")
+const storage = require("../lib/multerStorage.config")
+
+const upload = multer({ storage })
+
 router.get("/", async(req, res)=>{
     try{
         let user = await User.findById(req.user.id)
@@ -31,9 +37,12 @@ router.delete("/delete/:id", async(req, res) => {
     }
 })
 
-router.put("/update", async(req, res) => {
+router.put("/update",async(req, res) => {
     try{
+
         const user = await User.findById(req.user.id).exec()
+
+        console.log(req.body)
 
         if(req.body.firstName){
             user.firstName = req.body.firstName
@@ -50,6 +59,9 @@ router.put("/update", async(req, res) => {
         if(req.body.description){
             user.description = req.body.description
         }
+
+
+
         await user.save()
 
         res.status(200).json({ message: "User details updated successfully"})
