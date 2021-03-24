@@ -175,7 +175,7 @@ function App() {
                 <Route>
                     {isAuth?
                         <Layout user={user} isAuth={isAuth} logOut={logOut}>
-                            <DashboardPage user={user} projectData={projectData} path="/" exact />
+                            <DashboardPage user={user} projectData={projectData} path="/dashboard" exact />
                         </Layout>
 
                         :

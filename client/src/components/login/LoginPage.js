@@ -29,7 +29,7 @@ const LoginPage = ({isAuth, login}) => {
 
     if(isAuth){
         // console.log("Redirecting")
-        return <Redirect to={"/"}/>
+        return <Redirect to={"/dashboard"}/>
     }
 
     return (

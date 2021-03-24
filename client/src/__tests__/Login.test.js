@@ -1,39 +1,26 @@
-import Enzyme, { shallow, mount } from 'enzyme'
-// import Adapter from 'enzyme-adapter-react-16'
-import Adapter from '@wojtekmaj/enzyme-adapter-react-17'
 import LoginPage from '../components/login/LoginPage'
-import {Button} from "react-bootstrap";
-import { render, screen, fireEvent, findByText, waitFor} from '@testing-library/react'
+import { render, screen, fireEvent, waitFor} from '@testing-library/react'
 import React from "react";
 import '@testing-library/jest-dom/extend-expect'
 import { MemoryRouter } from 'react-router-dom'
-import App from '../App'
-import { Route } from 'react-router-dom'
-
-// It should return an error if no email or password is provided when button is clicked
-// It should show an alert if the email or password is wrong when button is clicked
-// It should bring you to signup page if "Sign up" is clicked
-// It should render upon starting
+import SignupPage from "../components/signup/SignupPage";
+import TestingRouter from "../lib/TestingRouter";
+import DashboardPage from "../components/dashboard/DashboardPage";
 
 describe("Login page", () => {
 
-    const isAuth = jest.fn()
-    const login = jest.fn()
-
-    let loginButton
     beforeAll(() => {
         render(
             <MemoryRouter>
                 <LoginPage />
             </MemoryRouter>
         )
+    })
+    it("should render upon loading", () => {
 
-        loginButton = screen.getByRole('button', {
+        const loginButton = screen.getByRole('button', {
             name: /log in/i
         })
-    })
-
-    it("should render upon loading", () => {
         expect(loginButton).toBeInTheDocument()
     })
 
@@ -48,35 +35,55 @@ describe("Login page", () => {
         fireEvent.submit(screen.getByTestId('login-form'))
 
 
-        await waitFor(async () => {
-            expect( screen.getByText( /please enter your email!/)).toBeInTheDocument()
-            expect( screen.getByText( /please enter password!/)).toBeInTheDocument()
+        await waitFor(() => {
+            expect(screen.getByText( /please enter your email!/)).toBeInTheDocument()
+            expect(screen.getByText( /please enter password!/)).toBeInTheDocument()
         } )
+    })
 
+    it("should render signup page if \"Sign up\" is clicked", async () => {
+
+        const redirectUrl = '/signup'
+
+        render(
+            <TestingRouter
+            ComponentWithRedirection={() => <LoginPage />}
+            RedirectUrl={redirectUrl}
+            RedirectComponent={() => <SignupPage />}
+            />
+        )
+
+        screen.debug()
+        const signUpLink = screen.getByRole('link', { name: /sign up here/i })
+        screen.debug(signUpLink)
+        fireEvent.click(signUpLink)
+
+        await waitFor(() => {
+
+            expect(screen.getByRole('button', { name: /sign up/i }))
+            // expect(screen.getByText(redirectUrl)).toBeInTheDocument()
+        })
+    })
+
+    it("should render Dashboard Page if email and password is correct", () => {
+
+        let isAuth = true
+
+        let redirectUrl = '/dashboard'
+
+        render(
+            <TestingRouter
+                ComponentWithRedirection={() => <LoginPage isAuth={isAuth} />}
+                RedirectUrl={redirectUrl}
+                RedirectComponent={() => <DashboardPage />}
+            />
+        )
+
+        const searchBar = screen.getByRole('textbox')
+        expect(searchBar).toBeInTheDocument()
 
     })
 
-    // it("should log you in if email and password is correct", () => {
-    //     expect(wrapper.find('Button[type="submit"]').text()).toBe("Log In")
-    //     expect(wrapper.find('#login-password').exists()).toBe(true)
-    //     expect(wrapper.find('FormControl[name="email"]').exists()).toBe(true)
-    //     expect(wrapper.find('FormControl[name="password"]').exists()).toBe(true)
-    //
-    //
-    //
-    // })
-    //
-    // it("should show an alert if email and password is blank", () => {
-    //     expect(wrapper.find('Button').text()).toBe('Log In')
-    //
-    //
-    //     console.log(wrapper.find('form').debug())
-    //     wrapper.find('Button').simulate('click')
-    //     console.log(wrapper.find('form').debug())
-    //     // expect(wrapper.find('.emailError')).toHaveLength(1)
-    //     // expect(wrapper.find(".emailError").children()).toHaveLength(1)
-    //     expect(wrapper.find('.error-message').text()).toBe("please enter email")
-    // })
 })
 
 

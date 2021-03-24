@@ -2,13 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3306ddab-2beb-4430-b7f6-567000f584ca" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/backend/routes/user.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/user.route.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/lib/TestingRouter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/App.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.removetest.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/edit-account/EditAccountPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/edit-account/EditAccountPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/__tests__/Login.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/__tests__/Login.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/__tests__/__snapshots__/Login.test.js.snap" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/login/LoginPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/login/LoginPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/projects-page/ProjectsPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/projects-page/ProjectsPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/client/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +36,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/client/src/lib" />
       <recent name="$PROJECT_DIR$/client/src" />
       <recent name="C:\Users\isaac\Desktop\sei27sg\week-8\bugs-are-us\client\src\components\shared" />
     </key>
@@ -47,7 +49,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1616480960081</updated>
-      <workItem from="1616480961834" duration="23008000" />
+      <workItem from="1616480961834" duration="29059000" />
     </task>
     <servers />
   </component>
