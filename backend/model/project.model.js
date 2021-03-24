@@ -4,15 +4,12 @@ const Schema = mongoose.Schema
 const projectSchema = new Schema ({
     title: { type: String, required: true},
     description: { type: String, required: true},
-    categories: [],
+    categories: { type: String },
+    createdBy: { type: Schema.Types.ObjectId, ref: 'User', required: true },
     bugs: [{ type: Schema.Types.ObjectId, ref: 'Bug'}],
     members: [{ type: Schema.Types.ObjectId, ref: 'User'}],
-    projectLead: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: 'User'
-        },
-    ]},
+    projectLead: { type: Schema.Types.ObjectId, ref: 'User' },
+    },
     { timestamps: true}
     )
 

@@ -1,19 +1,14 @@
 import React, {useState} from 'react'
-import TempHeader from "../shared/TempHeader";
-import {Button, Col, Container, Dropdown, Form, Image, Row} from "react-bootstrap";
-import {Link, Redirect} from "react-router-dom";
+import {Button, Col, Container, Form, Image, Row} from "react-bootstrap";
+import {Redirect} from "react-router-dom";
 import EditAccountInputCol from "./EditAccountInputCol";
-import Header from "../shared/Header";
-import Sidebar from "../sidebar/Sidebar";
 import * as Yup from "yup"
 import {useFormik} from "formik"
 import axios from "axios";
-import SignupInputCol from "../signup/SignupInputCol";
 
 
 
 const EditAccountPage = ({user}) => {
-    const [userInfo, setUserInfo] = useState({})
     const [isEdited, setEdited] = useState(false)
 
     const editAccountSchema = Yup.object().shape({
@@ -36,12 +31,12 @@ const EditAccountPage = ({user}) => {
     const { handleChange,errors, handleSubmit, touched, values } = useFormik({
         initialValues: {
             // file:null,
-            firstName: "",
-            lastName: "",
-            email: "",
+            firstName: user.firstName,
+            lastName: user.lastName,
+            email: user.email,
             password: "",
             confirmPassword: "",
-            description: "",
+            description: user.description,
 
         },
         validationSchema: editAccountSchema,
@@ -80,81 +75,108 @@ const EditAccountPage = ({user}) => {
     }
 
     return (
-        <div>
-            <Header user={user} />
+        <Container className="d-flex flex-column justify-content-center align-items-center vh-100 ">
+            <h1 className="my-0 ">Edit Account</h1>
 
-            <Row>
-                <Col md={2}>
-                    <Sidebar />
-                </Col>
+            <form onSubmit={handleSubmit}>
 
-                <Col>
+            <div className="signup-page-container__content w-100 h-150 d-flex flex-column justify-content-between">
+                <Row className="h-75 ">
 
-                    <Container className="d-flex flex-column justify-content-center align-items-center vh-100 ">
-                        <h1 className="my-0 ">Edit Account</h1>
+                    <Col className="signup-input-col">
+                        <Row className="d-flex justify-content-between align-items-center px-5 h-100">
+                            <Image
+                                src={user?.profilePicture?.imageData}
+                                className="profile-pic profile-pic-sm "
+                                style={{width: "7rem", height: "7rem", borderRadius: "3.5rem"}}/>
 
-                        <form onSubmit={handleSubmit}>
+                            <Form.Group>
+                                <Form.File
+                                    className="position-relative"
+                                    name="file"
+                                    label="File"
+                                    onChange={handleChange}
+                                    feedback={errors.file}
+                                    feedbackTooltip
+                                />
+                            </Form.Group>
+                        </Row>
+                    </Col>
 
-                        <div className="signup-page-container__content w-100 h-150 d-flex flex-column justify-content-between">
-                            <Row className="h-75 ">
+                    <EditAccountInputCol
+                        placeholder="First Name"
+                        name="firstName"
+                        handleChange={handleChange}
+                        values={values}
+                        errors={errors}
+                        touched={touched}
+                        size={4}/>
 
-                                <Col className="signup-input-col">
-                                    <Row className="d-flex justify-content-between align-items-center px-5 h-100">
-                                        <Image src="https://www.placehold.it/90x90" className="rounded-circle"></Image>
-                                        <Form.Group>
-                                            <Form.File
-                                                className="position-relative"
-                                                name="file"
-                                                label="File"
-                                                onChange={handleChange}
-                                                feedback={errors.file}
-                                                feedbackTooltip
-                                            />
-                                        </Form.Group>
-                                    </Row>
-                                </Col>
+                    <EditAccountInputCol
+                        placeholder="Last Name"
+                        name="lastName"
+                        handleChange={handleChange}
+                        values={values}
+                        errors={errors}
+                        touched={touched}
+                        size={4} />
 
-                                <EditAccountInputCol placeholder={user.firstName}  name="firstName" handleChange={handleChange} values={values} errors={errors} touched={touched} size={4}/>
-                                <EditAccountInputCol placeholder={user.lastName}  name="lastName"  handleChange={handleChange} values={values} errors={errors} touched={touched} size={4} />
-                                <EditAccountInputCol placeholder={user.email} name="email"  handleChange={handleChange} values={values} errors={errors} touched={touched} user={user} size={4}/>
-                                <EditAccountInputCol placeholder="Password" name="password" type="password"  handleChange={handleChange} values={values} errors={errors} touched={touched} size={4}/>
-                                <EditAccountInputCol placeholder="Confirm Password" name="confirmPassword" type="password"  handleChange={handleChange} values={values} errors={errors} touched={touched} size={4}/>
-                                <EditAccountInputCol placeholder={user.description} name="description"  handleChange={handleChange} values={values} errors={errors} touched={touched} isTextarea={true} size={8}/>
+                    <EditAccountInputCol
+                        placeholder="Email"
+                        name="email"
+                        handleChange={handleChange}
+                        values={values}
+                        errors={errors}
+                        touched={touched}
+                        user={user}
+                        size={4}/>
 
-                                {/*<Col md={4} className="signup-input-col d-flex align-items-center justify-content-center w-100">*/}
-                                {/*    <Dropdown>*/}
-                                {/*        <Dropdown.Toggle variant="primary" id="dropdown-basic">*/}
-                                {/*            Roles*/}
-                                {/*        </Dropdown.Toggle>*/}
-                                {/*        <Dropdown.Menu show >*/}
+                    <EditAccountInputCol
+                        placeholder="Password"
+                        name="password"
+                        type="password"
+                        handleChange={handleChange}
+                        values={values}
+                        errors={errors}
+                        touched={touched}
+                        size={4}/>
 
-                                {/*            <Dropdown.Item>Users/Engineers</Dropdown.Item>*/}
-                                {/*            <Dropdown.Item>Team Leader</Dropdown.Item>*/}
-                                {/*        </Dropdown.Menu>*/}
-                                {/*    </Dropdown>*/}
+                    <EditAccountInputCol
+                        placeholder="Confirm Password"
+                        name="confirmPassword"
+                        type="password"
+                        handleChange={handleChange}
+                        values={values}
+                        errors={errors}
+                        touched={touched}
+                        size={4}/>
 
-                                {/*</Col>*/}
-                            </Row>
-                            <div className="signup-page-container__signup-row w-100">
-                                <Row>
-                                    <Col md={{ span: 4, offset: 4 }}>
-                                        <Button variant="primary" type="submit">Save Changes</Button>
-                                    </Col>
+                    <EditAccountInputCol
+                        placeholder="Write a short description of yourself here"
+                        name="description"
+                        handleChange={handleChange}
+                        values={values}
+                        errors={errors}
+                        touched={touched}
+                        isTextarea={true}
+                        size={8}/>
+
+                </Row>
+                <div className="signup-page-container__signup-row w-100">
+                    <Row>
+                        <Col md={{ span: 4, offset: 4 }}>
+                            <Button variant="primary" type="submit">Save Changes</Button>
+                        </Col>
 
 
-                                </Row>
+                    </Row>
 
-                            </div>
-                        </div>
-                        </form>
+                </div>
+            </div>
+            </form>
 
-                    </Container>
-                </Col>
-            </Row>
+        </Container>
 
-
-
-        </div>
     )
 }
 

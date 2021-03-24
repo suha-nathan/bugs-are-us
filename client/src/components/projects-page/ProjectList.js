@@ -1,12 +1,12 @@
 import React from 'react'
 import ProjectCard from "./ProjectCard"
 import { Col, Row } from "react-bootstrap";
-const ProjectList = (props) => {
+const ProjectList = ({ allProjects}) => {
 
     return (
         <div>
             <Row>
-                { Array(5).fill(0).map(project => (
+                { allProjects.map(project => (
                     <Col md={4}>
                         <ProjectCard project={project} />
                     </Col>

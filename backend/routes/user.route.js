@@ -12,11 +12,11 @@ router.get("/", async(req, res)=>{
 
 router.get("/all", async(req, res) => {
     try{
-        let allUser = await User.find()
+        let data = await User.find()
             .populate('projects')
             .populate('bugs')
 
-        res.status(200).json({allUser})
+        res.status(200).json({data})
     }catch(e){
         res.status(400).json({ message: "Couldn't retrieve all users"})
     }
