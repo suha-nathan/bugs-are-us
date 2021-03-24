@@ -13,10 +13,10 @@ const EditAccountPage = ({user}) => {
 
     const editAccountSchema = Yup.object().shape({
         // file: Yup.mixed(),
-        firstName: Yup.string().required("Please enter your first name"),
-        lastName: Yup.string().required("Please enter your first name"),
-        email: Yup.string().email("Invalid Email").required("Please enter your email"),
-        password: Yup.string().required("password is required"),
+        firstName: Yup.string(),
+        lastName: Yup.string(),
+        email: Yup.string(),
+        password: Yup.string(),
         confirmPassword: Yup.string().when("password",{
             is: val=> (val && val.length>0), //double exclamation casts boolean
             then: Yup.string().oneOf(

@@ -58,16 +58,19 @@ function App() {
 
     async function signUp(userInfo) {
         try{
-            let res = await axios.post("http://localhost:8080/auth/signup", userInfo)
+            let res = await axios.post("http://localhost:8080/auth/signup", userInfo, {
+                    headers: {
+                        "content-type": "multipart/form-data"
+                    }
+                }
+            )
+            setAuth(true)
             console.log("signup success")
-
-
-            // setAuth(true)
-            // console.log("signup success")
-            // localStorage.setItem("token",res.data.token)
+            setSuccessMessage("signup success")
+            localStorage.setItem("token",res.data.token)
         }catch(e){
-            console.log(e.response.data.message)
-            setErrorMessage(e.response.data.message)
+            // console.log(e.response.data.message)
+            setErrorMessage("Sign up failure, please try again")
             setTimeout(() => {
                 setErrorMessage("")
             }, 2000)
@@ -97,9 +100,6 @@ function App() {
         localStorage.removeItem("token")
     }
 
-    // console.log(errorMessage)
-    // console.log(isAuth)
-    // console.log(user)
   return (
     <div className="App">
         <BrowserRouter>
@@ -113,7 +113,7 @@ function App() {
                 </Route>
 
                 <Route path="/signup">
-                    <SignupPage isSignedUp={isSignedUp} setSignedUp={setSignedUp} signUp={signUp} setSuccessMessage={setSuccessMessage} />
+                    <SignupPage isAuth={isAuth} isSignedUp={isSignedUp} setSignedUp={setSignedUp} signUp={signUp} setSuccessMessage={setSuccessMessage} />
                 </Route>
 
 

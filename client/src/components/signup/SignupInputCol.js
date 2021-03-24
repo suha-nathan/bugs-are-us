@@ -12,7 +12,7 @@ const SignupInputCol = ({name, placeholder, size, type, isTextarea, values, vali
     // }
     // console.log(errors[name])
     // console.log(touched[name])
-    console.log(type)
+    // console.log(type)
     return (
         <>
             <Col md={size} className="signup-input-col d-flex flex-column justify-content-center position-relative">

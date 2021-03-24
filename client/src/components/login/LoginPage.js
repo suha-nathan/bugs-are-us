@@ -39,8 +39,10 @@ const LoginPage = ({isAuth, login}) => {
             <Container className="d-flex flex-column justify-content-center align-items-center vh-100 ">
                 <h1 className="my-0 ">Bugs R Us</h1>
                 <Row className="w-100 h-75 login-page-container__content">
-                    <Col md={7} className="login-page-container__gif-section"></Col>
-                    <Col md={5} className="login-page-container__login-section d-flex justify-content-center flex-column align-items-center">
+                    <Col md={6} className="login-page-container__gif-section">
+                        {/*<img className="login-page-container__butterfly-image" src="https://64.media.tumblr.com/36e415e8b8c2781e6b1d5476f0747b35/tumblr_o13s5fLkYe1twrbr9o1_540.gifv" alt=""/>*/}
+                    </Col>
+                    <Col md={6} className="login-page-container__login-section d-flex justify-content-center flex-column align-items-center">
 
                         <h2>Log In</h2>
                         <form onSubmit={handleSubmit} >

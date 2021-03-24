@@ -8,14 +8,14 @@ import * as Yup from "yup"
 import {useFormik} from "formik"
 import axios from "axios";
 
-const SignupPage = ({isSignedUp,signUp,setSignedUp, setSuccessMessage}) => {
-    const [baseImage, setBaseImage] = useState("https://www.placehold.it/80x80")
+const SignupPage = ({isAuth,isSignedUp,signUp,setSignedUp, setSuccessMessage}) => {
+    const [baseImageUpload, setBaseImageUpload] = useState(null)
+    const [thumbnailImage, setThumbnailImage] = useState(null)
 
-    function getBaseFile(files){
-        setBaseImage(files.base64)
-
+    function onChange(e){
+        setThumbnailImage(URL.createObjectURL(e.target.files[0]))
+        setBaseImageUpload(e.target.files[0])
     }
-
 
     const signupSchema = Yup.object().shape({
         file: Yup.mixed(),
@@ -35,7 +35,7 @@ const SignupPage = ({isSignedUp,signUp,setSignedUp, setSuccessMessage}) => {
         terms: Yup.bool().required().oneOf([true], 'terms must be accepted')
     })
 
-    const { handleChange,errors, handleSubmit, touched, values } = useFormik({
+    const { handleChange,errors, handleSubmit, touched, values, setFieldValue } = useFormik({
         initialValues: {
             file:null,
             firstName: "",
@@ -48,37 +48,46 @@ const SignupPage = ({isSignedUp,signUp,setSignedUp, setSuccessMessage}) => {
             terms:false
         },
         validationSchema: signupSchema,
-        onSubmit: (values,{resetForm}) => {
+        onSubmit: (values) => {
 
-            let imageObject = {
-                imageName: "base-image-" + Date.now(),
-                imageData: baseImage.toString()
-            }
-
-            let { firstName, lastName, email, password, description, role } = values
+            let {  firstName, lastName, email, password, description, role } = values
             let enumRole = role==="1" ? "teamLead" : "user"
 
-            let tempUserInfo = {
-                profilePicture: imageObject,
-                firstName,
-                lastName,
-                email,
-                password,
-                description,
-                role: enumRole
-            }
-            signUp(tempUserInfo).then(()=>{
-                setSignedUp(true)
-                setSuccessMessage("Successfully Signed Up! Please Login")
-                setTimeout(() => {
-                    setSuccessMessage("")
-                }, 2000)
-            })
+            // console.log(baseImage)
+            // let tempUserInfo = {
+            //     file: baseImage,
+            //     firstName,
+            //     lastName,
+            //     email,
+            //     password,
+            //     description,
+            //     role: enumRole
+            // }
+            const formData = new FormData()
+            formData.append("firstName",firstName)
+            formData.append("lastName",lastName)
+            formData.append("email",email)
+            formData.append("password",password)
+            formData.append("description",description)
+            formData.append("role",enumRole)
+            formData.append("file",baseImageUpload)
+
+            // tempUserInfo.append("firstName",firstName)
+            // console.log(tempUserInfo)
+            // console.log(formData.get("file"))
+            signUp(formData)
+            //     .then(()=>{
+            //     setSignedUp(true)
+            //     setSuccessMessage("Successfully Signed Up! Please Login")
+            //     setTimeout(() => {
+            //         setSuccessMessage("")
+            //     }, 2000)
+            // })
 
         }
     })
 
-    if(isSignedUp){
+    if(isAuth){
         return <Redirect to={"/login"}/>
     }
 
@@ -91,6 +100,8 @@ const SignupPage = ({isSignedUp,signUp,setSignedUp, setSuccessMessage}) => {
 
     }
 
+    // console.log(baseImage)
+
     return (
         <div className="signup-page-container">
             <TempHeader />
@@ -99,39 +110,43 @@ const SignupPage = ({isSignedUp,signUp,setSignedUp, setSuccessMessage}) => {
                 <h1 className="my-0 ">Bugs R Us</h1>
 
 
-                <Form onSubmit={handleSubmit}>
+                <Form onSubmit={handleSubmit} encType="multipart/form-data">
                     <div className="signup-page-container__content w-100 h-150 d-flex flex-column justify-content-between">
                         <Row className="h-75 ">
                             <Col className="signup-input-col">
                                 <Row className="d-flex justify-content-between align-items-center px-5 h-100">
-                                    {/*<Image src="https://www.placehold.it/80x80" className="rounded-circle"></Image>*/}
-
-                                    {/*<Form.Group>*/}
-                                    {/*    <Form.File*/}
-                                    {/*        className="position-relative"*/}
-                                    {/*        name="file"*/}
-                                    {/*        label="File"*/}
-                                    {/*        onChange={handleChange}*/}
-                                    {/*        feedback={errors.file}*/}
-                                    {/*        feedbackTooltip*/}
-                                    {/*    />*/}
-                                    {/*</Form.Group>*/}
-                                    {/*<ImageUpload/>*/}
-
-                                    <Image
-                                        src={baseImage}
-                                        alt="upload-image"
-                                        width="100"
-                                        height="100"
-                                        className="rounded-circle"/>
+                                    {!thumbnailImage ?
+                                        <Image src="https://www.placehold.it/80x80" className="rounded-circle"/>
+                                        :
+                                        <Image src={thumbnailImage} width="80px" height="80px" className="rounded-circle"/>
+                                    }
 
                                     <Form.Group>
-                                        <FileBase
-                                            type="file"
-                                            multiple={false}
-                                            onDone={e=>{ getBaseFile(e) }}
+                                        <Form.File
+                                            className="position-relative"
+                                            name="file"
+                                            label="File"
+                                            onChange={ e => onChange(e) }
+                                            feedback={errors.file}
+                                            feedbackTooltip
                                         />
                                     </Form.Group>
+                                    {/*<ImageUpload/>*/}
+
+                                    {/*<Image*/}
+                                    {/*    src={baseImage}*/}
+                                    {/*    alt="upload-image"*/}
+                                    {/*    width="100"*/}
+                                    {/*    height="100"*/}
+                                    {/*    className="rounded-circle"/>*/}
+
+                                    {/*<Form.Group>*/}
+                                    {/*    <FileBase*/}
+                                    {/*        type="file"*/}
+                                    {/*        multiple={false}*/}
+                                    {/*        onDone={e=>{ getBaseFile(e) }}*/}
+                                    {/*    />*/}
+                                    {/*</Form.Group>*/}
 
                                 </Row>
                             </Col>
