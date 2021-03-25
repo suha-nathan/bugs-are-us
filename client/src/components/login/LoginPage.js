@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {Row, Col, Container, Form, Button} from 'react-bootstrap'
+import {Row, Col, Container, Form, Button,FormControl} from 'react-bootstrap'
 import {Link, Redirect} from "react-router-dom";
 import TempHeader from "../shared/TempHeader";
 import * as Yup from "yup"
@@ -29,7 +29,7 @@ const LoginPage = ({isAuth, login}) => {
 
     if(isAuth){
         // console.log("Redirecting")
-        return <Redirect to={"/"}/>
+        return <Redirect to={"/dashboard"}/>
     }
 
     return (
@@ -45,7 +45,7 @@ const LoginPage = ({isAuth, login}) => {
                     <Col md={6} className="login-page-container__login-section d-flex justify-content-center flex-column align-items-center">
 
                         <h2>Log In</h2>
-                        <form onSubmit={handleSubmit} >
+                        <form data-testid="login-form" onSubmit={handleSubmit} >
                             <Form.Control
                                 name="email"
                                 placeholder="Email"
@@ -53,13 +53,16 @@ const LoginPage = ({isAuth, login}) => {
                                 className="my-2"
                                 onChange={handleChange}
                             />
+                            <div className={"emailError"}>
                             {errors.email && touched.email ?
-                                <div>{errors.email}</div>
+                                <div className="error-message">{errors.email}</div>
                                 :
                                 null
                             }
+                            </div>
 
                             <Form.Control
+                                id="login-password"
                                 name="password"
                                 placeholder="Password"
                                 value={values.password}
@@ -68,7 +71,7 @@ const LoginPage = ({isAuth, login}) => {
                                 onChange={handleChange}
                             />
                             {errors.password && touched.password ?
-                                <div>{errors.password}</div>
+                                <div className="error-message">{errors.password}</div>
                                 :
                                 null
                             }

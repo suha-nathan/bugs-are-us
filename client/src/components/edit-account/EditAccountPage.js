@@ -7,7 +7,6 @@ import {useFormik} from "formik"
 import axios from "axios";
 
 
-
 const EditAccountPage = ({user}) => {
     const [isEdited, setEdited] = useState(false)
     const [profilePicture, setProfilePicture] = useState(null)
@@ -58,6 +57,7 @@ const EditAccountPage = ({user}) => {
                 password,
                 description,
             }
+
             // const formData = new FormData()
             //
             // formData.append("firstName", firstName)
@@ -68,13 +68,17 @@ const EditAccountPage = ({user}) => {
             // formData.append("file", profilePicture)
             //
             // handleEdit(formData)
-            console.log("submitting")
+            // console.log("submitting")
+
+            // console.log(tempUserInfo)
+
             handleEdit(tempUserInfo)
         }
     })
 
     async function handleEdit(updatedInfo){
         try{
+
             const token = localStorage.getItem("token")
             let res = await axios.put("http://localhost:8080/user/update", updatedInfo,{
                 headers: {

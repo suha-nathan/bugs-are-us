@@ -88,7 +88,7 @@ const SignupPage = ({isAuth,isSignedUp,signUp,setSignedUp, setSuccessMessage}) =
     })
 
     if(isAuth){
-        return <Redirect to={"/login"}/>
+        return <Redirect to={"/dashboard"}/>
     }
 
     function validateConfirmPassword(password, value) {
