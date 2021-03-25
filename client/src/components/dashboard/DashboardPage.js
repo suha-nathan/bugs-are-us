@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import DataTable from "../shared/DataTable";
 
 const DashboardPage = ({ user , projectData }) => {
-    const [filteredData, setFilteredData] = useState([...projectData])
+    const [filteredData, setFilteredData] = useState([])
 
     const history = useHistory()
 
@@ -26,7 +26,7 @@ const DashboardPage = ({ user , projectData }) => {
 
     useEffect(()=>{
         console.log(filteredData)
-
+        setFilteredData([...projectData])
     },[])
 
     function handleSearch(e) {
