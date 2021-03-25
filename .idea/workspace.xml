@@ -2,47 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="85d1eaa2-6b7b-4cb8-91b1-45857e4e8f27" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/backend/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/__tests__/server.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/__tests__/server.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/build/asset-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/asset-manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/build/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/build/favicon.ico" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/build/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/build/logo192.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/logo192.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/build/logo512.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/logo512.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/build/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/build/robots.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/robots.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/build/static/css/main.c0dede89.chunk.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/static/css/main.c0dede89.chunk.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/build/static/css/main.c0dede89.chunk.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/build/static/css/main.c0dede89.chunk.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/build/static/js/2.7ba32e7a.chunk.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/static/js/2.7ba32e7a.chunk.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/build/static/js/2.7ba32e7a.chunk.js.LICENSE.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/static/js/2.7ba32e7a.chunk.js.LICENSE.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/build/static/js/2.7ba32e7a.chunk.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/build/static/js/2.7ba32e7a.chunk.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/build/static/js/3.bede095b.chunk.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/static/js/3.bede095b.chunk.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/build/static/js/3.bede095b.chunk.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/build/static/js/3.bede095b.chunk.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/build/static/js/main.5b96de7f.chunk.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/static/js/main.5b96de7f.chunk.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/build/static/js/main.5b96de7f.chunk.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/build/static/js/main.5b96de7f.chunk.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/build/static/js/runtime-main.7765203d.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/static/js/runtime-main.7765203d.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/build/static/js/runtime-main.7765203d.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/build/static/js/runtime-main.7765203d.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/build/static/media/forest-stitched-bg.c9d973c1.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/static/media/forest-stitched-bg.c9d973c1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/lib/authChecker.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/authChecker.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/lib/cloudinary.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/cloudinary.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/lib/mongoose.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/mongoose.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/lib/multerStorage.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/multerStorage.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/lib/playground.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/playground.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/lib/projectMockData.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/projectMockData.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/lib/userMockData.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/userMockData.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/model/bug.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/model/bug.model.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/model/project.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/model/project.model.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/model/user.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/model/user.model.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/profileuploads/IMAGE-1616694272256.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/profileuploads/IMAGE-1616694272256.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/profileuploads/IMAGE-1616694299260.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/profileuploads/IMAGE-1616694299260.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/routes/auth.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/auth.route.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/routes/bug.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/bug.route.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/routes/comment.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/comment.route.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/routes/project.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/project.route.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/routes/upvote.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/upvote.route.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/routes/user.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/user.route.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -81,7 +40,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1616709934384</updated>
-      <workItem from="1616709937447" duration="199000" />
+      <workItem from="1616709937447" duration="309000" />
     </task>
     <servers />
   </component>
