@@ -14,7 +14,7 @@ const CreateProjectPage = ({ user, loadProjectData}) => {
 
     const handleCreateProject = async (values) => {
         const token = localStorage.getItem('token')
-
+        console.log(values)
         const res = await axios.post('http://localhost:8080/project/create', {...values, createdBy: user._id}, {
             headers: {
                 "x-auth-token": `Bearer ${token}`
@@ -40,8 +40,6 @@ const CreateProjectPage = ({ user, loadProjectData}) => {
 
         setUsers(users)
         setTeamLeads(users.filter( user => user.role === 'teamLead'))
-
-
     }
 
     const projectSchema = Yup.object().shape({
