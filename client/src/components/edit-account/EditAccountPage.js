@@ -9,10 +9,14 @@ import axios from "axios";
 
 const EditAccountPage = ({ user, setSuccessMessage }) => {
     const [isEdited, setEdited] = useState(false)
+    const [isProfilePictureChange, setProfilePictureChange] = useState(false)
     const [profilePicture, setProfilePicture] = useState(null)
     const [thumbnailImage, setThumbnailImage] = useState(null)
 
     function onChange(e){
+        // console.log("changing")
+        // console.log(e.target.files[0])
+        setProfilePictureChange(true)
         setThumbnailImage(URL.createObjectURL(e.target.files[0]))
         setProfilePicture(e.target.files[0])
     }
@@ -57,37 +61,35 @@ const EditAccountPage = ({ user, setSuccessMessage }) => {
                 password,
                 description,
             }
+            console.log(profilePicture)
+            const formData = new FormData()
 
-            // const formData = new FormData()
-            //
-            // formData.append("firstName", firstName)
-            // formData.append("lastName", lastName)
-            // formData.append("email", email)
-            // formData.append("password", password)
-            // formData.append("description", description)
-            // formData.append("file", profilePicture)
-            //
-            // handleEdit(formData)
-            // console.log("submitting")
+            formData.append("firstName", firstName)
+            formData.append("lastName", lastName)
+            formData.append("email", email)
+            formData.append("password", password)
+            formData.append("description", description)
+            formData.append("file", profilePicture)
+
+            handleEdit(formData)
+            console.log("submitting")
 
             // console.log(tempUserInfo)
-
-            handleEdit(tempUserInfo)
+            // handleEdit(tempUserInfo)
         }
     })
 
     async function handleEdit(updatedInfo){
         try{
-
             const token = localStorage.getItem("token")
             let res = await axios.put("http://localhost:8080/user/edit", updatedInfo,{
                 headers: {
-                    // "content-type": "multipart/form-data",
+                    "content-type": "multipart/form-data",
                     "x-auth-token": `Bearer ${token}`
                 }
             })
             setEdited(true)
-            console.log("editing")
+            console.log("submitted")
 
         }catch(e){
             console.log("error editing")
@@ -107,17 +109,27 @@ const EditAccountPage = ({ user, setSuccessMessage }) => {
         <Container className="d-flex flex-column justify-content-center align-items-center vh-100 ">
             <h1 className="my-0 ">Edit Account</h1>
 
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} encType="multipart/form-data" >
 
             <div className="signup-page-container__content w-100 h-150 d-flex flex-column justify-content-between">
                 <Row className="h-75 ">
 
                     <Col className="signup-input-col">
                         <Row className="d-flex justify-content-between align-items-center px-5 h-100">
+
+                            {!isProfilePictureChange ?
                             <Image
-                                src={user?.profilePicture}
+                                src={user.profilePicture}
+                                className="profile-pic profile-pic-sm"
+                                style={{width: "5rem", height: "5rem", borderRadius: "3.5rem"}}/>
+                                :
+                                <Image
+                                src={thumbnailImage}
                                 className="profile-pic profile-pic-sm "
-                                style={{width: "7rem", height: "7rem", borderRadius: "3.5rem"}}/>
+                                style={{width: "5rem", height: "5rem", borderRadius: "3.5rem"}}/>
+                            }
+
+
 
                             <Form.Group>
                                 <Form.File

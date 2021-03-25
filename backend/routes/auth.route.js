@@ -13,7 +13,6 @@ const upload = multer({
 
 router.post("/signup", upload.single("file"),async (req, res) => {
     try{
-
         let {  firstName, lastName, email, password, description, role } = req.body
 
         const repeatUser = await User.findOne({email})
@@ -50,7 +49,7 @@ router.post("/signup", upload.single("file"),async (req, res) => {
                 fs.unlinkSync(imagePath)
                 saveObj.profilePicture = result.url
             })
-            console.log(uploadResponse)
+            // console.log(uploadResponse)
         }
 
         const newUser = new User(saveObj)
