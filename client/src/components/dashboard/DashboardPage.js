@@ -25,31 +25,22 @@ const DashboardPage = ({ isAuth, logOut, user , projectData }) => {
 
 
     return (
-        <>
-            <Header user={user} />
-            <TempHeader logOut={logOut} />
 
+        <Container>
+            <h1 className="text-left">Project Title / All Bugs Reported by Me</h1>
             <Row>
-                <Col md={2}>
-                    <Sidebar />
+                <Col md={10}>
+                    <SearchBar />
                 </Col>
-
-                <Col>
-                    <Container>
-                        <SearchBar />
-                        <div className="d-flex mb-3">
-                            <Button onClick={handleCreateBug}>+ Create New</Button>
-                        </div>
-
-                        <DataTable projectData={projectData} />
-                    </Container>
+                <Col md={2} className="d-flex mb-3">
+                    <Button onClick={handleCreateBug}>+ Create New</Button>
                 </Col>
-
-                {/*<BugList />*/}
             </Row>
 
+            <DataTable projectData={projectData} />
+        </Container>
 
-        </>
+
     )
 }
 

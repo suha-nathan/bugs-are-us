@@ -8,7 +8,7 @@ const BugInfo = ({ bugDetails }) => {
 
     let { type, title, description, priority, upVotes, user } = bugDetails
     return (
-        <Row className="my-3">
+        <Row className="my-3 font-open-sans">
             <Col>
                 <Table variant="sm" className="text-left border-bottom" >
                     <tbody>
@@ -79,7 +79,7 @@ const BugInfo = ({ bugDetails }) => {
 
                     <tr>
                         <td>Upvotes</td>
-                        <td>42</td>
+                        <td>{upVotes?.length}</td>
                     </tr>
                     </tbody>
                 </Table>

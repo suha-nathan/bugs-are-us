@@ -1,12 +1,30 @@
 const router = require('express').Router()
 const User = require('../model/user.model')
 
+const cloudinary = require('../lib/cloudinary.config')
+const multer = require("multer")
+const storage = require("../lib/multerStorage.config")
+
+const upload = multer({ storage })
+
 router.get("/", async(req, res)=>{
     try{
         let user = await User.findById(req.user.id)
         res.status(200).json({user})
     }catch(e){
         res.status(401).json({message:"smth went wrong"})
+    }
+})
+
+router.get("/all", async(req, res) => {
+    try{
+        let data = await User.find()
+            .populate('projects')
+            .populate('bugs')
+
+        res.status(200).json({data})
+    }catch(e){
+        res.status(400).json({ message: "Couldn't retrieve all users"})
     }
 })
 
@@ -19,9 +37,33 @@ router.delete("/delete/:id", async(req, res) => {
     }
 })
 
-router.put("/update/:id", async(req, res) => {
+router.put("/edit", async(req, res) => {
     try{
-        await User.findByIdAndUpdate(req.params.id, req.body)
+
+        const user = await User.findById(req.user.id).exec()
+
+        console.log(req.body)
+
+        if(req.body.firstName){
+            user.firstName = req.body.firstName
+        }
+        if(req.body.lastName){
+            user.lastName = req.body.lastName
+        }
+        if(req.body.email){
+            user.email = req.body.email
+        }
+        if(req.body.password){
+            user.password = req.body.password
+        }
+        if(req.body.description){
+            user.description = req.body.description
+        }
+
+
+
+        await user.save()
+
         res.status(200).json({ message: "User details updated successfully"})
     }catch(e){
         res.status(400).json({ message: "Failed to update user details"})

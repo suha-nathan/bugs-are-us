@@ -1,12 +1,21 @@
-import React from 'react'
+import React, {useState} from 'react'
 import TempHeader from "../shared/TempHeader";
 import {Button, Col, Container, Image, Row, Form} from "react-bootstrap";
 import {Link, Redirect} from "react-router-dom";
 import SignupInputCol from "./SignupInputCol";
+import FileBase from "react-file-base64"
 import * as Yup from "yup"
 import {useFormik} from "formik"
+import axios from "axios";
 
-const SignupPage = ({isAuth,signUp}) => {
+const SignupPage = ({isAuth,isSignedUp,signUp,setSignedUp, setSuccessMessage}) => {
+    const [baseImageUpload, setBaseImageUpload] = useState(null)
+    const [thumbnailImage, setThumbnailImage] = useState(null)
+
+    function onChange(e){
+        setThumbnailImage(URL.createObjectURL(e.target.files[0]))
+        setBaseImageUpload(e.target.files[0])
+    }
 
     const signupSchema = Yup.object().shape({
         file: Yup.mixed(),
@@ -15,7 +24,7 @@ const SignupPage = ({isAuth,signUp}) => {
         email: Yup.string().email("Invalid Email").required("Please enter your email"),
         password: Yup.string().required("password is required"),
         confirmPassword: Yup.string().when("password",{
-            is: val=> (!!(val && val.length)), //double exclamation casts boolean
+            is: val=> (val && val.length>0), //double exclamation casts boolean
             then: Yup.string().oneOf(
                 [Yup.ref("password")],
                 "password doesn't match"
@@ -26,7 +35,7 @@ const SignupPage = ({isAuth,signUp}) => {
         terms: Yup.bool().required().oneOf([true], 'terms must be accepted')
     })
 
-    const { handleChange,errors, handleSubmit, touched, values } = useFormik({
+    const { handleChange,errors, handleSubmit, touched, values, setFieldValue } = useFormik({
         initialValues: {
             file:null,
             firstName: "",
@@ -35,32 +44,63 @@ const SignupPage = ({isAuth,signUp}) => {
             password: "",
             confirmPassword: "",
             description: "",
-            role:"",
+            role:"2",
             terms:false
         },
         validationSchema: signupSchema,
-        onSubmit: (values,{resetForm}) => {
+        onSubmit: (values) => {
 
-            let { file, firstName, lastName, email, password, description, role } = values
+            let {  firstName, lastName, email, password, description, role } = values
             let enumRole = role==="1" ? "teamLead" : "user"
 
-            //file key-value still needs to be configured
+            // console.log(baseImage)
+            // let tempUserInfo = {
+            //     file: baseImage,
+            //     firstName,
+            //     lastName,
+            //     email,
+            //     password,
+            //     description,
+            //     role: enumRole
+            // }
+            const formData = new FormData()
+            formData.append("firstName",firstName)
+            formData.append("lastName",lastName)
+            formData.append("email",email)
+            formData.append("password",password)
+            formData.append("description",description)
+            formData.append("role",enumRole)
+            formData.append("file",baseImageUpload)
 
-            let tempUserInfo = {
-                firstName,
-                lastName,
-                email,
-                password,
-                description,
-                role: enumRole
-            }
-            signUp(tempUserInfo)
+            // tempUserInfo.append("firstName",firstName)
+            // console.log(tempUserInfo)
+            // console.log(formData.get("file"))
+            signUp(formData)
+            //     .then(()=>{
+            //     setSignedUp(true)
+            //     setSuccessMessage("Successfully Signed Up! Please Login")
+            //     setTimeout(() => {
+            //         setSuccessMessage("")
+            //     }, 2000)
+            // })
+
         }
     })
 
     if(isAuth){
-        return <Redirect to={"/"}/>
+        return <Redirect to={"/dashboard"}/>
     }
+
+    function validateConfirmPassword(password, value) {
+        let error = ''
+        if((password && value) && (password !== value)) {
+                error = 'Password not matched'
+        }
+        return error
+
+    }
+
+    // console.log(baseImage)
 
     return (
         <div className="signup-page-container">
@@ -70,33 +110,103 @@ const SignupPage = ({isAuth,signUp}) => {
                 <h1 className="my-0 ">Bugs R Us</h1>
 
 
-                <form onSubmit={handleSubmit}>
+                <Form onSubmit={handleSubmit} encType="multipart/form-data">
                     <div className="signup-page-container__content w-100 h-150 d-flex flex-column justify-content-between">
                         <Row className="h-75 ">
                             <Col className="signup-input-col">
                                 <Row className="d-flex justify-content-between align-items-center px-5 h-100">
-                                    <Image src="https://www.placehold.it/80x80" className="rounded-circle"></Image>
+                                    {!thumbnailImage ?
+                                        <Image src="https://www.placehold.it/80x80" className="rounded-circle"/>
+                                        :
+                                        <Image src={thumbnailImage} width="80px" height="80px" className="rounded-circle"/>
+                                    }
 
                                     <Form.Group>
                                         <Form.File
                                             className="position-relative"
                                             name="file"
                                             label="File"
-                                            onChange={handleChange}
+                                            onChange={ e => onChange(e) }
                                             feedback={errors.file}
                                             feedbackTooltip
                                         />
                                     </Form.Group>
+                                    {/*<ImageUpload/>*/}
+
+                                    {/*<Image*/}
+                                    {/*    src={baseImage}*/}
+                                    {/*    alt="upload-image"*/}
+                                    {/*    width="100"*/}
+                                    {/*    height="100"*/}
+                                    {/*    className="rounded-circle"/>*/}
+
+                                    {/*<Form.Group>*/}
+                                    {/*    <FileBase*/}
+                                    {/*        type="file"*/}
+                                    {/*        multiple={false}*/}
+                                    {/*        onDone={e=>{ getBaseFile(e) }}*/}
+                                    {/*    />*/}
+                                    {/*</Form.Group>*/}
 
                                 </Row>
                             </Col>
 
-                            <SignupInputCol placeholder="First Name" name="firstName"  handleChange={handleChange} values={values} errors={errors} touched={touched} size={4}/>
-                            <SignupInputCol placeholder="Last Name" name="lastName" handleChange={handleChange} values={values} errors={errors} touched={touched} size={4} />
-                            <SignupInputCol placeholder="Email" name="email" handleChange={handleChange} values={values} errors={errors} touched={touched} size={4}/>
-                            <SignupInputCol placeholder="Password" name="password" type="password"  handleChange={handleChange} values={values} errors={errors} touched={touched} size={4}/>
-                            <SignupInputCol placeholder="Confirm Password" name="confirmPassword" type="password"  handleChange={handleChange} values={values} errors={errors} touched={touched} size={4}/>
-                            <SignupInputCol placeholder="Description" name="description"handleChange={handleChange} values={values} errors={errors} touched={touched} isTextarea={true} size={8}/>
+                            <SignupInputCol
+                                placeholder="First Name"
+                                name="firstName"
+                                handleChange={handleChange}
+                                values={values}
+                                errors={errors}
+                                touched={touched}
+                                size={4}/>
+
+                            <SignupInputCol
+                                placeholder="Last Name"
+                                name="lastName"
+                                handleChange={handleChange}
+                                values={values}
+                                errors={errors}
+                                touched={touched}
+                                size={4} />
+
+                            <SignupInputCol
+                                placeholder="Email"
+                                name="email"
+                                handleChange={handleChange}
+                                values={values}
+                                errors={errors}
+                                touched={touched}
+                                size={4}/>
+
+                            <SignupInputCol
+                                placeholder="Password"
+                                name="password"
+                                type="password"
+                                handleChange={handleChange}
+                                values={values}
+                                errors={errors}
+                                touched={touched}
+                                size={4}/>
+
+                            <SignupInputCol
+                                placeholder="Confirm Password"
+                                name="confirmPassword"
+                                type="password"
+                                handleChange={handleChange}
+                                values={values}
+                                errors={errors}
+                                touched={touched}
+                                size={4}/>
+
+                            <SignupInputCol
+                                placeholder="Description"
+                                name="description"
+                                handleChange={handleChange}
+                                values={values}
+                                errors={errors}
+                                touched={touched}
+                                isTextarea={true}
+                                size={8}/>
 
                             <Col md={4} className="signup-input-col d-flex align-items-center justify-content-center w-100">
 
@@ -127,22 +237,19 @@ const SignupPage = ({isAuth,signUp}) => {
                         </Row>
                         <Form.Group>
                             <Form.Check
+                                type="checkbox"
                                 required
                                 name="terms"
-                                label="Agree to terms and conditions"
+                                label="I agree to terms and conditions"
                                 onChange={handleChange}
                                 feedback={errors.terms}
                                 feedbackTooltip
+                                id="inlineFormCheck"
                             />
-                            {/*{touched.terms && errors.terms ?(*/}
-                            {/*    <p className="signup-input-col__error-message text-left my-1"> {errors.terms} </p>*/}
-                            {/*    ) : null*/}
-                            {/*}*/}
                         </Form.Group>
                         <div className="signup-page-container__signup-row w-100">
                             <Row>
                                 <Col md={{ span: 4, offset: 4 }}>
-                                    {/*<Button variant="primary" onClick={()=>signUp(userInfo)}>Sign Up</Button>*/}
                                     <Button variant="primary" type="submit" >Sign Up</Button>
                                 </Col>
 
@@ -153,7 +260,7 @@ const SignupPage = ({isAuth,signUp}) => {
 
                         </div>
                     </div>
-                </form>
+                </Form>
             </Container>
         </div>
 

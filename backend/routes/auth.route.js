@@ -3,9 +3,18 @@ const User = require('../model/user.model')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
-router.post("/signup", async (req, res) => {
+const cloudinary = require('../lib/cloudinary.config')
+const multer = require("multer")
+const storage = require('../lib/multerStorage.config')
+
+const upload = multer({
+    storage:storage
+})
+
+router.post("/signup", upload.single("file"),async (req, res) => {
     try{
-        let { firstName, lastName, email, password, description, role } = req.body
+
+        let {  firstName, lastName, email, password, description, role } = req.body
 
         const repeatUser = await User.findOne({email})
         if(repeatUser){
@@ -13,6 +22,7 @@ router.post("/signup", async (req, res) => {
         }
 
         const saveObj = {
+            profilePicture:"",
             firstName,
             lastName,
             email,
@@ -20,8 +30,31 @@ router.post("/signup", async (req, res) => {
             description,
             role
         }
-        const user = new User(saveObj)
 
+        console.log("request file is",req.file)
+        // console.log(req.body)
+        if(req.file){
+            // check for req.file.mimetype to be image: 'image/jpeg' 'image/png',
+            const imagePath = req.file.path
+            const uniqueFilename = new Date().toISOString()
+            const uploadResponse = await cloudinary.uploader.upload(imagePath, {
+                public_id: `bugs/${uniqueFilename}`,
+                tags: "bugs"
+            }, (err, result) => {
+                if (err){
+                    return res.send(err)
+                }
+                // console.log("file uploaded to cloudinary")
+                //remove file from server
+                const fs = require('fs')
+                fs.unlinkSync(imagePath)
+                saveObj.profilePicture = result.url
+            })
+            console.log(uploadResponse)
+        }
+
+        const user = new User(saveObj)
+        console.log(user)
         await user.save()
 
         let payload = {
@@ -38,6 +71,7 @@ router.post("/signup", async (req, res) => {
             })
         })
         // res.send(user) //try logging req.body
+        res.send()
 
     }catch (e) {
         res.status(400).json({ message : e || "Registration Failed, try again"})
@@ -49,13 +83,13 @@ router.post("/login", async(req, res) => {
     try{
         let {email, password} = req.body
         // console.log(req.body)
-        const user = await User.findOne({email})
+        const foundUser = await User.findOne({email})
 
-        if(!user){
+        if(!foundUser){
             throw "Invalid Username or Password, try again"
         }
 
-        let isMatch = await bcrypt.compare(password, user.password)
+        let isMatch = await bcrypt.compare(password, foundUser.password)
         console.log(isMatch)
         if(!isMatch){
             throw "Invalid Username or Password, try again"
@@ -64,7 +98,7 @@ router.post("/login", async(req, res) => {
 
         let payload = {
             user:{
-                id:user._id
+                id:foundUser._id
             }
         }
         jwt.sign(payload,process.env.SECRET,{
@@ -72,6 +106,7 @@ router.post("/login", async(req, res) => {
         },(err,token)=>{
             res.status(200).json({
                 message:"successfully signed in!",
+                user:foundUser,
                 token
             })
         })
