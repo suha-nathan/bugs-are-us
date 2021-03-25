@@ -1,13 +1,14 @@
-import LoginPage from '../components/login/LoginPage'
-import { render, screen, fireEvent, waitFor} from '@testing-library/react'
 import React from "react";
+import { render, screen, fireEvent, waitFor} from '@testing-library/react'
+
 import '@testing-library/jest-dom/extend-expect'
 import { MemoryRouter } from 'react-router-dom'
 import SignupPage from "../components/signup/SignupPage";
-import TestingRouter from "../lib/TestingRouter";
+import TestingRouter from "../__mocks__/TestingRouter";
 import DashboardPage from "../components/dashboard/DashboardPage";
+import LoginPage from '../components/login/LoginPage'
 
-describe("Login page", () => {
+describe("<LoginPage />", () => {
 
     beforeAll(() => {
         render(
@@ -16,6 +17,7 @@ describe("Login page", () => {
             </MemoryRouter>
         )
     })
+
     it("should render upon loading", () => {
 
         const loginButton = screen.getByRole('button', {
@@ -53,9 +55,9 @@ describe("Login page", () => {
             />
         )
 
-        screen.debug()
+        // screen.debug()
         const signUpLink = screen.getByRole('link', { name: /sign up here/i })
-        screen.debug(signUpLink)
+        // screen.debug(signUpLink)
         fireEvent.click(signUpLink)
 
         await waitFor(() => {
