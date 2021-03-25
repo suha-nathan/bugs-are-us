@@ -42,17 +42,15 @@ router.put("/edit", async(req, res) => {
 
         const user = await User.findById(req.user.id).exec()
 
-        console.log(req.body)
-
         if(req.body.firstName){
             user.firstName = req.body.firstName
         }
         if(req.body.lastName){
             user.lastName = req.body.lastName
         }
-        if(req.body.email){
-            user.email = req.body.email
-        }
+        // if(req.body.email){
+        //     user.email = req.body.email
+        // }
         if(req.body.password){
             user.password = req.body.password
         }
@@ -60,13 +58,30 @@ router.put("/edit", async(req, res) => {
             user.description = req.body.description
         }
 
+        const foundInDatabase = await User.findOne({ email: req.body.email})
 
+
+        console.log(foundInDatabase)
+
+        // 3 different scenarios
+        // email never change,
+        // email change, but email already in database
+        // email change, email not in database
+
+        // found in database but not own email
+        if(user.email !== foundInDatabase.email) {
+            throw "Email exists in database"
+        }
+        if(!foundInDatabase) {
+            console.log('got here')
+            user.email = req.body.email
+        }
 
         await user.save()
 
         res.status(200).json({ message: "User details updated successfully"})
     }catch(e){
-        res.status(400).json({ message: "Failed to update user details"})
+        res.status(400).json({ message: e || "Failed to update user details"})
     }
 })
 
