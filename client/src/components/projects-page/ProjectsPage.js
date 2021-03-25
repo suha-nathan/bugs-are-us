@@ -19,9 +19,11 @@ const ProjectsPage = () => {
                 'x-auth-token': `Bearer ${localStorage.getItem('token')}`
             }
         })
-
+        console.log(res.data.data)
         setAllProjects(res.data.data)
     }
+
+    console.log(allProjects)
     return (
 
         <Container className="text-left">

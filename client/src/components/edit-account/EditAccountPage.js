@@ -89,7 +89,7 @@ const EditAccountPage = ({ user, setSuccessMessage }) => {
                 }
             })
             setEdited(true)
-            console.log("submitted")
+            // console.log("submitted")
 
         }catch(e){
             console.log("error editing")
@@ -116,7 +116,6 @@ const EditAccountPage = ({ user, setSuccessMessage }) => {
 
                     <Col className="signup-input-col">
                         <Row className="d-flex justify-content-between align-items-center px-5 h-100">
-
                             {!isProfilePictureChange ?
                             <Image
                                 src={user.profilePicture}
@@ -128,9 +127,7 @@ const EditAccountPage = ({ user, setSuccessMessage }) => {
                                 className="profile-pic profile-pic-sm "
                                 style={{width: "5rem", height: "5rem", borderRadius: "3.5rem"}}/>
                             }
-
-
-
+                            
                             <Form.Group>
                                 <Form.File
                                     className="position-relative"

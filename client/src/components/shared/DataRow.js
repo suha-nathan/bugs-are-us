@@ -6,8 +6,6 @@ import moment from 'moment'
 
 const DataRow = ({bug, index, handleUpVote}) => {
 
-
-
     return (
         <tr>
             <td>{index + 1}</td>

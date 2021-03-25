@@ -8,6 +8,7 @@ import DashboardPage from "./components/dashboard/DashboardPage";
 import LoginPage from "./components/login/LoginPage";
 import SignupPage from "./components/signup/SignupPage";
 import CreateBugPage from "./components/create-bug/CreateBugPage";
+import EditBugPage from "./components/create-bug/EditBugPage"
 import BugDetailsPage from "./components/bug-details/BugDetailsPage";
 import EditAccountPage from "./components/edit-account/EditAccountPage";
 import ProjectsPage from "./components/projects-page/ProjectsPage";
@@ -28,7 +29,6 @@ function App() {
         loadUser()
         loadProjectData()
     },[projectData.length])
-
 
     async function loadProjectData() {
         let res = await axios.get('/bug/all', {
@@ -68,6 +68,9 @@ function App() {
             console.log("signup success")
             // console.log(res.data)
             setSuccessMessage("signup success")
+            setTimeout(() => {
+                setSuccessMessage("")
+            }, 4000)
             setUser(res.data.user)
             localStorage.setItem("token",res.data.token)
         }catch(e){
@@ -86,7 +89,7 @@ function App() {
                     "x-auth-token" : `Bearer ${localStorage.token}`
                 }
             })
-            console.log("loading user",res.data.user)
+            // console.log("loading user",res.data.user)
             setUser(res.data.user)
             setAuth(true)
         }catch(e){
@@ -146,6 +149,16 @@ function App() {
                     <Layout user={user} isAuth={isAuth} logOut={logOut}>
                         <CreateBugPage user={user} loadProjectData={loadProjectData} />
                     </Layout>
+                        :
+                        <Redirect to="/login"/>
+                    }
+                </Route>
+
+                <Route path="/bug/edit" exact>
+                    {isAuth?
+                        <Layout user={user} isAuth={isAuth} logOut={logOut}>
+                            <EditBugPage user={user} loadProjectData={loadProjectData} />
+                        </Layout>
                         :
                         <Redirect to="/login"/>
                     }

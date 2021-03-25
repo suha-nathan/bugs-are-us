@@ -9,7 +9,7 @@ const Header = ({ user, logOut }) => {
         // console.log("logging out")
         logOut()
     }
-    console.log(user)
+    // console.log(user)
     return (
         <Row className="bg-primary py-2 px-3">
             <Col md={2} className="d-flex align-items-center pl-4">

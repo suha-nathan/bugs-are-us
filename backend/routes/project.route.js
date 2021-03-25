@@ -3,7 +3,7 @@ const Project = require('../model/project.model')
 
 router.post("/create", async(req, res) => {
     try{
-        let { title, description, categories, members, projectLead, createdBy } = req.body //remove bugs, should be empty by default
+        let { title, description, categories, members, teamLead, createdBy } = req.body //remove bugs, should be empty by default
         console.log(req.body)
 
         const saveProject = {
@@ -12,7 +12,7 @@ router.post("/create", async(req, res) => {
             categories,
             // bugs,
             members,
-            projectLead,
+            teamLead,
             createdBy
         }
 
@@ -29,7 +29,7 @@ router.get("/all", async(req, res) => {
     try{
         const data = await Project.find()
             .populate('members')
-            .populate('projectLead')
+            .populate('teamLead')
             .populate('bugs')
             .populate('createdBy')
 
