@@ -64,7 +64,9 @@ function App() {
             )
             setAuth(true)
             console.log("signup success")
+            console.log(res.data)
             setSuccessMessage("signup success")
+            setUser(res.data.user)
             localStorage.setItem("token",res.data.token)
         }catch(e){
             // console.log(e.response.data.message)

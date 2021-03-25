@@ -53,13 +53,13 @@ router.post("/signup", upload.single("file"),async (req, res) => {
             console.log(uploadResponse)
         }
 
-        const user = new User(saveObj)
-        console.log(user)
-        await user.save()
+        const newUser = new User(saveObj)
+        console.log(newUser)
+        await newUser.save()
 
         let payload = {
             user:{
-                id:user._id
+                id: newUser._id
             }
         }
         jwt.sign(payload,process.env.SECRET,{
@@ -67,11 +67,10 @@ router.post("/signup", upload.single("file"),async (req, res) => {
         },(err,token)=>{
             res.status(201).json({
                 message:"successfully registered",
+                user: newUser,
                 token
             })
         })
-        // res.send(user) //try logging req.body
-        res.send()
 
     }catch (e) {
         res.status(400).json({ message : e || "Registration Failed, try again"})
