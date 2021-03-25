@@ -79,7 +79,7 @@ function App() {
     async function signUp(userInfo) {
         try{
 
-            let res = await axios.post("/auth/signup", userInfo, {
+            let res = await axios.post("/api/auth/signup", userInfo, {
                     headers: {
                         "content-type": "multipart/form-data"
                     }
