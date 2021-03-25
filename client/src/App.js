@@ -28,7 +28,7 @@ function App() {
     useEffect(()=>{
         loadUser()
         loadProjectData()
-    },[projectData.length])
+    },[projectData.length,successMessage])
 
 
     async function loadProjectData() {
@@ -87,7 +87,7 @@ function App() {
                     "x-auth-token" : `Bearer ${localStorage.token}`
                 }
             })
-            console.log("loading user",res.data.user)
+            // console.log("loading user",res.data.user)
             setUser(res.data.user)
             setAuth(true)
         }catch(e){
