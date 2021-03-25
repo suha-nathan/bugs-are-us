@@ -11,8 +11,6 @@ const DataTable = ({ projectData }) => {
 
     }
 
-
-
     return (
         <>
             <Table className="font-open-sans" striped hover bordered>
@@ -29,7 +27,10 @@ const DataTable = ({ projectData }) => {
                 </tr>
                 </thead>
                 <tbody>
-                { projectData?.data?.map( (bug, index) => (
+                {/*{ projectData?.data?.map( (bug, index) => (*/}
+                {/*    <DataRow bug={bug} index={index} key={index} handleUpVote={handleUpVote}/>*/}
+                {/*))}*/}
+                { projectData?.map( (bug, index) => (
                     <DataRow bug={bug} index={index} key={index} handleUpVote={handleUpVote}/>
                 ))}
                 </tbody>

@@ -42,11 +42,12 @@ router.put("/edit", upload.single("file") ,async(req, res) => {
 
         const user = await User.findById(req.user.id).exec()
 
-        console.log("prev user is",user)
-        console.log("body is",req.body)
-        console.log("file is",req.file.path)
-
+        // console.log("prev user is",user)
+        // console.log("body is",req.body)
+        // console.log("file is",req.file.path)
+        console.log("before if statement")
         if(req.body.firstName){
+            // console.log("if statement")
             user.firstName = req.body.firstName
         }
         if(req.body.lastName){
@@ -59,10 +60,10 @@ router.put("/edit", upload.single("file") ,async(req, res) => {
         if(req.body.description){
             user.description = req.body.description
         }
-
+        // console.log("got here")
         const foundInDatabase = await User.findOne({ email: req.body.email})
 
-        console.log(foundInDatabase)
+        // console.log("finding",foundInDatabase)
 
         // 3 different scenarios
         // email never change,
@@ -74,7 +75,7 @@ router.put("/edit", upload.single("file") ,async(req, res) => {
             throw "Email exists in database"
         }
         if(!foundInDatabase) {
-            console.log('got here')
+            // console.log('got here')
             user.email = req.body.email
         }
 
@@ -101,6 +102,8 @@ router.put("/edit", upload.single("file") ,async(req, res) => {
             })
             // console.log("cloudinary upload",uploadResponse)
         }
+
+        // console.log("new user is", user)
 
         await user.save()
 

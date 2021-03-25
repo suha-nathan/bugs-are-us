@@ -118,8 +118,8 @@ const CreateProjectPage = ({ user, loadProjectData}) => {
 
                                 <Field component="select" name="members">
                                     <option>Team Members</option>
-                                    { users?.map( user => (
-                                        <option value={`${user._id}`}>{user.firstName}</option>
+                                    { users?.map( (user,idx) => (
+                                        <option key={idx} value={`${user._id}`}>{user.firstName}</option>
                                     ))}
 
                                 </Field>

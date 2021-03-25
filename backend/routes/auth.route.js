@@ -37,8 +37,7 @@ router.post("/signup", upload.single("file"),async (req, res) => {
             const imagePath = req.file.path
             const uniqueFilename = new Date().toISOString()
             const uploadResponse = await cloudinary.uploader.upload(imagePath, {
-                public_id: `bugs/${uniqueFilename}`,
-                tags: "bugs"
+                public_id: `prod/${uniqueFilename}`
             }, (err, result) => {
                 if (err){
                     return res.send(err)

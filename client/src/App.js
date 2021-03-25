@@ -28,8 +28,7 @@ function App() {
     useEffect(()=>{
         loadUser()
         loadProjectData()
-    },[projectData.length,successMessage])
-
+    },[projectData.length])
 
     async function loadProjectData() {
         let res = await axios.get('/bug/all', {
@@ -37,7 +36,7 @@ function App() {
                 'x-auth-token': `Bearer ${localStorage.getItem('token')}`
             }
         })
-        // console.log(res)
+        console.log(res)
         setProjectData(res.data)
     }
 
@@ -69,6 +68,9 @@ function App() {
             console.log("signup success")
             // console.log(res.data)
             setSuccessMessage("signup success")
+            setTimeout(() => {
+                setSuccessMessage("")
+            }, 4000)
             setUser(res.data.user)
             localStorage.setItem("token",res.data.token)
         }catch(e){
