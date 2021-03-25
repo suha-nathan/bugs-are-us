@@ -4,10 +4,16 @@ import SearchBar from "../shared/SearchBar";
 import { useHistory } from "react-router-dom";
 import DataTable from "../shared/DataTable";
 
-const DashboardPage = ({ user , projectData }) => {
-    const [filteredData, setFilteredData] = useState([])
+const DashboardPage = ({ user , loadProjectData, projectData, filteredData, setFilteredData }) => {
+
 
     const history = useHistory()
+
+
+
+    useEffect(()=>{
+        console.log(filteredData)
+    },[])
 
     const handleCreateBug = () => {
         history.push('/bug/create')
@@ -23,11 +29,6 @@ const DashboardPage = ({ user , projectData }) => {
             setFilteredData([...projectData])
         }
     }
-
-    useEffect(()=>{
-        console.log(filteredData)
-        setFilteredData([...projectData])
-    },[])
 
     function handleSearch(e) {
         let filteredData = projectData.filter( bug => bug.title.toLowerCase().includes(e.target.value.toLowerCase()))

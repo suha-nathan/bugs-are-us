@@ -1,6 +1,5 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect } from 'react'
 import {Pagination, Table} from "react-bootstrap";
-import projectMockData from "../../lib/projectMockData";
 import DataRow from "./DataRow";
 import axios from "axios";
 
@@ -34,7 +33,7 @@ const DataTable = ({ data }) => {
                 </thead>
                 <tbody>
 
-                { data?.map( (bug, index) => (
+                { data.map( (bug, index) => (
                     <DataRow bug={bug} index={index} key={index} handleUpVote={handleUpVote}/>
                 ))}
                 </tbody>

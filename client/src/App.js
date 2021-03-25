@@ -25,6 +25,7 @@ function App() {
 
     const [ projectData, setProjectData ] = useState([])
     const [allProjects, setAllProjects] = useState([])
+    const [filteredData, setFilteredData] = useState([])
 
     useEffect(()=>{
         loadUser()
@@ -41,9 +42,9 @@ function App() {
                 }
             })
             console.log(res.data.data)
-            console.log([...res.data.data])
-            console.log('still running')
+
             setProjectData([...res.data.data])
+            setFilteredData([...res.data.data])
 
         } catch (e) {
             console.log(e)
@@ -223,6 +224,8 @@ function App() {
                                 user={user}
                                 projectData={projectData}
                                 loadProjectData={loadProjectData}
+                                filteredData={filteredData}
+                                setFilteredData={setFilteredData}
                                 path="/dashboard"
                                 exact
                             />
