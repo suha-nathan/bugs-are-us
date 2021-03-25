@@ -42,7 +42,7 @@ function App() {
 
     async function login(values) {
         try{
-            let res = await axios.post("http://localhost:8080/auth/login", values)
+            let res = await axios.post(`${process.env.REACT_APP_SERVER_URL}/auth/login`, values)
             setAuth(true)
             setUser(res.data.user)
             localStorage.setItem("token",res.data.token)
@@ -56,7 +56,7 @@ function App() {
 
     async function signUp(userInfo) {
         try{
-            let res = await axios.post("http://localhost:8080/auth/signup", userInfo)
+            let res = await axios.post(`${process.env.REACT_APP_SERVER_URL}/auth/signup`, userInfo)
             console.log("signup success")
 
 
