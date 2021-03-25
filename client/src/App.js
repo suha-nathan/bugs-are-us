@@ -28,7 +28,7 @@ function App() {
     useEffect(()=>{
         loadUser()
         loadProjectData()
-    },[projectData.length])
+    },[projectData.length, successMessage])
 
     async function loadProjectData() {
         let res = await axios.get('/bug/all', {
