@@ -10,7 +10,12 @@ import axios from 'axios'
 const EditBugPage = ({ user, loadProjectData }) => {
     const location = useLocation()
     const history = useHistory()
-    const [bugDetails, setBugDetails] = useState({})
+    const [bugDetails, setBugDetails] = useState({
+        title: "",
+        description:  "",
+        type:  "",
+        status:  "",
+        priority:  ""})
 
     useEffect(()=>{
         // console.log(location)
@@ -34,7 +39,7 @@ const EditBugPage = ({ user, loadProjectData }) => {
         title: Yup.string().required('Required')
     })
 
-    // console.log(bugDetails)
+    console.log(bugDetails)
 
     return (
 
@@ -44,7 +49,7 @@ const EditBugPage = ({ user, loadProjectData }) => {
                 enableReinitialize={true}
                 initialValues={
                         {
-                            title: bugDetails.type,
+                            title: bugDetails.title,
                             description: bugDetails.description,
                             type: bugDetails.type,
                             status: bugDetails.status,
@@ -166,7 +171,7 @@ const EditBugPage = ({ user, loadProjectData }) => {
                             </Col>
                         </Row>
 
-                        <Button type="submit" >Create</Button>
+                        <Button type="submit" >Edit</Button>
                     </Form>
                 )}
 
