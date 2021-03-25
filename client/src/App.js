@@ -32,7 +32,7 @@ function App() {
 
 
     async function loadProjectData() {
-        let res = await axios.get('http://localhost:8080/bug/all', {
+        let res = await axios.get('/bug/all', {
             headers: {
                 'x-auth-token': `Bearer ${localStorage.getItem('token')}`
             }
@@ -43,7 +43,7 @@ function App() {
 
     async function login(values) {
         try{
-            let res = await axios.post("http://localhost:8080/auth/login", values)
+            let res = await axios.post(`/auth/login`, values)
             setAuth(true)
             setUser(res.data.user)
             localStorage.setItem("token",res.data.token)
@@ -57,13 +57,15 @@ function App() {
 
     async function signUp(userInfo) {
         try{
-            let res = await axios.post("http://localhost:8080/auth/signup", userInfo, {
+
+            let res = await axios.post("/auth/signup", userInfo, {
                     headers: {
                         "content-type": "multipart/form-data"
                     }
                 }
             )
             setAuth(true)
+
             console.log("signup success")
             // console.log(res.data)
             setSuccessMessage("signup success")
@@ -80,7 +82,7 @@ function App() {
 
     async function loadUser() {
         try{
-            let res = await axios.get("http://localhost:8080/user",{
+            let res = await axios.get("/user",{
                 headers:{
                     "x-auth-token" : `Bearer ${localStorage.token}`
                 }

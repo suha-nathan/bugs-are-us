@@ -41,6 +41,7 @@ router.put("/edit", upload.single("file") ,async(req, res) => {
     try{
 
         const user = await User.findById(req.user.id).exec()
+
         console.log("prev user is",user)
         console.log("body is",req.body)
         console.log("file is",req.file.path)
@@ -51,14 +52,30 @@ router.put("/edit", upload.single("file") ,async(req, res) => {
         if(req.body.lastName){
             user.lastName = req.body.lastName
         }
-        if(req.body.email){
-            user.email = req.body.email
-        }
+
         if(req.body.password){
             user.password = req.body.password
         }
         if(req.body.description){
             user.description = req.body.description
+        }
+
+        const foundInDatabase = await User.findOne({ email: req.body.email})
+
+        console.log(foundInDatabase)
+
+        // 3 different scenarios
+        // email never change,
+        // email change, but email already in database
+        // email change, email not in database
+
+        // found in database but not own email
+        if(user.email !== foundInDatabase.email) {
+            throw "Email exists in database"
+        }
+        if(!foundInDatabase) {
+            console.log('got here')
+            user.email = req.body.email
         }
 
         if(req.file){
@@ -89,7 +106,7 @@ router.put("/edit", upload.single("file") ,async(req, res) => {
 
         res.status(200).json({ message: "User details updated successfully"})
     }catch(e){
-        res.status(400).json({ message: "Failed to update user details"})
+        res.status(400).json({ message: e || "Failed to update user details"})
     }
 })
 

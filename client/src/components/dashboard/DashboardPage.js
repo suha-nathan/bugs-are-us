@@ -1,14 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import Header from "../shared/Header";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import SearchBar from "../shared/SearchBar";
-import BugList from "./BugList";
 import { useHistory } from "react-router-dom";
-import TempHeader from "../shared/TempHeader";
-import Sidebar from "../sidebar/Sidebar";
 import DataTable from "../shared/DataTable";
-import axios from "axios";
-
 
 const DashboardPage = ({ isAuth, logOut, user , projectData }) => {
     // if(isAuth===true){
