@@ -9,7 +9,7 @@ const path = require('path')
 
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
-app.user(express.static(path.join(__dirname, './build')))
+app.use(express.static(path.join(__dirname, 'build')))
 // app.use(express.json())
 
 app.use(cors())
@@ -23,7 +23,7 @@ app.use('/comment', authChecker, require('./routes/comment.route'))
 app.use('/upvote', authChecker, require('./routes/upvote.route'))
 
 app.use('*', (req, res) => {
-    res.sendFile(path.join(__dirname, './build/index.html'))
+    res.sendFile(path.join(__dirname, 'build/index.html'))
 })
 
 app.use((req, res) => {

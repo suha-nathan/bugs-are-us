@@ -2,21 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="44c12692-1e13-438e-a4c4-aab8d11defd2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/backend/lib/cloudinary.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/lib/multerStorage.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/model/user.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/model/user.model.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/routes/auth.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/auth.route.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/routes/user.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/user.route.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/edit-account/EditAccountPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/edit-account/EditAccountPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/login/LoginPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/login/LoginPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/shared/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/shared/Header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/shared/ProfilePic.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/shared/ProfilePic.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/signup/SignupInputCol.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/signup/SignupInputCol.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/signup/SignupPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/signup/SignupPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/scss/_LoginPage.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/scss/_LoginPage.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
