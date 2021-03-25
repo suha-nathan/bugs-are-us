@@ -1,3 +1,4 @@
+require('dotenv').config()
 const router = require('express').Router()
 const User = require('../model/user.model')
 const bcrypt = require('bcrypt')
@@ -37,7 +38,7 @@ router.post("/signup", upload.single("file"),async (req, res) => {
             const imagePath = req.file.path
             const uniqueFilename = new Date().toISOString()
             const uploadResponse = await cloudinary.uploader.upload(imagePath, {
-                public_id: `prod/${uniqueFilename}`
+                public_id: `${process.env.CLOUD_FILE}/${uniqueFilename}`
             }, (err, result) => {
                 if (err){
                     return res.send(err)

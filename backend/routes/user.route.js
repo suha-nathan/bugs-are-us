@@ -86,8 +86,7 @@ router.put("/edit", upload.single("file") ,async(req, res) => {
             const uniqueFilename = new Date().toISOString()
             console.log(uniqueFilename)
             const uploadResponse = await cloudinary.uploader.upload(imagePath, {
-                public_id: `bugs/${uniqueFilename}`,
-                tags: "bugs"
+                public_id: `${process.env.CLOUD_FILE}/${uniqueFilename}`
             }, (err, result)=> {
                 console.log(err,result)
                 console.log("trying to upload to cloud")

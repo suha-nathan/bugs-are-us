@@ -36,7 +36,7 @@ function App() {
                 'x-auth-token': `Bearer ${localStorage.getItem('token')}`
             }
         })
-        console.log(res)
+        // console.log(res)
         setProjectData(res.data)
     }
 
