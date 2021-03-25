@@ -1,0 +1,25 @@
+{
+  "name": "bugs-are-us",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cd backend && npm install && npm start",
+    "heroku-postbuild": "cd client & npm run install && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/suha-nathan/bugs-are-us.git"
+  },
+  "engines": {
+    "node": "12.13.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/suha-nathan/bugs-are-us/issues"
+  },
+  "homepage": "https://github.com/suha-nathan/bugs-are-us#readme"
+}
