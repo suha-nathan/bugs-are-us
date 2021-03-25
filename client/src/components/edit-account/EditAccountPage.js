@@ -7,7 +7,7 @@ import {useFormik} from "formik"
 import axios from "axios";
 
 
-const EditAccountPage = ({user}) => {
+const EditAccountPage = ({ user, setSuccessMessage }) => {
     const [isEdited, setEdited] = useState(false)
     const [profilePicture, setProfilePicture] = useState(null)
     const [thumbnailImage, setThumbnailImage] = useState(null)
@@ -80,13 +80,13 @@ const EditAccountPage = ({user}) => {
         try{
 
             const token = localStorage.getItem("token")
-            let res = await axios.put("http://localhost:8080/user/update", updatedInfo,{
+            let res = await axios.put("http://localhost:8080/user/edit", updatedInfo,{
                 headers: {
                     // "content-type": "multipart/form-data",
                     "x-auth-token": `Bearer ${token}`
                 }
-            }
-            )
+            })
+            setEdited(true)
             console.log("editing")
 
         }catch(e){
@@ -96,7 +96,11 @@ const EditAccountPage = ({user}) => {
 
     if(isEdited){
         // console.log("Redirecting")
-        return <Redirect to={"/"}/>
+        setSuccessMessage("edited account successfully!")
+        setTimeout(() => {
+            setSuccessMessage("")
+        }, 4000)
+        return <Redirect to={"/dashboard"}/>
     }
 
     return (

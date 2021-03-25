@@ -50,7 +50,7 @@ function App() {
             setErrorMessage(e.response.data.message)
             setTimeout(() => {
                 setErrorMessage("")
-            }, 2000)
+            }, 4000)
         }
     }
 
@@ -73,7 +73,7 @@ function App() {
             setErrorMessage("Sign up failure, please try again")
             setTimeout(() => {
                 setErrorMessage("")
-            }, 2000)
+            }, 4000)
         }
     }
 
@@ -166,7 +166,7 @@ function App() {
                 <Route path="/user/edit">
                     {isAuth?
                     <Layout user={user} isAuth={isAuth} logOut={logOut}>
-                        <EditAccountPage user={user} />
+                        <EditAccountPage setSuccessMessage={setSuccessMessage} user={user} />
                     </Layout>
                         :
                         <Redirect to="/login"/>
