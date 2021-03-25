@@ -50,25 +50,34 @@ function App() {
             setErrorMessage(e.response.data.message)
             setTimeout(() => {
                 setErrorMessage("")
-            }, 2000)
+            }, 4000)
         }
     }
 
     async function signUp(userInfo) {
         try{
+<<<<<<< HEAD
             let res = await axios.post(`${process.env.REACT_APP_SERVER_URL}/auth/signup`, userInfo)
+=======
+            let res = await axios.post("http://localhost:8080/auth/signup", userInfo, {
+                    headers: {
+                        "content-type": "multipart/form-data"
+                    }
+                }
+            )
+            setAuth(true)
+>>>>>>> 2516ffcc1d53d884000e1e9e059b9c762ec7aba2
             console.log("signup success")
-
-
-            // setAuth(true)
-            // console.log("signup success")
-            // localStorage.setItem("token",res.data.token)
+            // console.log(res.data)
+            setSuccessMessage("signup success")
+            setUser(res.data.user)
+            localStorage.setItem("token",res.data.token)
         }catch(e){
-            console.log(e.response.data.message)
-            setErrorMessage(e.response.data.message)
+            // console.log(e.response.data.message)
+            setErrorMessage("Sign up failure, please try again")
             setTimeout(() => {
                 setErrorMessage("")
-            }, 2000)
+            }, 4000)
         }
     }
 
@@ -95,9 +104,6 @@ function App() {
         localStorage.removeItem("token")
     }
 
-    // console.log(errorMessage)
-    // console.log(isAuth)
-    // console.log(user)
   return (
     <div className="App">
         <BrowserRouter>
@@ -111,7 +117,7 @@ function App() {
                 </Route>
 
                 <Route path="/signup">
-                    <SignupPage isSignedUp={isSignedUp} setSignedUp={setSignedUp} signUp={signUp} setSuccessMessage={setSuccessMessage} />
+                    <SignupPage isAuth={isAuth} isSignedUp={isSignedUp} setSignedUp={setSignedUp} signUp={signUp} setSuccessMessage={setSuccessMessage} />
                 </Route>
 
 
@@ -164,7 +170,7 @@ function App() {
                 <Route path="/user/edit">
                     {isAuth?
                     <Layout user={user} isAuth={isAuth} logOut={logOut}>
-                        <EditAccountPage user={user} />
+                        <EditAccountPage setSuccessMessage={setSuccessMessage} user={user} />
                     </Layout>
                         :
                         <Redirect to="/login"/>

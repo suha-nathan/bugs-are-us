@@ -24,7 +24,7 @@ const Header = ({ user, logOut }) => {
             <Col md={2} className="d-flex justify-content-end align-items-center pr-4">
 
                 <p className="my-0 mx-3">{user?.firstName} {user?.lastName}</p>
-                <ProfilePic size={2.5} imageSource={user?.profilePicture?.imageData} isShowName={false}/>
+                <ProfilePic size={2.5} imageSource={user?.profilePicture} isShowName={false}/>
             </Col>
         </Row>
     )
