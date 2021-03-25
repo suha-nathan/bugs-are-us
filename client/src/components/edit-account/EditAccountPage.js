@@ -5,17 +5,16 @@ import EditAccountInputCol from "./EditAccountInputCol";
 import * as Yup from "yup"
 import {useFormik} from "formik"
 import axios from "axios";
+import {load} from "dotenv";
 
 
-const EditAccountPage = ({ user, setSuccessMessage }) => {
+const EditAccountPage = ({ user, setSuccessMessage, loadUser }) => {
     const [isEdited, setEdited] = useState(false)
     const [isProfilePictureChange, setProfilePictureChange] = useState(false)
     const [profilePicture, setProfilePicture] = useState(null)
     const [thumbnailImage, setThumbnailImage] = useState(null)
 
     function onChange(e){
-        // console.log("changing")
-        // console.log(e.target.files[0])
         setProfilePictureChange(true)
         setThumbnailImage(URL.createObjectURL(e.target.files[0]))
         setProfilePicture(e.target.files[0])
@@ -80,6 +79,7 @@ const EditAccountPage = ({ user, setSuccessMessage }) => {
                     "x-auth-token": `Bearer ${token}`
                 }
             })
+            loadUser()
             setEdited(true)
 
         }catch(e){

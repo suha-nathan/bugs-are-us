@@ -209,7 +209,7 @@ function App() {
                 <Route path="/user/edit">
                     {isAuth?
                     <Layout user={user} isAuth={isAuth} logOut={logOut}>
-                        <EditAccountPage setSuccessMessage={setSuccessMessage} user={user} />
+                        <EditAccountPage setSuccessMessage={setSuccessMessage} user={user} loadUser={loadUser}/>
                     </Layout>
                         :
                         <Redirect to="/login"/>
