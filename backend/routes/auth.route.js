@@ -13,7 +13,6 @@ const upload = multer({
 
 router.post("/signup", upload.single("file"),async (req, res) => {
     try{
-
         let {  firstName, lastName, email, password, description, role } = req.body
 
         const repeatUser = await User.findOne({email})
@@ -50,16 +49,16 @@ router.post("/signup", upload.single("file"),async (req, res) => {
                 fs.unlinkSync(imagePath)
                 saveObj.profilePicture = result.url
             })
-            console.log(uploadResponse)
+            // console.log(uploadResponse)
         }
 
-        const user = new User(saveObj)
-        console.log(user)
-        await user.save()
+        const newUser = new User(saveObj)
+        console.log(newUser)
+        await newUser.save()
 
         let payload = {
             user:{
-                id:user._id
+                id: newUser._id
             }
         }
         jwt.sign(payload,process.env.SECRET,{
@@ -67,11 +66,10 @@ router.post("/signup", upload.single("file"),async (req, res) => {
         },(err,token)=>{
             res.status(201).json({
                 message:"successfully registered",
+                user: newUser,
                 token
             })
         })
-        // res.send(user) //try logging req.body
-        res.send()
 
     }catch (e) {
         res.status(400).json({ message : e || "Registration Failed, try again"})

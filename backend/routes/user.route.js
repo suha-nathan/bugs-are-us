@@ -37,12 +37,13 @@ router.delete("/delete/:id", async(req, res) => {
     }
 })
 
-router.put("/edit", async(req, res) => {
+router.put("/edit", upload.single("file") ,async(req, res) => {
     try{
 
         const user = await User.findById(req.user.id).exec()
-
-        console.log(req.body)
+        console.log("prev user is",user)
+        console.log("body is",req.body)
+        console.log("file is",req.file.path)
 
         if(req.body.firstName){
             user.firstName = req.body.firstName
@@ -60,7 +61,29 @@ router.put("/edit", async(req, res) => {
             user.description = req.body.description
         }
 
-
+        if(req.file){
+            console.log("in if statement")
+            const imagePath = req.file.path
+            console.log(imagePath)
+            const uniqueFilename = new Date().toISOString()
+            console.log(uniqueFilename)
+            const uploadResponse = await cloudinary.uploader.upload(imagePath, {
+                public_id: `bugs/${uniqueFilename}`,
+                tags: "bugs"
+            }, (err, result)=> {
+                console.log(err,result)
+                console.log("trying to upload to cloud")
+                if(err){
+                    console.log("theres an error")
+                    return res.status(400).json({message: "error uploading file" })
+                }
+                console.log("midst of uploading")
+                const fs = require("fs")
+                fs.unlinkSync(imagePath)
+                user.profilePicture = result.url
+            })
+            // console.log("cloudinary upload",uploadResponse)
+        }
 
         await user.save()
 

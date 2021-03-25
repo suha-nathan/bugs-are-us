@@ -50,7 +50,7 @@ function App() {
             setErrorMessage(e.response.data.message)
             setTimeout(() => {
                 setErrorMessage("")
-            }, 2000)
+            }, 4000)
         }
     }
 
@@ -64,14 +64,16 @@ function App() {
             )
             setAuth(true)
             console.log("signup success")
+            // console.log(res.data)
             setSuccessMessage("signup success")
+            setUser(res.data.user)
             localStorage.setItem("token",res.data.token)
         }catch(e){
             // console.log(e.response.data.message)
             setErrorMessage("Sign up failure, please try again")
             setTimeout(() => {
                 setErrorMessage("")
-            }, 2000)
+            }, 4000)
         }
     }
 
@@ -164,7 +166,7 @@ function App() {
                 <Route path="/user/edit">
                     {isAuth?
                     <Layout user={user} isAuth={isAuth} logOut={logOut}>
-                        <EditAccountPage user={user} />
+                        <EditAccountPage setSuccessMessage={setSuccessMessage} user={user} />
                     </Layout>
                         :
                         <Redirect to="/login"/>
