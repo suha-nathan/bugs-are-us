@@ -64,7 +64,7 @@ const CommentCard = ({ bugDetails, comment, loadProjectData, user, index, isEdit
 
                 <Row>
                     <Col md={2} className="d-flex justify-content-center align-items-center">
-                        <ProfilePic size={6.5} imageSource={comment.user.profilePicture.imageData}/>
+                        <ProfilePic size={6.5} imageSource={comment.user.profilePicture}/>
                     </Col>
 
                     <Col className="text-left d-flex flex-column">

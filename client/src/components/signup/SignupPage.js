@@ -131,23 +131,7 @@ const SignupPage = ({isAuth,isSignedUp,signUp,setSignedUp, setSuccessMessage}) =
                                             feedbackTooltip
                                         />
                                     </Form.Group>
-                                    {/*<ImageUpload/>*/}
-
-                                    {/*<Image*/}
-                                    {/*    src={baseImage}*/}
-                                    {/*    alt="upload-image"*/}
-                                    {/*    width="100"*/}
-                                    {/*    height="100"*/}
-                                    {/*    className="rounded-circle"/>*/}
-
-                                    {/*<Form.Group>*/}
-                                    {/*    <FileBase*/}
-                                    {/*        type="file"*/}
-                                    {/*        multiple={false}*/}
-                                    {/*        onDone={e=>{ getBaseFile(e) }}*/}
-                                    {/*    />*/}
-                                    {/*</Form.Group>*/}
-
+ 
                                 </Row>
                             </Col>
 

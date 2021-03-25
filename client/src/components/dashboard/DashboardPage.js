@@ -23,6 +23,7 @@ const DashboardPage = ({ isAuth, logOut, user , projectData }) => {
         history.push('/bug/create')
     }
 
+
     return (
 
         <Container>

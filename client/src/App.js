@@ -8,6 +8,7 @@ import DashboardPage from "./components/dashboard/DashboardPage";
 import LoginPage from "./components/login/LoginPage";
 import SignupPage from "./components/signup/SignupPage";
 import CreateBugPage from "./components/create-bug/CreateBugPage";
+import EditBugPage from "./components/create-bug/EditBugPage"
 import BugDetailsPage from "./components/bug-details/BugDetailsPage";
 import EditAccountPage from "./components/edit-account/EditAccountPage";
 import ProjectsPage from "./components/projects-page/ProjectsPage";
@@ -144,6 +145,16 @@ function App() {
                     <Layout user={user} isAuth={isAuth} logOut={logOut}>
                         <CreateBugPage user={user} loadProjectData={loadProjectData} />
                     </Layout>
+                        :
+                        <Redirect to="/login"/>
+                    }
+                </Route>
+
+                <Route path="/bug/edit" exact>
+                    {isAuth?
+                        <Layout user={user} isAuth={isAuth} logOut={logOut}>
+                            <EditBugPage user={user} loadProjectData={loadProjectData} />
+                        </Layout>
                         :
                         <Redirect to="/login"/>
                     }

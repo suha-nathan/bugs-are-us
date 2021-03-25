@@ -29,6 +29,13 @@ const BugDetailsPage = ({ projectData, user, loadProjectData, logOut }) => {
 
     }
 
+    function handleEditBug(){
+        history.push({
+            pathname: "/bug/edit",
+            state: bugDetails
+        })
+    }
+
     async function handleDeleteBug() {
 
         try {
@@ -55,7 +62,7 @@ const BugDetailsPage = ({ projectData, user, loadProjectData, logOut }) => {
                     <p>ID: {id}</p>
                 </Col>
                 <Col className="d-flex flex-column px-5">
-                    <Button variant="success" className="my-3">Edit</Button>
+                    <Button variant="success" onClick={handleEditBug} className="my-3">Edit</Button>
                     <Button variant="danger" onClick={handleDeleteBug}>Delete</Button>
                 </Col>
             </Row>

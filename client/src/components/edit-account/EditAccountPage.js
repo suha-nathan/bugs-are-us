@@ -128,9 +128,7 @@ const EditAccountPage = ({ user, setSuccessMessage }) => {
                                 className="profile-pic profile-pic-sm "
                                 style={{width: "5rem", height: "5rem", borderRadius: "3.5rem"}}/>
                             }
-
-
-
+                            
                             <Form.Group>
                                 <Form.File
                                     className="position-relative"
