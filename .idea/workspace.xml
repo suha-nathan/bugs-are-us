@@ -3,8 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="85d1eaa2-6b7b-4cb8-91b1-45857e4e8f27" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/client/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/lib/cloudinary.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/lib/cloudinary.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/lib/mongoose.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/lib/mongoose.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
