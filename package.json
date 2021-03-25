@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "cd backend && npm start",
-    "postinstall": "npm install",
+    "start": "cd backend && node server",
+
     "heroku-postbuild": "cd client && yarn install && yarn build"
 
   },
