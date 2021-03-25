@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/suha-nathan/bugs-are-us#readme",
   "engines": {
-    "node": "v15.6.0"
+    "node": "15.6.0"
   }
 
 }
