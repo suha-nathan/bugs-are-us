@@ -34,12 +34,12 @@ router.post("/create",async(req, res) => {
 
 router.get("/all", async(req, res) => {
     try{
+        console.log('working')
         const data = await Bug.find()
             .populate('upVotes')
             .populate('user')
             .populate('projects')
             .populate({ path: 'comments', populate: { path: 'user'}})
-
         res.status(200).json({data})
 
     }catch(e){

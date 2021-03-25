@@ -15,12 +15,12 @@ app.use(express.static(path.join(__dirname, 'build')))
 app.use(cors())
 
 
-app.use('/auth', require('./routes/auth.route'))
-app.use('/user', authChecker, require('./routes/user.route'))
-app.use('/bug',authChecker, require('./routes/bug.route'))
-app.use('/project' ,authChecker, require('./routes/project.route'))
-app.use('/comment', authChecker, require('./routes/comment.route'))
-app.use('/upvote', authChecker, require('./routes/upvote.route'))
+app.use('/api/auth', require('./routes/auth.route'))
+app.use('/api/user', authChecker, require('./routes/user.route'))
+app.use('/api/bug',authChecker, require('./routes/bug.route'))
+app.use('/api/project' ,authChecker, require('./routes/project.route'))
+app.use('/api/comment', authChecker, require('./routes/comment.route'))
+app.use('/api/upvote', authChecker, require('./routes/upvote.route'))
 
 app.use('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'build/index.html'))

@@ -25,7 +25,7 @@ const EditBugPage = ({ user, loadProjectData }) => {
 
     const handleEdit = async (values) => {
         const token = localStorage.getItem('token')
-        const res = await axios.put(`http://localhost:8080/bug/update/${bugDetails._id}`, values, {
+        const res = await axios.put(`/api/bug/update/${bugDetails._id}`, values, {
             headers: {
                 "x-auth-token": `Bearer ${token}`
             }

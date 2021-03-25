@@ -8,8 +8,7 @@ const CommentInputRow = ({ bugDetails, user, loadProjectData, isEditModeOnArray,
     const commentTextarea = useRef(null)
 
     async function handleAddComment() {
-        console.log('in', commentText)
-        await axios.put(`http://localhost:8080/comment/create/${bugDetails._id}`, { user: user._id, commentText }, {
+        await axios.put(`/api/comment/create/${bugDetails._id}`, { user: user._id, commentText }, {
             headers: {
                 'x-auth-token': `Bearer ${localStorage.getItem('token')}`
             }
@@ -21,7 +20,6 @@ const CommentInputRow = ({ bugDetails, user, loadProjectData, isEditModeOnArray,
         loadProjectData()
     }
 
-    console.log(bugDetails)
     return (
         <Row>
             <Col md={10}>

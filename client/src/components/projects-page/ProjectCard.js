@@ -8,7 +8,6 @@ const ProjectCard = ({ project }) => {
 
     let { title, description, teamLead, members, categories, _id } = project
 
-    console.log(project)
     return (
 
         <Card className="my-3 mr-3 text-left font-open-sans">
@@ -22,14 +21,14 @@ const ProjectCard = ({ project }) => {
                 <Row>
                     <Col className="d-flex flex-column justify-space-around">
                         <p className="font-open-sans__bolder mb-0">Team Lead</p>
-                        <p>{teamLead.firstName} {teamLead.lastName}</p>
+                        <p>{teamLead?.firstName} {teamLead?.lastName}</p>
                         <p className="font-open-sans__bolder mb-0">Members</p>
-                        <p>{members.map( member => `${member.firstName} ${member.lastName}`).join(', ')}</p>
+                        <p>{members?.map( member => `${member.firstName} ${member.lastName}`).join(', ')}</p>
                     </Col>
 
                     <Col className="d-flex flex-column justify-content-around align-items-center">
                         <Button onClick={() => history.push(`/project/${_id}/view`)}>View Projects</Button>
-                        <Button>View Bugs</Button>
+                        <Button onClick={() => history.push(`/project/${_id}/bug`)}>View Bugs</Button>
                     </Col>
                 </Row>
 

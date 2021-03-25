@@ -4,24 +4,16 @@ import {Row, Col, Container, Button} from "react-bootstrap";
 import {Link, useHistory} from "react-router-dom";
 import axios from 'axios'
 
-const ProjectsPage = () => {
+const ProjectsPage = ({ allProjects }) => {
 
     const history = useHistory()
 
-    const [allProjects, setAllProjects] = useState([])
+
     useEffect(() => {
-        loadAllProjects()
+
     }, [])
 
-    async function loadAllProjects() {
-        const res = await axios.get('http://localhost:8080/project/all', {
-            headers: {
-                'x-auth-token': `Bearer ${localStorage.getItem('token')}`
-            }
-        })
-        console.log(res.data.data)
-        setAllProjects(res.data.data)
-    }
+
 
     console.log(allProjects)
     return (

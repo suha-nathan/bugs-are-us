@@ -4,12 +4,18 @@ import projectMockData from "../../lib/projectMockData";
 import DataRow from "./DataRow";
 import axios from "axios";
 
-const DataTable = ({ projectData }) => {
+const DataTable = ({ data }) => {
 
     function handleUpVote(){
-        console.log(projectData)
+        console.log(data)
 
     }
+
+    useEffect(() => {
+        console.log('here')
+        console.log(data)
+
+    }, [] )
 
     return (
         <>
@@ -27,10 +33,8 @@ const DataTable = ({ projectData }) => {
                 </tr>
                 </thead>
                 <tbody>
-                {/*{ projectData?.data?.map( (bug, index) => (*/}
-                {/*    <DataRow bug={bug} index={index} key={index} handleUpVote={handleUpVote}/>*/}
-                {/*))}*/}
-                { projectData?.map( (bug, index) => (
+
+                { data?.map( (bug, index) => (
                     <DataRow bug={bug} index={index} key={index} handleUpVote={handleUpVote}/>
                 ))}
                 </tbody>

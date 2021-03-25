@@ -23,26 +23,47 @@ function App() {
     const [errorMessage, setErrorMessage] = useState("")
     const [successMessage, setSuccessMessage] = useState("")
 
-    const [ projectData, setProjectData ] = useState({})
+    const [ projectData, setProjectData ] = useState([])
+    const [allProjects, setAllProjects] = useState([])
 
     useEffect(()=>{
         loadUser()
         loadProjectData()
-    },[projectData.length])
+        loadAllProjects()
+    },[])
 
     async function loadProjectData() {
-        let res = await axios.get('/bug/all', {
+
+        try {
+            let res = await axios.get('/api/bug/all', {
+                headers: {
+                    'x-auth-token': `Bearer ${localStorage.getItem('token')}`
+                }
+            })
+            console.log(res.data.data)
+            console.log([...res.data.data])
+            console.log('still running')
+            setProjectData([...res.data.data])
+
+        } catch (e) {
+            console.log(e)
+        }
+
+    }
+
+    async function loadAllProjects() {
+        const res = await axios.get('/api/project/all', {
             headers: {
                 'x-auth-token': `Bearer ${localStorage.getItem('token')}`
             }
         })
-        // console.log(res)
-        setProjectData(res.data)
+
+        setAllProjects([...res.data.data])
     }
 
     async function login(values) {
         try{
-            let res = await axios.post(`/auth/login`, values)
+            let res = await axios.post(`/api/auth/login`, values)
             setAuth(true)
             setUser(res.data.user)
             localStorage.setItem("token",res.data.token)
@@ -84,7 +105,7 @@ function App() {
 
     async function loadUser() {
         try{
-            let res = await axios.get("/user",{
+            let res = await axios.get("/api/user",{
                 headers:{
                     "x-auth-token" : `Bearer ${localStorage.token}`
                 }
@@ -108,8 +129,8 @@ function App() {
   return (
     <div className="App">
         <BrowserRouter>
-            {errorMessage && <Alert variant="danger">{errorMessage}</Alert>}
-            {successMessage && <Alert variant="success">{successMessage}</Alert>}
+            {errorMessage && <Alert variant="danger" className="error-alert">{errorMessage}</Alert>}
+            {successMessage && <Alert variant="success" className="error-alert">{successMessage}</Alert>}
 
             <Switch>
 
@@ -124,8 +145,8 @@ function App() {
 
                 <Route path="/projects" exact>
                     {isAuth?
-                    <Layout user={user} isAuth={isAuth} logOut={logOut}>
-                        <ProjectsPage user={user} />
+                    <Layout user={user} isAuth={isAuth} logOut={logOut} projectData={projectData} allProjects={allProjects}>
+                        <ProjectsPage user={user} allProjects={allProjects} />
                     </Layout>
                         :
                         <Redirect to="/login"/>
@@ -133,20 +154,26 @@ function App() {
                 </Route>
 
                 <Route path="/project/create">
-                    <Layout isAuth={isAuth} logOut={logOut}>
-                        <CreateProjectPage user={user}/>
+                    <Layout isAuth={isAuth} logOut={logOut} projectData={projectData} allProjects={allProjects} >
+                        <CreateProjectPage user={user} loadProjectData={loadProjectData} loadAllProjects={loadAllProjects}/>
                     </Layout>
                 </Route>
 
                 <Route path="/project/:id/view">
-                    <Layout isAuth={isAuth} logOut={logOut}>
+                    <Layout isAuth={isAuth} logOut={logOut} projectData={projectData} allProjects={allProjects}>
+                        <ViewProjectPage user={user}/>
+                    </Layout>
+                </Route>
+
+                <Route path="/project/:id/view">
+                    <Layout isAuth={isAuth} logOut={logOut} projectData={projectData} allProjects={allProjects}>
                         <ViewProjectPage user={user}/>
                     </Layout>
                 </Route>
 
                 <Route path="/bug/create" exact>
                     {isAuth?
-                    <Layout user={user} isAuth={isAuth} logOut={logOut}>
+                    <Layout user={user} isAuth={isAuth} logOut={logOut} projectData={projectData} allProjects={allProjects}>
                         <CreateBugPage user={user} loadProjectData={loadProjectData} />
                     </Layout>
                         :
@@ -191,8 +218,14 @@ function App() {
 
                 <Route>
                     {isAuth?
-                        <Layout user={user} isAuth={isAuth} logOut={logOut}>
-                            <DashboardPage user={user} projectData={projectData} path="/dashboard" exact />
+                        <Layout user={user} isAuth={isAuth} logOut={logOut} projectData={projectData} allProjects={allProjects}>
+                            <DashboardPage
+                                user={user}
+                                projectData={projectData}
+                                loadProjectData={loadProjectData}
+                                path="/dashboard"
+                                exact
+                            />
                         </Layout>
 
                         :
