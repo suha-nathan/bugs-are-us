@@ -5,17 +5,16 @@ import EditAccountInputCol from "./EditAccountInputCol";
 import * as Yup from "yup"
 import {useFormik} from "formik"
 import axios from "axios";
+import {load} from "dotenv";
 
 
-const EditAccountPage = ({ user, setSuccessMessage }) => {
+const EditAccountPage = ({ user, setSuccessMessage, loadUser }) => {
     const [isEdited, setEdited] = useState(false)
     const [isProfilePictureChange, setProfilePictureChange] = useState(false)
     const [profilePicture, setProfilePicture] = useState(null)
     const [thumbnailImage, setThumbnailImage] = useState(null)
 
     function onChange(e){
-        // console.log("changing")
-        // console.log(e.target.files[0])
         setProfilePictureChange(true)
         setThumbnailImage(URL.createObjectURL(e.target.files[0]))
         setProfilePicture(e.target.files[0])
@@ -54,14 +53,6 @@ const EditAccountPage = ({ user, setSuccessMessage }) => {
 
             let { firstName, lastName, email, password, description } = values
 
-            let tempUserInfo = {
-                firstName,
-                lastName,
-                email,
-                password,
-                description,
-            }
-            console.log(profilePicture)
             const formData = new FormData()
 
             formData.append("firstName", firstName)
@@ -82,14 +73,14 @@ const EditAccountPage = ({ user, setSuccessMessage }) => {
     async function handleEdit(updatedInfo){
         try{
             const token = localStorage.getItem("token")
-            let res = await axios.put("http://localhost:8080/user/edit", updatedInfo,{
+            let res = await axios.put("/api/user/edit", updatedInfo,{
                 headers: {
                     "content-type": "multipart/form-data",
                     "x-auth-token": `Bearer ${token}`
                 }
             })
+            loadUser()
             setEdited(true)
-            // console.log("submitted")
 
         }catch(e){
             console.log("error editing")
@@ -97,12 +88,11 @@ const EditAccountPage = ({ user, setSuccessMessage }) => {
     }
 
     if(isEdited){
-        // console.log("Redirecting")
-        setSuccessMessage("edited account successfully!")
+        setSuccessMessage("Edited account successfully!")
         setTimeout(() => {
             setSuccessMessage("")
         }, 4000)
-        return <Redirect to={"/dashboard"}/>
+        return <Redirect to="/dashboard"/>
     }
 
     return (

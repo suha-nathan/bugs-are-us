@@ -5,7 +5,7 @@
 @import './scss/_LoginPage.scss';
 @import './scss/_SignupPage.scss';
 @import './scss/_Sidebar';
-@import 'components/shared/NotificationPopup';
+@import './scss/_NotificationPopup';
 
 //Bootstrap color overriding
 $primary: $forest-green;
@@ -40,4 +40,10 @@ code {
   &__bolder {
     font-weight: 800;
   }
+}
+
+.error-alert {
+  position: absolute;
+  top: 0;
+  width: 100vw;
 }

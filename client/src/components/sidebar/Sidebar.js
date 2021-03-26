@@ -2,15 +2,15 @@ import React from 'react'
 import SidebarItemRow from "./SidebarItemRow";
 import SidebarTitleRow from "./SidebarTitleRow";
 
-const Sidebar = (props) => {
+const Sidebar = ({ projectData, allProjects }) => {
 
     return (
         <div className="sidebar px-3">
             <SidebarTitleRow title="MENU"/>
 
-            <SidebarItemRow iconName="house" title="Home" notificationCount={3} url="/"/>
-            <SidebarItemRow iconName="share" title="Bug Feed" notificationCount={3} />
-            <SidebarItemRow iconName="cup" title="Projects" notificationCount={3} url="/projects" />
+            <SidebarItemRow iconName="house" title="Home" notificationCount={projectData?.length} url="/"/>
+            {/*<SidebarItemRow iconName="share" title="Bug Feed" notificationCount={projectData?.length} />*/}
+            <SidebarItemRow iconName="cup" title="Projects" notificationCount={allProjects?.length} url="/projects" />
 
             <br />
             <SidebarTitleRow title="MY BUGS"/>

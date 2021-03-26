@@ -13,7 +13,7 @@ const CreateBugPage = ({ user, loadProjectData }) => {
     const handleCreateBug = async (values) => {
         const token = localStorage.getItem('token')
 
-        const res = await axios.post('http://localhost:8080/bug/create', {...values, user: user._id}, {
+        const res = await axios.post('/api/bug/create', {...values, user: user._id}, {
             headers: {
                 "x-auth-token": `Bearer ${token}`
             }
@@ -44,7 +44,7 @@ const CreateBugPage = ({ user, loadProjectData }) => {
 
                 }
                 validationSchema={BugSchema}
-                onSubmit={  values =>  handleCreateBug(values)}
+                onSubmit={ values =>  handleCreateBug(values)}
             >
 
                 { ( { errors, touched, handleSubmit, handleChange, handleBlur } ) => (

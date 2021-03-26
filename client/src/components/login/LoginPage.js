@@ -7,8 +7,6 @@ import {useFormik} from "formik"
 
 
 const LoginPage = ({isAuth, login}) => {
-    const [email,setEmail] = useState("")
-    const [password,setPassword] = useState("")
 
     const loginSchema = Yup.object().shape({
         email: Yup.string().email("Invalid Email").required("please enter your email!"),
@@ -21,26 +19,24 @@ const LoginPage = ({isAuth, login}) => {
             password: ""
         },
         validationSchema: loginSchema,
-        onSubmit: (values,{resetForm}) => {
-            // console.log(values)
+        onSubmit: (values) => {
             login(values)
         }
     })
 
     if(isAuth){
         // console.log("Redirecting")
-        return <Redirect to={"/dashboard"}/>
+        return <Redirect to="/dashboard"/>
     }
 
     return (
         <div className="login-page-container">
-            <TempHeader />
 
             <Container className="d-flex flex-column justify-content-center align-items-center vh-100 ">
                 <h1 className="my-0 ">Bugs R Us</h1>
-                <Row className="w-100 h-75 login-page-container__content">
+                <Row className="w-100 h-75 my-3 login-page-container__content">
                     <Col md={6} className="login-page-container__gif-section">
-                        {/*<img className="login-page-container__butterfly-image" src="https://64.media.tumblr.com/36e415e8b8c2781e6b1d5476f0747b35/tumblr_o13s5fLkYe1twrbr9o1_540.gifv" alt=""/>*/}
+
                     </Col>
                     <Col md={6} className="login-page-container__login-section d-flex justify-content-center flex-column align-items-center">
 

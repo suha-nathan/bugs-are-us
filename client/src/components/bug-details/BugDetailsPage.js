@@ -3,13 +3,11 @@ import { useParams, useHistory, Link } from 'react-router-dom'
 import CommentInputRow from "./CommentInputRow";
 import ProfilePic from "../shared/ProfilePic";
 import {Row, Col, Container, Button} from "react-bootstrap"
-import Header from "../shared/Header";
-import Sidebar from "../sidebar/Sidebar";
 import BugInfo from "./BugInfo"
 import CommentList from "./CommentList";
 import axios from "axios";
 
-const BugDetailsPage = ({ projectData, user, loadProjectData, logOut }) => {
+const BugDetailsPage = ({ projectData, user, loadProjectData }) => {
 
     const history = useHistory()
     let { id } = useParams()
@@ -24,7 +22,7 @@ const BugDetailsPage = ({ projectData, user, loadProjectData, logOut }) => {
     },[projectData])
 
     function loadBugDetails() {
-        const data = projectData.data.find( bug  => bug._id == id)
+        const data = projectData.find( bug  => bug._id == id)
         setBugDetails(data)
 
     }
@@ -39,7 +37,7 @@ const BugDetailsPage = ({ projectData, user, loadProjectData, logOut }) => {
     async function handleDeleteBug() {
 
         try {
-            await axios.delete(`http://localhost:8080/bug/delete/${bugDetails._id}`, {
+            await axios.delete(`/api/bug/delete/${bugDetails._id}`, {
                 headers: {
                     'x-auth-token': `Bearer ${localStorage.getItem('token')}`
                 }
@@ -48,13 +46,14 @@ const BugDetailsPage = ({ projectData, user, loadProjectData, logOut }) => {
             console.log(e)
         }
 
-        loadProjectData()
+        await loadProjectData()
         history.push('/')
 
     }
 
     return (
         <Container>
+            <Link to="/dashboard" exact className="d-flex">Back</Link>
             <Row>
 
                 <Col md={{ span: 4, offset: 4 }}>
@@ -62,17 +61,23 @@ const BugDetailsPage = ({ projectData, user, loadProjectData, logOut }) => {
                     <p>ID: {id}</p>
                 </Col>
                 <Col className="d-flex flex-column px-5">
-                    <Button variant="success" onClick={handleEditBug} className="my-3">Edit</Button>
-                    <Button variant="danger" onClick={handleDeleteBug}>Delete</Button>
+                    { user?._id === bugDetails?.user?._id
+                        &&
+                        <>
+                            <Button variant="success" onClick={handleEditBug} className="my-3">Edit</Button>
+                            <Button variant="danger" onClick={handleDeleteBug}>Delete</Button>
+                        </>
+                    }
+
                 </Col>
             </Row>
 
             <Row className="px-4">
-                <ProfilePic size={5}/>
+                <ProfilePic size={5} imageSource={bugDetails?.user?.profilePicture}/>
             </Row>
 
             <h4 className="text-left">{bugDetails?.title}</h4>
-            <Link to="/" exact>Back</Link>
+
             <BugInfo bugDetails={bugDetails}/>
 
             <CommentList

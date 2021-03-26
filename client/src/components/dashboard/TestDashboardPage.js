@@ -40,7 +40,7 @@ const TestDashboardPage = ({ isAuth, logOut, user , projectData }) => {
 
 
 
-                        <DataTable projectData={projectData} />
+                        <DataTable data={projectData} />
                     </Container>
                 </Col>
         </>

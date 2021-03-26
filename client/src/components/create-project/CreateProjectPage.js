@@ -5,7 +5,7 @@ import {Link, useHistory} from "react-router-dom";
 import axios from "axios";
 import * as Yup from "yup";
 
-const CreateProjectPage = ({ user, loadProjectData}) => {
+const CreateProjectPage = ({ user, loadProjectData, loadAllProjects}) => {
 
     const history = useHistory()
 
@@ -15,13 +15,15 @@ const CreateProjectPage = ({ user, loadProjectData}) => {
     const handleCreateProject = async (values) => {
         const token = localStorage.getItem('token')
         console.log(values)
-        const res = await axios.post('http://localhost:8080/project/create', {...values, createdBy: user._id}, {
+        const res = await axios.post('/api/project/create', {...values, createdBy: user._id}, {
             headers: {
                 "x-auth-token": `Bearer ${token}`
             }
         })
 
         console.log(res)
+        loadAllProjects()
+        loadProjectData()
         history.push('/projects')
     }
 
@@ -30,7 +32,7 @@ const CreateProjectPage = ({ user, loadProjectData}) => {
 
     },[])
     async function loadAllUsers() {
-        const res = await axios.get('http://localhost:8080/user/all', {
+        const res = await axios.get('/api/user/all', {
             headers: {
                 'x-auth-token': `Bearer ${localStorage.getItem('token')}`
             }
@@ -59,7 +61,6 @@ const CreateProjectPage = ({ user, loadProjectData}) => {
                         teamLead: '',
                         members: ''
                     }
-
                 }
                 validationSchema={projectSchema}
                 onSubmit={  values =>  handleCreateProject(values)}
@@ -78,15 +79,13 @@ const CreateProjectPage = ({ user, loadProjectData}) => {
 
                             </Col>
 
-
-
                             <Col md={4} className="d-flex align-items-center justify-content-center">
                                 <Field component="select" name="categories">
                                     <option>Categories</option>
-                                    <option value="notStarted">Not Started</option>
-                                    <option value="ongoing">Ongoing</option>
-                                    <option value="underReview">Under Review</option>
-                                    <option value="completed">Completed</option>
+                                    <option value="Entertainment">Entertainment</option>
+                                    <option value="Logistic">Ongoing</option>
+                                    <option value="Ads">Ads</option>
+                                    <option value="Internal">Internal</option>
                                 </Field>
                             </Col>
 

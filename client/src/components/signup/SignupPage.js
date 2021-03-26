@@ -1,14 +1,12 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import TempHeader from "../shared/TempHeader";
-import {Button, Col, Container, Image, Row, Form} from "react-bootstrap";
-import {Link, Redirect} from "react-router-dom";
+import { Button, Col, Container, Image, Row, Form } from "react-bootstrap";
+import { Link, Redirect } from "react-router-dom";
 import SignupInputCol from "./SignupInputCol";
-import FileBase from "react-file-base64"
 import * as Yup from "yup"
-import {useFormik} from "formik"
-import axios from "axios";
+import { useFormik } from "formik"
 
-const SignupPage = ({isAuth,isSignedUp,signUp,setSignedUp, setSuccessMessage}) => {
+const SignupPage = ({ isAuth, signUp }) => {
     const [baseImageUpload, setBaseImageUpload] = useState(null)
     const [thumbnailImage, setThumbnailImage] = useState(null)
 
@@ -35,7 +33,7 @@ const SignupPage = ({isAuth,isSignedUp,signUp,setSignedUp, setSuccessMessage}) =
         terms: Yup.bool().required().oneOf([true], 'terms must be accepted')
     })
 
-    const { handleChange,errors, handleSubmit, touched, values, setFieldValue } = useFormik({
+    const { handleChange,errors, handleSubmit, touched, values } = useFormik({
         initialValues: {
             file:null,
             firstName: "",
@@ -53,16 +51,6 @@ const SignupPage = ({isAuth,isSignedUp,signUp,setSignedUp, setSuccessMessage}) =
             let {  firstName, lastName, email, password, description, role } = values
             let enumRole = role==="1" ? "teamLead" : "user"
 
-            // console.log(baseImage)
-            // let tempUserInfo = {
-            //     file: baseImage,
-            //     firstName,
-            //     lastName,
-            //     email,
-            //     password,
-            //     description,
-            //     role: enumRole
-            // }
             const formData = new FormData()
             formData.append("firstName",firstName)
             formData.append("lastName",lastName)
@@ -72,17 +60,7 @@ const SignupPage = ({isAuth,isSignedUp,signUp,setSignedUp, setSuccessMessage}) =
             formData.append("role",enumRole)
             formData.append("file",baseImageUpload)
 
-            // tempUserInfo.append("firstName",firstName)
-            // console.log(tempUserInfo)
-            // console.log(formData.get("file"))
             signUp(formData)
-            //     .then(()=>{
-            //     setSignedUp(true)
-            //     setSuccessMessage("Successfully Signed Up! Please Login")
-            //     setTimeout(() => {
-            //         setSuccessMessage("")
-            //     }, 2000)
-            // })
 
         }
     })
@@ -90,17 +68,6 @@ const SignupPage = ({isAuth,isSignedUp,signUp,setSignedUp, setSuccessMessage}) =
     if(isAuth){
         return <Redirect to={"/dashboard"}/>
     }
-
-    function validateConfirmPassword(password, value) {
-        let error = ''
-        if((password && value) && (password !== value)) {
-                error = 'Password not matched'
-        }
-        return error
-
-    }
-
-    // console.log(baseImage)
 
     return (
         <div className="signup-page-container">
