@@ -20,9 +20,14 @@ View our UI mock-up on Figma : https://www.figma.com/file/uzOs1XPzXEK67f6QBJAplT
 
 ```
 The user must be able to:
-- log the bug I've encountered in the app and notify the engineering team
-- As a user, I should be able to log the bug I've encountered in the app and notify the engineering team
-- As a team leadI can assign bugs for users to fix
+- Log in and out of the application 
+- Log the bug they've encountered in the app and notify the engineering team
+- Edit the bugs they have created to update it's description and status
+
+
+The team lead must be able to:
+- Assign bugs for users to fix
+- Create projects and assign users to projects
 
 ```
 
