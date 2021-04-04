@@ -2,7 +2,8 @@
 
 ## Description
 
-This app was built for users and team leaders to track bugs
+This app was built for users and team leaders to track bugs on their projects. 
+View our UI on Figma - https://www.figma.com/file/uzOs1XPzXEK67f6QBJAplT/bug-tracking-draft-1?node-id=0%3A1 
 
 ### Tech
 
